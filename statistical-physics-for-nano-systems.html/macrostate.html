@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Macrostate</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="ensemble.html" rel="prev">\(\leftarrow\) Ensemble</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="microstate.html" rel="next">Microstate \(\rightarrow\)</a>
+        </nav>
+    </div>
+
+     <div id="title">
+        <h1>Macrostate</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>Consider a physical system composed of \(N\) identical particles confined to a space of volume \(V\). In a typical case, \(N\) would be an extremely large number, generally, of order \(10^{23}\).</p>
+        <p>It is customary to carry out analysis in the so-called <i>thermodynamic limit</i>. Here, as \(N \rightarrow \infty\), \(V \rightarrow \infty\), such that the ratio \(\frac{N}{V}\), representing particle density, remains constant.</p>
+        <p>In this limit, the extensive properties of the system become directly proportional to the size of the system (i.e., proportional to N or to V), while the intensive properties become independent thereof; the particle density, of course, remains an important parameter for all physical properties of the system.</p>
+    
+        <p>Consider the total energy \(E\) of the system. If the particles comprising the system could be regarded as non-interacting, the total energy E would be equal to the sum of the energies \(\varepsilon_i\) of the individual particles:</p>
+        \[
+            E = \sum_i n_i \varepsilon_i
+        \]
+        <p>where \(n_i\) denotes the number of particles each with energy \(\varepsilon_i\). Clearly,</p>
+        \[
+            N = \sum_i n_i
+        \]
+        <p>According to quantum mechanics, the single-particle energies \(\varepsilon_i\) are discrete and their values depend crucially on the volume \(V\) to which the particles are confined. Accordingly, the possible values of the total energy \(E\) are also discrete. </p>
+        <p>However, for large \(V\), the spacing of the different energy values is so small in comparison with the total energy of the system that the parameter \(E\) might well be regarded as a continuous variable. This would be true even if the particles were mutually interacting; of course, in that case the total energy \(E\) cannot be written in the form (1).</p>
+        <p>The specification of the actual values of the parameters \(N\), \(V\), and \(E\) then defines a macrostate of the given system.</p>
+    </div>
+</body>
+</html> 
