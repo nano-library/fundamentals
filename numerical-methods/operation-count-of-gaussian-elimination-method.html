@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Operation Count of Gaussian Elimination Method</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="root-finding-methods-for-system-of-non-linear-equations.html" rel="prev">\(\leftarrow\) System Of Non-linear Equations</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="pivoting.html" rel="next">Pivoting \(\rightarrow\)</a>
+        </nav>
+    </div>
+
+    <div id="title">
+        <h1>Operation Count of Gaussian Elimination Method</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>The total counts of operations in Gaussian elimination method.</p>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tr>
+                <th></th>
+                <th>Multiplications / Divisions</th>
+                <th>Additions / Subtractions</th>
+            </tr>
+
+            <tr>
+                <td>Forward elimination</td>
+                <td>\(\frac{2n^3 + 3n^2 - 5n}{6}\)</td>
+                <td>\(\frac{n^3 - n}{3}\)</td>
+            </tr>
+
+            <tr>
+                <td>Back substitution</td>
+                <td>\(\frac{n^2 + n}{2}\)</td>
+                <td>\(\frac{n^2 - n}{2}\)</td>
+            </tr>
+
+            <tr>
+                <td><strong>Total</strong></td>
+                <td>\(\frac{n^3}{3} + n^2 - \frac{n}{3}\)</td>
+                <td>\(\frac{n^3}{3} + \frac{n^2}{2} - \frac{5n}{6}\)</td>
+            </tr>
+        </table>
+
+        <p>Hence from above Table, Gaussian elimination method requires about \(\frac{2}{3}n^3 + O(n^2)\) arithmetic operations. </p>
+
+        <h4>Forward elimination</h4>
+        <h5>Multiplication/Division</h5>
+        <p>On the \(k^{th}\) step in below equation, we calculate \((n - k)\) divisions.</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+        <p>Also in below equation, we have \((n - k)(n - k)\) multiplications.</p>
+        \[
+            a_{i,j}^{(k+1)} = a_{i,j}^{(k)} - m_{i,k}a_{k,j}^{(k)}, \quad i,j = k+1,\ldots,n.
+        \]
+        <p>In below equation, we have \((n - k)\) multiplications.</p>
+        \[
+            b_{i}^{(k+1)} = b_{i}^{(k)} - m_{i,k}b_{k}^{(k)}, \quad i = k+1,\ldots,n.
+        \]
+        <p>So, in total, we have</p>
+        \[
+           (n - k) + (n - k)(n - k) + (n - k) = (n - k)^2 + 2(n - k)
+        \]
+        <p>multiplications/divisions on the \(k^{th}\) step.</p>
+        <p>As \(k\) is from \(1\) to \(n - 1\) the total number of multiplications/divisions in forward elimination is given by,</p>
+        \[
+            \sum_{k=1}^{n-1} \left( (n-k)^2 + 2(n-k)\right) = \frac{2n^3 + 3n^2 - 5n}{6}
+        \]
+        <p>In detail,</p>
+        \[
+            \begin{aligned}
+            \sum_{k=1}^{n-1} \left( (n-k)^2 + 2(n-k) \right)
+            &= \sum_{k=1}^{n-1} (n-k)^2 + 2\sum_{k=1}^{n-1} (n-k) \\
+
+            &= \sum_{k=1}^{n-1} k^2 + 2\sum_{k=1}^{n-1} k \\
+
+            &= \frac{(n-1)n(2n-1)}{6} + 2\frac{(n-1)n}{2} \\
+
+            &= \frac{2n^3 + 3n^2 - 5n}{6}
+            \end{aligned}
+        \]
+        <h5>Addition</h5>
+        <p>In the below equation, we have \((n - k)(n - k)\) subtractions</p>
+        \[
+            a_{i,j}^{(k+1)} = a_{i,j}^{(k)} - m_{i,k}a_{k,j}^{(k)}, \quad i,j = k+1,\ldots,n.
+        \]
+        <p>In the below equation, we have \((n - k)\) subtractions</p>
+        \[
+            b_{i}^{(k+1)} = b_{i}^{(k)} - m_{i,k}b_{k}^{(k)}, \quad i = k+1,\ldots,n.
+        \]
+        <p>So, in total, we have</p>
+        \[
+            (n - k)(n - k) + (n - k) = (n - k)^2 + (n - k)
+        \]
+        <p>subtractions on the \(k^{th}\) step.</p>
+        <p>Therefore, the total number of additions/subtractions in forward elimination is</p>
+        \[
+            \sum_{k=1}^{n-1} \left( (n-k)^2 + (n-k) \right) = \frac{n^3 - n}{3}
+        \]
+        <p>In detail,</p>
+        \[
+            \begin{aligned}
+            \sum_{k=1}^{n-1} \left( (n-k)^2 + (n-k) \right)
+            &= \sum_{k=1}^{n-1} (n-k)^2 + \sum_{k=1}^{n-1} (n-k) \\
+
+            &= \sum_{k=1}^{n-1} k^2 + \sum_{k=1}^{n-1} k \\
+
+            &= \frac{(n-1)n(2n-1)}{6} + \frac{(n-1)n}{2} \\
+
+            &= \frac{n^3 - n}{3}
+            \end{aligned}
+        \]
+        <h4>Back elimination</h4>
+        <h5>Multiplication/Division</h5>
+        <p>In the below equation, we have \(1\) division</p>
+        \[
+            x_n = \frac{b^{(n)_n}}{a^{(n)_{n,n}}}
+        \]
+        <p>In the below equation, we have \((n - i)\) multiplications and \(1\) division.</p>
+        \[
+            x_i = \frac{b_i^{(i)} - \sum_{j=i+1}^{n} a_{i,j}^{(i)}x_{j}}{a_{i,i}^{(i)}}, \quad i = n-1, n-2,\ldots,1.
+        \]
+        <p>As \(i = 1 ( 1 ) n - 1\), total multiplications/divisions in back substitution is</p>
+        \[
+            1 + \sum_{i=1}^{n-1} (n - i + 1) = \frac{n^2 + n}{2}
+        \]
+        <p>In detail,</p>
+        \[
+            \begin{aligned}
+            1 + \sum_{i=1}^{n-1} (n - i + 1)
+            &= 1 + \sum_{i=1}^{n-1} (n - i) + (n - 1) \\
+
+            &= n + \sum_{i=1}^{n-1} (n - i) \\
+
+            &= n + \frac{(n-1)n}{2} \\
+
+            &= \frac{n^2 + n}{2}.
+            \end{aligned}
+        \]
+        <h5>Addition/Subtraction</h5>
+        <p>In the below equation, we have \((n - i-1)\) additions and \(1\) subtraction.</p>
+        \[
+            x_i = \frac{b_i^{(i)} - \sum_{j=i+1}^{n} a_{i,j}^{(i)}x_{j}}{a_{i,i}^{(i)}}, \quad i = n-1, n-2,\ldots,1.
+        \]
+        <p>As \(i = 1 ( 1 ) n - 1\), the total number of additions/subtractions is</p>
+        \[
+            \sum_{i=1}^{n-1} \big((n - i - 1) + 1\big)
+            = \sum_{i=1}^{n-1} (n - i)
+            = \frac{(n-1)n}{2}
+            = \frac{n^2 - n}{2}
+        \]
+    </div>  
+</body>

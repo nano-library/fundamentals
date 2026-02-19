@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pivoting</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="operation-count-of-gaussian-elimination-method.html" rel="prev">\(\leftarrow\) Operation Count</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="" rel="next"> \(\rightarrow\)</a>
+        </nav>
+    </div>
+
+    <div id="title">
+        <h1>Partial Pivoting and Complete Pivoting</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>Let us consider the following systems,</p>
+        \[
+            a_{11}^{(1)}x_1 + a_{12}^{(1)}x_2 + \ldots + a_{1n}^{(1)}x_n = b_1^{(1)},
+            \tag{\(E_1\)} \\
+        \]
+        \[
+            a_{21}^{(1)}x_1 + a_{22}^{(1)}x_2 + \ldots + a_{2n}^{(1)}x_n = b_2^{(1)},
+            \tag{\(E_2\)}
+        \]
+        \[
+            \vdots
+        \]
+        \[
+            a_{n1}^{(1)}x_1 + a_{n2}^{(1)}x_2 + \ldots + a_{nn}^{(1)}x_n = b_n^{(1)},
+            \tag{\(E_n\)}
+        \]
+        <p>The \(a_{i,i}^{i}\) are known as pivot element.</p>
+        <p>If the pivot element is too small or zero, this can lead to numerical instability or errors in the computations as it is in the denominator of the multiplier calculation,</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+
+        <h4>Partial Pivoting</h4>
+        <p>Partial pivoting is a commonly used technique to avoid such issues.</p>
+        <p>This technique involves selecting a new pivot by choosing the largest absolute value in the column below the current pivot. This ensures that the new pivot is as large as possible, which helps reduce the impact of numerical errors.</p>
+        <p>During the \(k^{th}\) step of Gaussian elimination, we swap the \(k^{th}\) and \(p^{th}\) row, where \(p\) is selected such that</p>
+        \[
+            |a_{p,k}^{(k)}| = \max{i=k(1)n}|a_{i,k}^{(k)}|
+        \]
+        <h4>Example:</h4>
+        <p>Solve the following system using Gaussian elimination method with partial pivoting.</p>
+        \[
+            \begin{aligned}
+            2x - y + 3z &= 9 \\
+            x + y + z &= 6 \\
+            3x + 4y - 2z &= 5
+            \end{aligned}
+        \]
+        <p style="text-indent: 2em;">Solution:</p>
+        <p>Pivoting on the first step:</p>
+        \[
+            \begin{aligned}
+            3x + 4y - 2z &= 5
+            2x - y + 3z &= 9 \\
+            x + y + z &= 6 \\
+            \end{aligned}
+        \]
+        <p>Eliminate \(x\) from second and third equation:</p>
+        <p>We first calculate the multipliers:</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+        \[
+            m_{2,1} = \frac{a^{(1)}_{2,1}}{a^{(1)}_{1,1}} = \frac{1}{3}
+        \]
+        \[
+            m_{3,1} = \frac{a^{(1)}_{3,1}}{a^{(1)}_{1,1}} = \frac{2}{3}
+        \]
+         <p>Now, we perform the row operations:</p>
+         \[
+            R_2 \rightarrow R_2 - m_{1,1}R_1, \quad R_3 \rightarrow R_3 - m_{2,1}R_1 
+        \]
+        <p>Which is </p>
+        \[
+            R_2 \rightarrow R_2 - \frac{1}{3}R_1, \quad R_3 \rightarrow R_3 - \frac{2}{3}R_1 
+        \]
+        <p>Then we get,</p>
+        \[
+            \begin{aligned}
+            3x + 4y - 2z &= 5 \\
+            \frac{1}{3}y - \frac{5}{3} z &= \frac{13}{3} \\
+            - \frac{11}{3}y - \frac{13}{3}z &= -\frac{17}{3}
+            \end{aligned}
+        \]
+        <p>Pivoting on the second step:</p>
+        \[
+            \begin{aligned}
+            3x + 4y - 2z &= 5 \\
+            - \frac{11}{3}y - \frac{13}{3}z &= -\frac{17}{3} \\
+            \frac{1}{3}y - \frac{5}{3} z &= \frac{13}{3} 
+            \end{aligned}
+        \]
+        <p>Eliminate \(y\) from third equation:</p>
+        <p>We calculate the multipliers again:</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+        \[
+            m_{3,2} = \frac{a^{(2)}_{3,2}}{a^{(1)}_{2,2}} = \frac{\frac{5}{3}}{\frac{13}{3}} = \frac{5}{13}
+        \]
+        <p>Then, we perform the row operations again:</p>
+        \[
+            R_3 \rightarrow R_3 - \frac{5}{13}R_1 
+        \]
+        <p>Now, we get</p>
+        \[
+            \begin{aligned}
+            3x + 4y - 2z &= 5 \\
+            - \frac{11}{3}y - \frac{13}{3}z &= -\frac{17}{3} \\
+            \frac{42}{33}z &= \frac{126}{33}
+            \end{aligned}
+        \]
+        <p>We then apply the so called back substitution method to get the solution.</p>
+        <p>From the last equation,</p>
+        \[
+            \frac{42}{33}z = \frac{126}{33} \implies z = \frac{126}{42} = 3
+        \]
+        <p>Substituting \(z = 3\) in second equation,</p>
+        \[
+            - \frac{11}{3}y - \frac{13}{3} \cdot 3 = -\frac{17}{3} \\ \implies -11y - 39 = -17
+        \]
+        \[
+            -11y - 39 = -17 \implies y = \frac{22}{11} = 2
+        \]
+        <p>Substituting \(z = 3\) and \(y = 2\) in first equation,</p>
+        \[
+            3x + 4y - 2z = 5 \implies 3x + 4(2) - 2(3) = 5
+        \]
+        \[
+            3x + 8 - 6 = 5 \implies x = \frac{3}{3} = 1
+        \]
+
+        <p>Solution</p>
+        \[
+            (x,y,z) = (1,2,3)
+        \]
+
+        <h4>Complete Pivoting</h4>
+        <p>Complete pivoting involves searching for the largest absolute value in the entire remaining submatrix, rather than just the column below the pivot.</p>
+        <p>Suppose \(p\), \(q\) are such that</p>
+        \[
+            |a_{p,q}^{(k)}| = \max_{i,j=k(1)n}|a_{i,j}^{(k)}|
+        \]
+        <p>We swap the \(k^{th}\) row with the \(p^{th}\) row and the \(k^{th}\) column with the \(q^{th}\) column. Since we interchange the column, we also swap the variables \(x_k\) with \(x_q\).</p>
+        <h4>Example:</h4>
+        <p>Solve the following system using Gaussian elimination method with partial pivoting.</p>
+        \[
+            \begin{aligned}
+            2x + 4y - 2z - 2w &= -4 \\
+            x + 2y + 4z - 3w &= 5 \\
+            -3x - 3y + 8z - w&= 7 \\
+            -x + y + 6z - 3w = 7
+            \end{aligned}
+        \]
+        <p style="text-indent: 2em;">Solution:</p>
+        <p>Identify the largest element (magnitude) in the matrix as the pivot. </p>
+        <p>n this case, \(8\) in the \(3^{rd}\) row and \(3^{rd}\) column. After interchanging the rows and column we get:</p>
+        \[
+            \begin{aligned}
+            8z - 3x - 3z - 2w &= 7 \\
+            4z + x + 2y - 3w &= 5 \\
+            -2z + 2x + 4z - 2w&= -4 \\
+            6z - x + y - 3w = 7
+            \end{aligned}
+        \]
+        <p>Now, proceed with elimination to create zeros below the pivot:</p>
+        <p>Pivot is \(a_{11} = 8\). For each row \(i=2,3,4\):</p>
+        <p>We calculate the multipliers again:</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+        \[
+            m_{2,1} = \frac{a^{(1)}_{2,1}}{a^{(1)}_{1,1}} = \frac{4}{8} = \frac{1}{2}
+        \]
+        \[
+            m_{3,1} = \frac{a^{(1)}_{3,1}}{a^{(1)}_{1,1}} = \frac{-2}{8} = -\frac{1}{4}
+        \]
+        \[
+            m_{4,1} = \frac{a^{(1)}_{4,1}}{a^{(1)}_{1,1}} = \frac{6}{8} = \frac{3}{4}
+        \]
+        <p>Now, we perform the row operations:</p>
+         \[
+            R_2 \rightarrow R_2 - m_{2,1}R_1, \quad R_3 \rightarrow R_3 - m_{3,1}R_1, \quad  R_4 \rightarrow R_4 - m_{4,1}R_1 
+        \]
+        <p>Which is </p>
+        \[
+            R_2 \rightarrow R_2 - \frac{1}{2}R_1, \quad R_3 \rightarrow R_3 + \frac{1}{4}R_1, \quad R_4 \rightarrow R_4 - \frac{3}{4}R_1  
+        \]
+        <p>Then we get,</p>
+        \[
+            \begin{aligned}
+            8z - 3x - 3z - 2w &= 7 \\
+            \frac{5}{2}x + \frac{7}{2}y - 2w &= \frac{3}{2} \\
+            \frac{5}{4}x + \frac{13}{4}y - \frac{5}{2}w &= -\frac{9}{4} \\
+            \frac{5}{2}x + \frac{13}{4}y - \frac{3}{2}w &= \frac{7}{4}
+            \end{aligned}
+        \]
+        <p>Now, pivot on the next largest element, which is \(\frac{7}{4}\) in the \(2^{nd}\) row and \(3^{rd}\) column.</p>
+        <p>After interchanging the rows and column we get:</p>
+        \[
+            \begin{aligned}
+            8z - 3x - 3z - 2w &= 7 \\
+            \frac{7}{2}y + \frac{5}{2}x - 2w &= \frac{3}{2} \\
+            \frac{13}{4}y + \frac{5}{4}x - \frac{5}{2}w &= -\frac{9}{4} \\
+            \frac{13}{4}y + \frac{5}{4}x - \frac{3}{2}w &= \frac{7}{4}
+            \end{aligned}
+        \]
+        <p>Continue the elimination process:</p>
+        <p>Pivot is \(a_{22} = \frac{7}{2}\).</p>
+        <p>We calculate the multipliers again:</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+        \[
+            m_{3,2} = \frac{a^{(2)}_{3,2}}{a^{(1)}_{2,2}} = \frac{\frac{13}{4}}{\frac{7}{2}} = \frac{13}{14}
+        \]
+        \[
+            m_{4,2} = \frac{a^{(2)}_{4,2}}{a^{(2)}_{2,2}} =  \frac{\frac{13}{4}}{\frac{7}{2}} = \frac{13}{14}
+        \]
+        <p>Now, we perform the row operations:</p>
+         \[
+            R_3 \rightarrow R_3 - m_{3,1}R_1, \quad  R_4 \rightarrow R_4 - m_{4,1}R_1 
+        \]
+        <p>Which is </p>
+        \[
+            R_3 \rightarrow R_3 - \frac{13}{14}R_2, \quad R_4 \rightarrow R_4 - \frac{13}{14}R_2  
+        \]
+        <p>Then we get,</p>
+        \[
+            \begin{aligned}
+            8z - 3x - 3z - 2w &= 7 \\
+            \frac{7}{2}y + \frac{5}{2}x - 2w &= \frac{3}{2} \\
+            \frac{15}{14}x - \frac{9}{14}w &= -\frac{51}{14} \\
+            w &= 4
+            \end{aligned}
+        \]
+        <p>At this point elimination process is over.</p>
+        <p>ion process is over. Apply back substitution to get the solution.</p>
+
+        <p>Solution</p>
+        \[
+            (x,y,z,w) = (1,2,3,4)
+        \]
+    </div>
+</body>

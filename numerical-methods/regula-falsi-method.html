@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Regula-Falsi Method</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="secant-method.html" rel="prev">\(\leftarrow\) Bisection Method</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="higher-order-one-point-methods.html" rel="next">One Point Method \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Regula-Falsi Method</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>Also known as False Position Method</p>
+        <p>It is an iterative method that combines elements of the <a href="bisection-method.html">Bisection method </a> and the <a href="secant-method.html">Secant method</a>.</p>
+        <p>It includes a test to ensure that the root is always bracketed between successive iterations. Although it is not a method generally recommended, but it illustrates how bracketing can be incorporated.</p>
+        <p>Suppose \(f\) is a continuous function defined on the interval \([a, b]\), with \(f(a)\) and \(f(b)\) of opposite sign. By the Intermediate Value Theorem, it follows that \(f(x)\) has at least one root in the interval \([a, b]\).</p>
+        \[
+            f(a) \cdot f(b) < 0
+        \]
+        <p>The method typically converges faster than the Bisection method, especially when the function behaves similarly to a linear function near the root.</p>
+        <p>To find an approximation for the root of the equation \(f(x) = 0\).</p>
+        <p>The steps of the Regular-Falsi method are as follows:</p>
+        <p style="text-indent: 2em;">1. <strong>Initial Points</strong></p> 
+        <p>Choose initial approximations \(x_0\) and \(x_1\) with \(f(x_0) \cdot f(x_1) < 0.</p>
+        <p style="text-indent: 2em;">2. <strong>Compute the Interpolated Point</strong></strong></p>
+        <p>The next approximations \(x_n\) are chosen in the same manner as in the Secant method.</p>
+        \[
+            x_n = b - \frac{f(b) \cdot (b-a)}{f(b) - f(a)}
+        \]
+        <p style="text-indent: 2em;">3. <strong>Update the Intervals</strong></p>
+        <p style="text-indent: 4em;">- If \(f(x_n) \cdot f(a) < 0\), set the interval to \([a, x_n]\)</p>
+        <p style="text-indent: 4em;">- If \(f(x_n) \cdot f(b) < 0\), set the interval to \([x_n, b]\)</p>
+        <p style="text-indent: 2em;">4. <strong>Iteration</strong></p>
+        <p>Repeat steps 2 and 3 until the solution coverges to a desired accuracy level.</p>
+
+        <h4>Example:</h4>
+        <p>Use the method of False Position to find a solution to \(x = \cos{x}-x\), with initial approximations \(x_0 = 0.5\) and \(x_1 = \frac{\pi}{4}\).</p>
+        <p style="text-indent: 2em;">Solution:</p>
+    </div>
+</body>

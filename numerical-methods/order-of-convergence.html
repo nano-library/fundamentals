@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Order of Convergence</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="root-finding-methods.html" rel="prev">\(\leftarrow\) Root Finding Methods</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="secant-method.html" rel="next">Secant Method \(\rightarrow\)</a>
+        </nav>
+    </div>
+
+    <div id="title">
+        <h1>Order of Convergence</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>Order of Convergence Theorem</h4>
+        <p>Let</p>
+        \[
+             e_n = x_n - c
+        \]
+        \[
+            e_{n+!} = x_{n+1} - c
+        \]
+        <p>where \(c\) is the exact root.</p>
+        <p>If</p>
+        \[
+            \lim_{n \rightarrow \infty}\frac{|x_{n+1} - c|}{|x_n - c|^p} = M, \quad M \neq 0, p > 0
+        \]
+        <p>then order of iterative scheme is \(p\)</p>
+        <p>\(M\) is called asymptotic error constant.</p>
+        \[
+            e_{n+1} \simeq Me_n^p
+        \]
+
+        <h4>Example 1:</h4>
+        <p>For x_{n+1} = x_n^2, with x_0 = \frac{1}{3}</p>
+        \[
+            c=0 
+        \]
+        \[
+            |x_{n+1} - c| = |x_n - c|^2
+        \]
+        \[
+            \frac{|x_{n+1} - c|}{|x_n - c|^2} = M
+        \]
+        \[
+            e_{n+1} = e_n^2
+        \]
+        <p>Order of Convergence is \(2\).</p>
+        <p>Asymptotic error is \(1\).</p>
+        
+        <h4>Note</h4>
+        \[
+            e_{n+1} = c_1e_n + c_2e_n^2 + c_3e_n^3 + \ldots + c_n\frac{e^n_n}{n!} + \ldots
+        \]
+
+        <h4>Example:</h4>
+        <p>For Order = 3</p>
+        \[
+            c_1 = 0, \; c_2 = 0, c_3 \neq 0
+        \]
+
+        <h4>Bisection Method</h4>
+        \[
+            |x_n - c| \leq \frac{b-a}{2^n},
+        \]
+        \[
+            |x_{n+1} - c| \leq \frac{b-a}{2^{n+1}}.
+        \]
+        
+    </div>
+</body>

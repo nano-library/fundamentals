@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bisection Method</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="root-finding-methods.html" rel="prev">\(\leftarrow\) Root Finding Methods</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="secant-method.html" rel="next">Secant Method \(\rightarrow\)</a>
+        </nav>
+    </div>
+
+    <div id="title">
+        <h1>Bisection Method</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>The first technique, based on the Intermediate Value Theorem, is called the Bisection, or Binary-search, method.</p>
+        <p>Suppose \(f\) is a continuous function defined on the interval \([a, b]\), with \(f(a)\) and \(f(b)\) of opposite sign. By the Intermediate Value Theorem, it follows that \(f(x)\) has at least one root in the interval \([a, b]\).</p>
+        \[
+            f(a) \cdot f(b) < 0
+        \]
+        <p>The method calls for a repeated halving (or bisecting) of subintervals of \([a, b]\) and, at each step, locating the half containing \(x\)</p>
+        <p>To initiate the method, we set \(a_1 = a\) and \(b_1 = b\). Let \(x_0\) be midpoint in the interval \([a, b]\).</p>
+        <p>The first approximation of the root is given by</p>
+        \[
+            x_1 = \frac{a_1 + b_1}{2}
+        \]
+        <p>If \(f(x) = 0\), then \(x=x_1\), \(x_1\) is the root.</p>
+        <p>If \(f(x_1 \neq 0)\) and \(f(a_1)\) have same sign, \(x \in (x_1, b_1)\). Set \(a_2 = x_1\) and \(b_2 = b_1\).</p>
+        <p>If \(f(x_1 \neq 0)\) and \(f(a_1)\) have opposite signs, \(x \in (a_1, x_1)\). Set \(a_2 = a_1\) and \(b_2 = x_1\).</p>
+
+        <p>The Bisection method, though conceptually clear, has significant drawbacks. It is relatively slow to converge (that is, N may become quite large before \(|p-p_N\) is sufficiently small), and a good intermediate approximation might be inadvertently discarded.</p>
+
+        <p>Each successive pair of approximations in the Bisection method brackets a root \(x\) of the equation; that is, for each positive integer \(n\), a root lies between \(a_n\) and \(b_n\). This implies that, for each \(n\), the Bisection method iterations satisfy</p>
+
+        \[
+            |x_n - x| < \frac{1}{2}|a_n - b_n|
+        \]
+        
+        <p>which provides an easily calculated error bound for the approximations.</p>
+
+        <li style="text-align: center;"><a href="order-of-convergence.html">Order of Convergence</a></li>
+
+        <h4>Example 1</h4>
+        <p>Show that \(f(x) = x^3 + 4x^2 - 10 = 0\) has a root in \([1,2]\), and use the Bisection method to determine an approximation to the root that is accurate to at least within \(10^{-4}\).</p>
+        <p style="text-indent: 2em;">Solution:</p>
+        <p>Substituting interval endpoints</p>
+        \[
+            f(1) = (1)^3 + 4(1)^2 - 10 = -5 \; \text{and} \; f(2) = 2^3 + 4(2)^2 - 10 = 14
+        \]
+        <p>By Intermediate Value Theorem,</p>
+        \[
+            f(1) \cdot f(2) = -70 < 0
+        \]
+        <p>Therefore, function is continuous has a root in \([1,2]\).</p>
+        <p>For the first iteration of the Bisection method we use the fact that at the midpoint of \([1,2]\).</p>
+        \[
+            x_1 = \frac{1+2}{2} = 1.5
+        \]
+        \[
+            f(x_1) = (1.5)^3 + 4(1.5)^2 - 10 = 2.375 > 0
+        \]
+        <p>This indicates that we should select the interval \([1, 1.5]\) for our second iteration.</p>
+        <p>For the second iteration of the Bisection method we use the fact that at the midpoint of \([1,1.5]\).</p>
+        \[
+            x_2 = \frac{1+1.5}{2} = 1.25
+        \]
+        \[
+            f(1.25) = (1.25)^3 + 4(1.25)^2 - 10 = -1.796875 < 0
+        \]
+        <p>This indicates that we should select the interval \([1.25, 1.5]\) for our second iteration.</p>
+        <p>For the third iteration of the Bisection method we use the fact that at the midpoint of \([1.25,1.5]\).</p>
+        \[
+            x_3 = \frac{1.25+1.5}{2} = 1.375
+        \]
+        <p>After 13 iterations, \(x_{13} = 1.365112305\) approximates the root \(x\) with an error.</p>
+        \[
+            |x - x_{13}| < |b_{14} - a_{14}| = |1.365234375 - 1.365112305| = 0.000122070
+        \]
+        <p>Since \(|a_{14}| < |x|\), we have</p>
+        \[
+            \frac{|x - x_{13}|}{|x|} < \frac{|b_{14} - a_{13}|}{|a_{14}|} \leq 9.0 \times 10^{-5}
+        \]
+        <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+            <tr>
+            <th>\(n\)</th>
+            <th>\(a_n\)</th>
+            <th>\(b_n\)</th>
+            <th>\(p_n\)</th>
+            <th>\(f(p_n)\)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>1.0</td><td>2.0</td><td>1.5</td><td>2.375</td></tr>
+            <tr><td>2</td><td>1.0</td><td>1.5</td><td>1.25</td><td>−1.79687</td></tr>
+            <tr><td>3</td><td>1.25</td><td>1.5</td><td>1.375</td><td>0.16211</td></tr>
+            <tr><td>4</td><td>1.25</td><td>1.375</td><td>1.3125</td><td>−0.84839</td></tr>
+            <tr><td>5</td><td>1.3125</td><td>1.375</td><td>1.34375</td><td>−0.35098</td></tr>
+            <tr><td>6</td><td>1.34375</td><td>1.375</td><td>1.359375</td><td>−0.09641</td></tr>
+            <tr><td>7</td><td>1.359375</td><td>1.375</td><td>1.3671875</td><td>0.03236</td></tr>
+            <tr><td>8</td><td>1.359375</td><td>1.3671875</td><td>1.36328125</td><td>−0.03215</td></tr>
+            <tr><td>9</td><td>1.36328125</td><td>1.3671875</td><td>1.365234375</td><td>0.000072</td></tr>
+            <tr><td>10</td><td>1.36328125</td><td>1.365234375</td><td>1.364257813</td><td>−0.01605</td></tr>
+            <tr><td>11</td><td>1.364257813</td><td>1.365234375</td><td>1.364746094</td><td>−0.00799</td></tr>
+            <tr><td>12</td><td>1.364746094</td><td>1.365234375</td><td>1.364990235</td><td>−0.00396</td></tr>
+            <tr><td>13</td><td>1.364990235</td><td>1.365234375</td><td>1.365112305</td><td>−0.00194</td></tr>
+        </tbody>
+        </table>
+        <p>The approximation is correct to at least within \(10^{-4}\)</p>
+
+        <h4>Example 2</h4>
+        <p>Determine the number of iterations necessary to solve \(f(x) = x^3 + 4x^2 - 10 = 0\) with accuracy \(10^{-3}\) using \(a_1 = 1\) and \(b_1 = 2\).</p>
+        <p style="text-indent: 2em;">Solution:</p>
+        <p></p>
+    </div>
+</body>
+</html>

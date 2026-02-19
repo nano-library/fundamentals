@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fixed-Point Iteration Method</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+   
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="higher-order-one-point-methods.html" rel="prev">\(\leftarrow\) Newton-Raphson Method</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="modified-newton-method.html" rel="next">Modified Newton's Method \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <p style="text-align: center;">Theorem 3 example needs fix.</p>
+        <h1>Fixed-Point Iteration Method</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>Definition of Fixed Point</h4>
+        <p>A number \(c\) is a fixed point of a function \(g\) if \(g(c) = c\).</p>
+        <h4>Connection between fixed point and root-finding method</h4>
+        <p>If \(f(c) = 0\), \(g(x) = x-f(x)\) has a fixed point \(c\) as \(g(c) = c\). Conversely, if \(g(c) = c\) , \(f(x) = x - g(x)\) has a root \(c\).</p>
+        <h4>Fixed-Point Iteration Method</h4>
+        <p>Fixed-point method starts with an initial guess \(x_0\) and then generates a sequence using the following formula.</p>
+        \[
+            x_{n+1} = g(x_n), \quad n \geq 0
+        \]
+
+        <h4>Example 1:</h4>
+        <p>Determine any fixed points of the function \(g(x) = x^2 - 2\).</p>
+        <p style="text-align: 2em;">Solution:</p>
+        <h4>Example 1:</h4>
+        <p> A fixed point \(c\) of \(g\) satisfies the definition
+        \[
+        g(c)=c.
+        \]
+        So we solve
+        \[
+        c^2 - 2 = c.
+        \]
+        Bring all terms to one side:
+        \[
+        c^2 - c - 2 = 0.
+        \]
+        Factor the quadratic:
+        \[
+        c^2 - c - 2 = (c-2)(c+1)=0.
+        \]
+        Hence,
+        \[
+        c = 2 \quad \text{or} \quad c = -1.
+        \]
+        </p>
+
+        <p>
+        Therefore, the fixed points of \(g(x)=x^2-2\) are
+        \[
+        \boxed{c=-1 \text{ and } c=2.}
+        \]
+        </p>
+
+
+        <h4>Theorem 1</h4>
+        <p>Let \(g: [a,b] \rightarrow [a,b]\) be continuous. Then \(x = g(x)\) has at least one solution in \([a,b]\).</p>
+        <h4>Theorem 2</h4>
+        <p>Let \(g:[a,b] \rightarrow [a,b]\) be continuous and for some \(\lambda \in (0,1)\)</p>
+        \[
+            |g(x) - g(y)| \leq \lambda|x-y|, \quad \forall \; x,y \in [a,b]
+        \]
+        <p>Then \(x = g(x)\) has a unique solution \(r \in [a,b]\).</p>
+        <p>Also, the iterations \[x_{n+1} = g(x_n), \quad n \geq 1 \] will converge to \(r\) for any choice of \(x_0 \in [a,b]\) and</p>
+        \[
+            |r - x_n| \leq \frac{\lambda^n}{1- \lambda}|x_1 - x_0|
+        \]
+
+        <h4>Example:</h4>
+        <p>a) Show that the sequence defined by</p>
+        \[
+            x_n = \frac{1}{2}x_{n-1} + \frac{1}{x_{n-1}}, \quad n \geq 1
+        \]
+        <p>converges to \(\sqrt{2}\) whenever \(x_0 > \sqrt{2}\).</p>
+        <p>b) Use the fact that \(0 < (x_0 - \sqrt{2})^2\) whenever \(x_0 \neq \sqrt{2}\) to show that if \(0 < x_0 < \sqrt{2}\), then \(x_1 > \sqrt{2}\).</p>
+        <p>c) Use the results of parts (a) and (b) to show that the sequence in (a) converges to \(\sqrt{2}\) whenever \(x_0 > 0\)</p>
+        <p style="text-indent: 2em;">Solution:</p>
+
+
+        <h4>Theorem 3</h4>
+        <p>Assume that \(g: [a,b] \rightarrow [a,b]\) is continuously differentiable and</p>
+        \[
+            \lambda = \max_{a \leq x \leq b}|g'(x)| < 1
+        \]
+        <p>Then the following hold:</p>
+        <p style="text-indent: 2em;">1. \(g\) has a unique fixed point \(r \in [a,b]\).</p>
+        <p style="text-indent: 2em;">2. For any \(x_0 \in [a,b]\), the interations \(x_{n+1} = g(x_n)\) converge to r.</p>
+        <p style="text-indent: 2em;">3. The error estimates satisfy \[|r-x_n| \leq \lambda^n|r-x_0| \leq \frac{\lambda^n}{1-\lambda}|x_1 - x_0|\] and \[\lim_{x \rightarrow \infty} \frac{r - x_{n+1}}{r-x_n} = g'(r)\].</p>
+    
+        <h4>Example</h4>
+        <p>Let \(r\) be a fixed point of g and suppose \(g\) is continuously differentiable in some neighbourhood of \(r\) with \(|g(r)| < 1\). Then the results of previous theorem still hold provided \(x_0\) is sufficiently close to \(r\).</p>
+        <p style="text-indent: 2em;">Solution:</p>
+        <p>Since \(g'\) is continuous at \(r\) and \(g'(r) < 1\), we can pick a number \(lambda\) such that</p>
+        \[
+            |g'(r)| < \lambda < 1
+        \]
+        <p>By continuity of g', there exists \(\delta>0\) such that whenever \(|x - r| < \delta\).</p>
+        \[
+            |g'(x)| \leq \lambda
+        \]
+        <p>So on the interval</p>
+        \[
+            I = [r- \delta, r + \delta]
+        \]
+        <p>We have</p>
+        \[
+            \max_{x \in I}|g'(x)| \leq \lambda < 1
+        \]
+        <p>Now for any \(x,y \in I\),</p>
+        <p>Mean Value Thoerem gives:</p>
+        \[
+            |g(x) - g(y)| = |g'(\xi)||x-y| \leq \lambda |x-y|
+        \]
+        <p>So \(g\) is a contradiction on \(I\).</p>
+        <p>By Thoerem 3</p>
+        <p>If you choose \(x_0 \in I\), then:</p>
+        <p style="text-indent: 2em;">1. \(g\) has a unique fixed point in I (and it must be \(r\)).</p>
+        <p style="text-indent: 2em;">2. The interations \(x_{n+1} = g(x_n)\) stays in \(I\) and converges to r.</p>
+        <p style="text-indent: 2em;">3. The error estimates satisfy \[|r-x_n| \; \text{and} \; \lambda^n|r-x_0| \leq \frac{\lambda^n}{1-\lambda}|x_1 - x_0|\].</p>
+    </div>
+</body>

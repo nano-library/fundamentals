@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Newton's Method For System Of Non-linear Equations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>   
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="modified-newton-method.html" rel="prev">\(\leftarrow\) Modified Newton's Method</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="matrices-and-system-of-linear-equations.html" rel="next">Matrices and System Of Linear Equations \(\rightarrow\)</a>
+        </nav>
+    </div>            
+
+
+    <div id="title">
+        <h1>Newton's Method For System Of Non-linear Equations</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>A system of equations can be defined as \(f(x) = 0\), where</p>
+        \[
+            x =
+            \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+            \vdots \\
+            x_n
+            \end{bmatrix}
+        \]
+        <p>and</p>
+        \[
+            f(x) := 
+            \begin{bmatrix}
+            f_1(x) \\
+            f_2(x) \\
+            \vdots \\
+            f_n(x)
+            \end{bmatrix}
+        \]
+        <p>Here, \(f_i\)'s are scalar valued functions.</p>
+        <p>A system is non-linear if any one of \(f_i\)'s is non-linear.</p>
+
+        <h4>Example:</h4>
+        <p>A two-system can be written as,</p>
+        \[
+            f_1(x_1, x_2) = x_1^2 + x_2^2 - 5 = 0
+        \]
+        \[
+            f_2(x_1,x_2) = x_1^3 - x_2 = 0
+        \]
+        <h4>Newton-Raphson method</h4>
+        <p>Newton-Raphson method can be directly extended to find the solution of the system case.</p>
+        <p>The method requires the calculation of the Jacobian matrix and its inverse, which can be computationally expensive for large systems of equations. Also, the method may not converge for all initial guesses.</p>
+        <p>The method is given by,</p>
+        \[
+            x^{k+1} = x^k - [J(x^k)]^{-1} f(x^k), \quad k=0,1,2,...
+        \]
+        <p>where \(J(x)\) is the Jacobian matrix and </p>
+        \[
+            x^k =
+            \begin{bmatrix}
+            x_1^k \\
+            x_2^k \\
+            \vdots \\
+            x_n^k
+            \end{bmatrix}
+        \]
+        \[
+            \frac{\partial f}{\partial x}
+            =
+            \begin{bmatrix}
+            \frac{\partial f_1}{\partial x_1} &
+            \frac{\partial f_1}{\partial x_2} &
+            \cdots &
+            \frac{\partial f_1}{\partial x_m} \\
+
+            \frac{\partial f_2}{\partial x_1} &
+            \frac{\partial f_2}{\partial x_2} &
+            \cdots &
+            \frac{\partial f_2}{\partial x_m} \\
+
+            \vdots & \vdots & \ddots & \vdots \\
+
+            \frac{\partial f_n}{\partial x_1} &
+            \frac{\partial f_n}{\partial x_2} &
+            \cdots &
+            \frac{\partial f_n}{\partial x_m}
+            \end{bmatrix}.
+        \]
+
+        <p>we try to ignore the calculation of the inverse of the Jacobian.</p>
+        <p>We do the following:</p>
+        <p style="text-indent: 2em;">- We define \(h = -[J(x^k)]^{-1}f(x^k)\).</p>
+        <p style="text-indent: 2em;">- Then solve for \(h\) from the system of linear equations \(J(x^k)h=-f(x^k)\)</p>
+        <p style="text-indent: 2em;">- Finally, update the next iterates using \(x^{k+1} = x^k + h\).</p>
+   
+        <h4>Example 1:</h4>
+        <p>Consider the nonlinear system of equations:</p>
+        \[
+            f_1(x_1, x_2) = x_1^2 + x_2^2 - 4 = 0
+        \]
+        \[
+            f_2(x_1,x_2) = e^{x_1} + x_2 - 1 = 0
+        \]
+        <p>Use Newton's method to approximate the solution starting from the initial guess </p>
+        \[
+            x^0 =
+            \begin{bmatrix}
+            1 \\
+            0
+            \end{bmatrix}.
+        \]
+        <p style="text-indent: 2em;">Solution:</p>
+        <p>For this system, we have:</p>
+        \[
+            f(x) =
+            \begin{bmatrix}
+                f_1(x_1, x_2) \\
+                f_2(x_1, x_2)
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                x_1^2 + x_2^2 - 4 \\
+                e^{x_1} + x_2 - 1
+            \end{bmatrix}.
+        \]
+        <p>The Jacobian matrix \(J(x)\) is:</p>
+        \[
+            J(x)
+            =
+            \begin{bmatrix}
+            \frac{\partial f_1}{\partial x_1} &
+            \frac{\partial f_1}{\partial x_2} \\
+            \frac{\partial f_2}{\partial x_1} &
+            \frac{\partial f_2}{\partial x_2}
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+            2x_1 &
+            2x_2 \\
+            e^{x_1} &
+            1
+            \end{bmatrix}
+        \]
+        <p>For the initial guess 
+            \(x^0 = \begin{bmatrix}
+                1 \\
+                0
+                \end{bmatrix}
+            \),
+        </p>
+        <p>Compute:</p>
+        \[
+            f(x^0)=
+            \begin{bmatrix}
+            1^2 + 0^2 - 4 \\
+            e^1 + 0 - 1
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+            3 \\
+            e-1
+            \end{bmatrix}
+        \]
+        <p>and</p>
+        \[
+            J(x^0)=
+            \begin{bmatrix}
+            2(1) &
+            2(0) \\
+            e^1 &
+            1 
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+            2 &
+            0 \\
+            e &
+            1
+            \end{bmatrix}
+        \]
+        <p>Solving \(J(x^0)h = -f(x^0)\) gives h.</p>
+        \[
+            \begin{bmatrix}
+            2 &
+            0 \\
+            e &
+            1
+            \end{bmatrix}
+            \begin{bmatrix}
+            h_1 \\
+            h_2
+            \end{bmatrix}
+            =
+            -
+            \begin{bmatrix}
+            3 \\
+            e - 1
+            \end{bmatrix}
+        \]
+        <p>Then we update the solutin as \(x^1 = x^0 + h\).</p>
+        \[
+            x^1 = 
+            \begin{bmatrix}
+                1 \\
+                0
+            \end{bmatrix}
+            +
+
+        \]
+        <p>The process is repeated until convergence.</p>
+
+        <h4>Example 2:</h4>
+        <p>Solve the following system of non-linear equations using Newton's method:</p>
+        \[
+            \begin{aligned}
+            x_1^2 + x_2 - 37 &= 0 \\
+            x_1 - x_2^2 - 5 &= 0 \\
+            x_1 + x_2 + x_3 &= 0
+            \end{aligned}
+        \]
+        <p style="text-indent: 2em;">Solution:</p>
+
+        <h4>Example 3:</h4>
+        <p>Use Newton's root finding method for system to minimize the following function:</p>
+        \[
+            g(x_1, x_2) = x_1^4 + 2x_1^2x_2^2 + x_2^4
+        \]
+        <p>Take the initial guess of the form \((a, a)\).</p>
+        <p style="text-indent: 2em;">Solution:</p>
+        <p>We want to minimize the function \(g(x_1, x_2)\).</p>
+        <p>We can reformulate this problem as finding the roots of the gradient of the function,</p>
+        \[
+            \bigtriangledown g (x_1, x_2) = 0
+        \]
+        <p>Let's start with the gradient of the function:</p>
+        \[
+            f(x_1, x_2) = \bigtriangledown g (x_1, x_2) = 
+            \begin{bmatrix}
+                \frac{\partial g}{\partial x_1} \\
+                \frac{\partial g}{\partial x_2}
+            \end{bmatrix}
+            = 
+            \begin{bmatrix}
+                4x_1^3 + 4x_1x_2^2 \\
+                4x_2^3 + 4x_1^2x_2
+            \end{bmatrix}
+        \]
+        <p>Next, we need the Hessian matrix of the function, which is the matrix of second derivatives:</p>
+        \[
+            J(x_1, x_2) = H (x_1, x_2) = 
+            \begin{bmatrix}
+                \frac{\partial^2 g}{\partial x_1^2} &
+                \frac{\partial^2 g}{\partial x_1 \partial x_2} \\
+                \frac{\partial^2 g}{\partial x_1 \partial x_2} &
+                \frac{\partial^2 g}{\partial x_2^2}
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                12x_1^2 + 4x_2^2 &
+                8x_1x_2 \\
+                8x_1x_2 &
+                12x_2^2 + 4x_1^2
+            \end{bmatrix}
+        \]
+        <p>First iteration: Evaluate the function at \((a, a)\),</p>
+        \[
+            f(a,a) = \bigtriangledown g(a,a) = 
+            \begin{bmatrix}
+                4a^3+4a^3 \\
+                4a^3+4a^3
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                8a^3 \\
+                8a^3
+            \end{bmatrix}
+        \]
+        <p>Also calculate the Jacobian</p>
+        \[
+            J(a,a) = H(a,a) = 
+            \begin{bmatrix}
+                12a^2+4a^2 &
+                8a^2\\
+                8a^2 &
+                12a^2+4a^2
+            \end{bmatrix}
+        \]
+        <p>Solve for the update direction \(h\) by solving the linear system,</p>
+        \[
+            J(a,a)h = -f(a,a)
+        \]
+        \[
+            \begin{bmatrix}
+                16a^2 &
+                8a^2\\
+                a^2 &
+                16a^2
+            \end{bmatrix}
+            \begin{bmatrix}
+                h_1 \\
+                h_2
+            \end{bmatrix}
+            =
+            -\begin{bmatrix}
+                8a^3 \\
+                8a^3
+            \end{bmatrix}
+        \]
+        <p>Solving we get,</p>
+        \[
+            h_1 = h_2 = -\frac{1}{3}a
+        \]
+        <p>Update the guess:</p>
+        \[
+            x^1 = x^0 + h
+        \]
+        \[
+            x^1 = 
+            \begin{bmatrix}
+                a \\
+                a
+            \end{bmatrix}
+            -\frac{1}{3}
+            \begin{bmatrix}
+                a \\
+                a
+            \end{bmatrix}
+            =\frac{2}{3}
+            \begin{bmatrix}
+                a \\
+                a
+            \end{bmatrix}
+        \]
+    </div>
+</body>

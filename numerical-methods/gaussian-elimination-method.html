@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gaussian Elimination Method</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="root-finding-methods-for-system-of-non-linear-equations.html" rel="prev">\(\leftarrow\) System Of Non-linear Equations</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="operation-count-of-gaussian-elimination-method.html" rel="next">Operation Count \(\rightarrow\)</a>
+        </nav>
+    </div>
+
+    <div id="title">
+        <h1>Gaussian Elimination Method</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>In Gaussian elimination method, we first perform a sequence of elementary row operations to get a system with upper triangular coefficient matrix.</p>
+        <p>The general Gaussian elimination procedure applied to the linear system is handled in the following manner.</p>
+        \[
+            a_{11}^{(1)}x_1 + a_{12}^{(1)}x_2 + \ldots + a_{1n}^{(1)}x_n = b_1^{(1)},
+            \tag{\(E_1\)} \\
+        \]
+        \[
+            a_{21}^{(1)}x_1 + a_{22}^{(1)}x_2 + \ldots + a_{2n}^{(1)}x_n = b_2^{(1)},
+            \tag{\(E_2\)}
+        \]
+        \[
+            \vdots
+        \]
+        \[
+            a_{n1}^{(1)}x_1 + a_{n2}^{(1)}x_2 + \ldots + a_{nn}^{(1)}x_n = b_n^{(1)},
+            \tag{\(E_n\)}
+        \]
+        <p>The coefficients \(a_{i,i}^{i}\) belong to system (1)</p>
+        <p>That is, we convert the equation \(AX = b\) to \(\mathcal{U}x = b'\)  where \(\mathcal{U}\) is upper triangular. This process is known as <i>forward elimination</i>.</p>
+        <p>we have assumed \(a^{(i)}_{i,i} \neq 0\) in this method.</p>
+        <p>On the \(k^{th}\) (\(k\) runs from \(1\) to \(n - 1\)) step we do the following:</p>
+        <p style="text-indent: 2em;">We eliminate \(x_k\)  from all the equations from \(E_k + 1\) to \(E_n\).</p>
+        <p>To do this we first calculate the multipliers</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+        <p>Next we perform the operation</p>
+        \[
+            E_i = E_i =- m_{i,k}E_k, \quad k+1,\ldots,n.
+        \]
+        <p>The updated coefficients are then defined as</p>
+        \[
+            a_{i,j}^{(k+1)} = a_{i,j}^{(k)} - m_{i,k}a_{k,j}^{(k)}, \quad i,j = k+1,\ldots,n.
+        \]
+         \[
+            b_{i}^{(k+1)} = b_{i}^{(k)} - m_{i,k}b_{k}^{(k)}, \quad i = k+1,\ldots,n.
+        \]
+        <p>After repeating this step for \(k=1(1)n-1\) we get the following system,</p>
+        \[
+            A^{(n)} x = b^{(n)}
+        \]
+        <p>where \(A^{(n)} = (a^{(i)}_{i,j})\) is upper triangular.</p>
+        <p style="text-indent: 2em;">We then apply the so called <i>back substitution</i> method to get the solution.</p>
+        \[
+            x_n = \frac{b^{(n)_n}}{a^{(n)_{n,n}}},
+        \]
+        \[
+            x_i = \frac{b_i^{(i)} - \sum_{j=i+1}^{n} a_{i,j}^{(i)}x_{j}}{a_{i,i}^{(i)}}, \quad i = n-1, n-2,\ldots,1.
+        \]
+
+        <h4>Example 1:</h4>
+        <p>Solve the following system using Gaussian elimination:</p>
+        \[
+            \begin{aligned}
+            2x - y + 3z &= 9 \\
+            x + y + z &= 6 \\
+            3x + 4y - 2z &= 5
+            \end{aligned}
+        \]
+        <p style="text-indent: 2em;">Solution:</p>
+        <p>We first calculate the multipliers:</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+        \[
+            m_{2,1} = \frac{a^{(1)}_{2,1}}{a^{(1)}_{1,1}} = \frac{1}{2}
+        \]
+        \[
+            m_{3,1} = \frac{a^{(1)}_{3,1}}{a^{(1)}_{1,1}} = \frac{3}{2}
+        \]
+        <p>Now, we perform the row operations:</p>
+         \[
+            R_1 \rightarrow R_2 - m_{2,1}R_1, \quad R_3 \rightarrow R_3 - m_{3,1}R_1 
+        \]
+        <p>Which is </p>
+        \[
+            R_1 \rightarrow R_2 - \frac{1}{2}R_1, \quad R_3 \rightarrow R_3 - \frac{3}{2}R_1 
+        \]
+        <p>Then we get,</p>
+        \[
+            \begin{aligned}
+            2x - y + 3z &= 9 \\
+            0 + \frac{3}{2}y - \frac{1}{2} z &= \frac{3}{2} \\
+            0 + \frac{11}{2}y - \frac{13}{2}z &= -\frac{17}{2}
+            \end{aligned}
+        \]
+        <p>We calculate the multipliers again:</p>
+        \[
+            m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
+        \]
+        \[
+            m_{3,2} = \frac{a^{(2)}_{3,2}}{a^{(1)}_{2,2}} = \frac{\frac{11}{2}}{\frac{3}{2}} = \frac{11}{3}
+        \]
+        <p>Then, we perform the row operations again:</p>
+        \[
+            R_3 \rightarrow R_3 - \frac{11}{3}R_1 
+        \]
+        <p>Now, we get</p>
+        \[
+            \begin{aligned}
+            2x - y + 3z &= 9 \\
+            0 + \frac{3}{2}y - \frac{1}{2} z &= \frac{3}{2} \\
+            0 + 0 - \frac{14}{3}z &= -14
+            \end{aligned}
+        \]
+        <p>This is upper-triangular system.</p>
+        \[
+            \begin{aligned}
+            2x - y + 3z &= 9 \\
+            \frac{3}{2}y - \frac{1}{2} z &= \frac{3}{2} \\
+            - \frac{14}{3}z &= -14
+            \end{aligned}
+        \]
+        <p>We then apply the so called back substitution method to get the solution.</p>
+        <p>From the last equation,</p>
+        \[
+            - \frac{14}{3}z = -14 \implies   z = \frac{42}{14} = 3
+        \]
+        <p>Substituting \(z = 3\) in second equation,</p>
+        \[
+            \frac{3}{2}y - \frac{1}{2} z = \frac{3}{2} \implies \frac{3}{2}y - \frac{1}{2} (3) = \frac{3}{2}
+        \]
+        \[
+            y - 1 = 1 \implies y = 2
+        \]
+        <p>Substituting \(z = 3\) and \(y = 2\) in first equation,</p>
+        \[
+            2x - y + 3z = 9 \implies 2x - (2) + 3(3) = 9
+        \]
+        \[
+            2x - 2 + 9 = 9 \implies x = \frac{2}{2} = 1 
+        \]
+        <p>Solution</p>
+        \[
+            (x,y,z) = (1,2,3)
+        \]
+
+        <h4>Example:</h4>
+        <p>Solve the following system using Gaussian elimination method.</p>
+        \[
+            \begin{aligned}
+            3x + 2y + 1z &= 6 \\
+            x + y - z &= 1 \\
+            2x + y + z &= 4
+            \end{aligned}
+        \]
+        <p style="text-indent: 2em;">Solution:</p>
+    </div>
+</body>

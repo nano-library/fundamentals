@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Higher order one-point methods: Newton-Raphson method</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="regula-falsi-method.html" rel="prev">\(\leftarrow\) Regula-Falsi Method</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="fixed-point-iteration-method.html" rel="next">Fixed Point Method \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Higher order one-point methods: Newton-Raphson method</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>A one-point method is defined as</p>
+        \[
+            x_{n+1} = g(x_n), \quad n \geq 1
+        \]
+        <p>where \(g(x_n)\) depends only on the last iterated value.</p>
+
+        <h4>A General Theory for One-Point Iteration Methods</h4>
+        <p>Consider solving an equation \(x = g(x)\) for a root \(\alpha\) by the iteration:</p>
+        \[
+            x_{n+1} = g(x_n), \quad n \geq 1
+        \]
+        <p>with an initial guess \(x_0\) to \(\alpha\).</p>
+
+        <h4>Newton-Raphson method</h4>
+        <p>Suppose a function \(f(x)\) and an initial guess \(x_0\), the Newton-Raphson method approximates the root of the function \(\alpha\) by iterating the following formula:</p>
+        \[
+            x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \quad n \geq 0
+        \]
+        <p>where \(f'(x)\) is the derivative of \(f(x)\) with respect to \(x\).</p>
+        <p>The key idea behind the method is that a linear approximation of the function \(f(x)\) at the point \(x_n\) can be used to find a better estimate of the root.</p>
+        <p>The approximation is given by the tangent line at \(x_n\) , which intersects the x-axis at a point that is closer to the root \(\alpha\) than \(x_n\).</p>
+    
+        <h4>Example:</h4>
+        <p>Consider the function \(f(x) = \cos{x}-x = 0\). Approximate a root of \(f\) using Newton's Method.</p>
+        <p style="text-indent: 2em;">Solution:</p>
+    
+    </div>
+</body>
+</html>
