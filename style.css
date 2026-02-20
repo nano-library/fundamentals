@@ -51,7 +51,7 @@ body {
 }
 
 li {
-    display: flex;
+    
     flex-direction: column;
     gap: 15px;
     list-style: none;
@@ -60,6 +60,7 @@ li {
     font-size: 1rem;
     transition: opacity 0.2s ease;
 }
+
 
 a {
     text-decoration:none;

@@ -16,11 +16,7 @@
     
     <div id="navigation">
         <nav class="concept-nav" aria-label="Concept navigation">
-            <a class="nav-btn prev" href="gaussian-distribution.html" rel="prev">\(\leftarrow\) Gaussian Distribution</a>
-
             <a class="nav-btn home" href="list-of-contents.html">Contents</a>
-
-            <a class="nav-btn next" href="statistical-ensemble.html" rel="next">Statistical Emsemble \(\rightarrow\)</a>
         </nav>
     </div>
 
@@ -32,22 +28,648 @@
         <h4>Problem 1</h4>
         <p>Estimate the number inhaled in a single breath by a healthy young adult standing outdoor in Delhi during winter, assuming a tidal volume V = 500 mL, atmospheric pressure \(P = 1.01 \times 10^5\)Pa, ambient temperature \(T \approx 273K\), and idea gas behavoir.</p>
         <p style="text-indent: 2em;">Answer:</p>
+        <p>For an <i>ideal gas</i>, pressure is just molecules bouncing into the walls. The more molecules there are, the more bouncing will be. So, higher pressure. </p>
+        <p>That relationship is packed into:</p>
         \[
-            PV = Nk_bT
+            PV = N k_B T
+            \tag{1}
         \]
+        <p>Given:</p>
+        <ul>
+            <li>\(V = 500\,\text{mL} = 0.5\,\text{L} = 0.5\times 10^{-3}\,\text{m}^3\)</li>
+            <li>\(P = 1.01 \times 10^5\,\text{Pa}\)</li>
+            <li>\(T \approx 273\,\text{K}\)</li>
+            <li>\(k_B = 1.38 \times 10^{-23}\,\text{J K}^{-1}\)</li>
+        </ul>
+
+        <p>To find number of molecules, Equation (1) can be written as:</p>
         \[
-            N = \frac{PV}{K_bT} = \frac{1.01 \times 10^5 \; Pa \cdot 0.5 \times 10^{-3} \; m^{-3}}{1.38 \times 10^{-23} \; J K^{-1} \times 273 K}
-        \]
-        \[
-            N = 1.34 \times 10^{22} \; m^{-3}
+            N=\frac{PV}{k_BT}
         \]
 
-        <h4>Problem 2</h4>
-        <p>(a)</p>
-        <p style="text-indent: 2em;">Answer:</p>
-        <p></p>
         \[
-            PV = nRT
+            N=\frac{(1.01\times 10^{5})(0.5\times 10^{-3})}{(1.38\times 10^{-23})(273)}
+        \]
+
+        \[
+        PV = 1.01\times 10^{5}\times 0.5\times 10^{-3}
+        = 5.05\times 10^{1}\ \text{J}
+        \]
+
+        \[
+        k_BT = 1.38\times 10^{-23}\times 273
+        \approx 3.77\times 10^{-21}\ \text{J}
+        \]
+
+        \[
+        N \approx \frac{5.05\times 10^{1}}{3.77\times 10^{-21}}
+        \approx 1.34\times 10^{22}
+        \]
+
+        <p>A single 500 mL breath contains about \(N \approx 1.34\times 10^{22}\) molecules.</p>
+
+        <h4>Problem 2</h4>
+        <p>Two rigit containers of equal volume \(1 \, L\) are maintained at atmospheric pressure. One container holds helium gas and the other holds nitrgen gas. Both gases are at room temperature and maybe treated as ideal.</p>
+        <p>(a) Calculate the total internal (thermal) energy of the gas in each container.</p>
+        <p>(b) Determine the ratio of the internal energy of nitrogen to that of helium.</p>
+        <p style="text-indent: 2em;">Answer:</p>
+        <p>Given:</p>
+        <ul>
+            <li>Two rigid containers</li>
+            <li>Each volume \(V = 1\,\text{L} = 10^{-3}\,\text{m}^3\)</li>
+            <li>Atmospheric pressure \(P = 1.01 \times 10^5\,\text{Pa}\)</li>
+            <li>Room temperature \(T \approx 300\,\text{K}\)</li>
+            <li>Ideal gas behavior</li>
+        </ul>
+
+        <p>One has Helium (monatomic). One has Nitrogen (diatomic).</p>
+
+        <h5>Step 1: How many molecules are in each?</h5>
+
+        <p>Both are at the same \(P, V, T\).  
+        For an ideal gas:</p>
+
+        \[
+        PV = N k_B T
+        \]
+
+        <p>So the number of molecules depends only on \(P, V, T\).  
+        Since those are identical, both containers contain the same number of molecules.</p>
+
+        \[
+        N = \frac{PV}{k_B T}
+        \]
+
+        \[
+        N = \frac{(1.01\times10^5)(10^{-3})}{(1.38\times10^{-23})(300)}
+        \]
+
+        \[
+        PV = 101 \text{ J}
+        \]
+
+        \[
+        k_BT \approx 4.14\times10^{-21}\text{ J}
+        \]
+
+        \[
+        N \approx 2.44\times10^{22} \text{ molecules}
+        \]
+
+        <h5>Step 2: Internal Energy Concept</h5>
+
+        <p>Internal energy of an ideal gas is purely kinetic energy.</p>
+
+        \[
+        U = \frac{f}{2} N k_B T
+        \]
+
+        where \(f\) = degrees of freedom.
+
+        <ul>
+            <li>Helium (monatomic): \(f = 3\) (3 translational)</li>
+            <li>Nitrogen (diatomic, room temperature): \(f = 5\) (3 translational + 2 rotational; vibration frozen out)</li>
+        </ul>
+
+        <h5>(a) Internal Energy of Each</h5>
+
+        <h5>Helium:</h5>
+
+        \[
+        U_{He} = \frac{3}{2} N k_B T
+        \]
+
+        But since \(N k_B T = PV\),
+
+        \[
+        U_{He} = \frac{3}{2} PV
+        \]
+
+        \[
+        U_{He} = \frac{3}{2}(101)
+        \]
+
+        \[
+        U_{He} \approx 151.5 \text{ J}
+        \]
+
+        <h5>Nitrogen:</h5>
+
+        \[
+        U_{N_2} = \frac{5}{2} N k_B T
+        \]
+
+        \[
+        U_{N_2} = \frac{5}{2} PV
+        \]
+
+        \[
+        U_{N_2} = \frac{5}{2}(101)
+        \]
+
+        \[
+        U_{N_2} \approx 252.5 \text{ J}
+        \]
+
+        <h5>(b) Ratio of Internal Energies</h5>
+
+        \[
+        \frac{U_{N_2}}{U_{He}} =
+        \frac{\frac{5}{2}PV}{\frac{3}{2}PV}
+        \]
+
+        \[
+        =
+        \frac{5}{3}
+        \]
+
+        \[
+        \approx 1.67
+        \]
+
+        <p>So,</p>
+
+        \[
+        U_{He} \approx 151.5 \text{ J}
+        \]
+
+        \[
+        U_{N_2} \approx 252.5 \text{ J}
+        \]
+
+        \[
+        \frac{U_{N_2}}{U_{He}} = \frac{5}{3}
+        \]
+
+        <p>Both containers hold the same number of molecules. Nitrogen stores more energy because it has more ways to move. Helium can only translate. Nitrogen can translate and rotate.</p>
+
+        <p>The pressure does not care what the molecule is.  
+        Energy does.</p>
+
+        <h4>Problem 3</h4>
+        <p>A Carnot engine operates between reservoirs at \(400^\circ C\) and \(30^\circ C\).</p>
+        <p>(a) What is the efficiency of the engine?</p>
+        <p>(b) If the engine does \(5.0\) J of work per cycle, how much heat per cycle does it absorb from the high-temperature reservoir?</p>
+        <p>(c) How much heat per cycle does it exhaust to the cold-temperature reservoir?</p>
+        <p>(d) What temperature at the cold reservoir would give the minimum and maximum efficiency?</p>
+        <p style="text-indent: 2em;">Answer:</p>
+
+
+        <p>Convert \(^\circ C\) to \(K\)</p>
+
+        \[
+        T_H = 400^\circ C + 273 \approx 673\,K
+        \]
+        \[
+        T_C = 30^\circ C + 273 \approx 303\,K
+        \]
+
+        <hr style="border: 0.5px dashed;">
+
+        <h5>(a) Efficiency</h5>
+
+        <p>Carnot efficiency:</p>
+        \[
+        \eta = 1 - \frac{T_C}{T_H}
+        \]
+
+        \[
+        \eta = 1 - \frac{303}{673}
+        \approx 1 - 0.4502
+        \approx 0.5498
+        \]
+
+        \[
+            \eta \approx 0.55 \;\;(\text{about }55\%)
+        \]
+
+        <hr style="border: 0.5px dashed;">
+
+        <h5>(b) Heat absorbed from the hot reservoir per cycle</h5>
+
+        <p>By definition:</p>
+        \[
+        \eta = \frac{W}{Q_H}
+        \quad\Rightarrow\quad
+        Q_H = \frac{W}{\eta}
+        \]
+
+        Given \(W = 5.0\,J\):</p>
+
+        \[
+        Q_H = \frac{5.0}{0.5498} \approx 9.09\,J
+        \]
+
+        \[
+            Q_H \approx 9.09\,J \text{ per cycle}
+        \]
+
+        <hr>
+
+        <h5>(c) Heat exhausted to the cold reservoir per cycle</h5>
+
+        <p>Energy conservation for one full cycle:</p>
+        \[
+        Q_H = W + Q_C
+        \quad\Rightarrow\quad
+        Q_C = Q_H - W
+        \]
+
+        \[
+        Q_C \approx 9.09 - 5.0 \approx 4.09\,J
+        \]
+
+        \[
+        Q_C \approx 4.09\,J \text{ per cycle}
+        \]
+
+        <hr>
+
+        <h5>(d) Cold-reservoir temperature for minimum and maximum efficiency</h5>
+
+        <p>With \(T_H\) fixed:</p>
+        \[
+        \eta = 1 - \frac{T_C}{T_H}
+        \]
+
+        <p><b>Minimum efficiency:</b> make \(T_C\) as large as possible (up to \(T_C=T_H\)).</p>
+        \[
+        T_C = T_H = 673\,K \Rightarrow \eta_{\min}=0
+        \]
+        \[
+            T_C = 673\,K\ (400^\circ C)\;\Rightarrow\;\eta_{\min}=0
+        \]
+
+        <p><b>Maximum efficiency:</b> make \(T_C\) as small as possible. The theoretical lower limit is absolute zero.</p>
+        \[
+        T_C \to 0\,K \Rightarrow \eta_{\max}\to 1
+        \]
+        \[
+        \boxed{T_C \to 0\,K\ (-273.15^\circ C)\;\Rightarrow\;\eta_{\max}\to 1}
+        \]
+
+        <p><b>Reality note:</b> \(0\,K\) cannot be reached (third law), so the “maximum” is a mathematical ceiling.</p>
+
+        <hr>
+
+        <h5>Final answers</h5>
+        <ul>
+        <li>\(\boxed{\eta \approx 0.55}\)</li>
+        <li>\(\boxed{Q_H \approx 9.09\,J}\)</li>
+        <li>\(\boxed{Q_C \approx 4.09\,J}\)</li>
+        <li>\(\boxed{\eta_{\min}=0 \text{ at } T_C=673\,K;\ \eta_{\max}\to 1 \text{ as } T_C\to 0\,K}\)</li>
+        </ul>
+
+        <h4>Problem 4</h4>
+        <p>An apparent limit on the temperature achievable by laser cooling is reached when an atom's recoil energy from absorbing or emitting a single photon becomes comparable to its total kinetic energy. Make a rough estimate of this limiting temperature for rubidium atoms that are cooled using laser light with a wavelength of 780 nm.</p>
+        <p style="text-indent: 2em;">Answer:</p>
+        <p>When the recoil energy from one photon is comparable to the atom's kinetic energy, you cannot cool much further.</p>
+
+
+        <p>Photon momentum:</p>
+        \[
+        p = \hbar k = \hbar\frac{2\pi}{\lambda}
+        \]
+
+        <p>Recoil kinetic energy given to an atom of mass \(m\):</p>
+        \[
+        E_r = \frac{p^2}{2m}=\frac{(\hbar k)^2}{2m}
+        \]
+
+        <p>Define a limiting temperature by setting \(k_B T \sim E_r\):</p>
+        \[
+        T_{\text{recoil}} \sim \frac{E_r}{k_B}
+        = \frac{(\hbar k)^2}{2 m k_B}
+        \]
+
+
+        <p>Numbers for rubidium and \(\lambda = 780\,\text{nm}\)</p>
+
+        <p>Use \(\,^{87}\text{Rb}\) (rough):</p>
+        \[
+        m \approx 87u \approx 87(1.66\times10^{-27}) \approx 1.44\times10^{-25}\ \text{kg}
+        \]
+
+        \[
+        \lambda = 780\ \text{nm} = 780\times 10^{-9}\ \text{m}
+        \]
+
+        \[
+        k=\frac{2\pi}{\lambda}=\frac{2\pi}{780\times10^{-9}}
+        \approx 8.06\times10^{6}\ \text{m}^{-1}
+        \]
+
+        <p>Compute recoil energy:</p>
+        \[
+        E_r=\frac{(\hbar k)^2}{2m}
+        \approx \frac{(1.055\times10^{-34}\cdot 8.06\times10^{6})^2}{2(1.44\times10^{-25})}
+        \approx 2.5\times10^{-30}\ \text{J}
+        \]
+
+        <p>Convert to temperature:</p>
+        \[
+        T_{\text{recoil}} \sim \frac{E_r}{k_B}
+        \approx \frac{2.5\times10^{-30}}{1.38\times10^{-23}}
+        \approx 1.8\times10^{-7}\ \text{K}
+        \]
+
+        \[
+            T_{\text{recoil}} \sim 2\times10^{-7}\ \text{K} \approx 0.2\ \mu\text{K}
+        \]
+
+        <h4>Problem 5</h4>
+        <p>Derive the thermodynamic identity for the gibbs free energy \(G\), starting from its definition</p>
+        \[
+            G = U + PV - TS
+        \]
+        <p>and obtain the corresponding partial Derivative relations.</p>
+        <p style="text-indent: 2em;">Answer:</p>
+
+        <p><b>Goal:</b> Start from the definition</p>
+        \[
+        G = U + PV - TS
+        \]
+        <p>Differentiate it, then rewrite everything in terms of the “natural variables” of \(G\), and read off the partial-derivative relations like a label on a bottle.</p>
+
+        <hr>
+
+        <h5>1) Take the differential of the definition</h5>
+
+        <p>Differentiate term-by-term (product rule for \(PV\) and \(TS\)):</p>
+
+        \[
+        dG = dU + d(PV) - d(TS)
+        \]
+
+        \[
+        d(PV)=P\,dV+V\,dP
+        \qquad
+        d(TS)=T\,dS+S\,dT
+        \]
+
+        So:
+
+        \[
+        dG = dU + P\,dV + V\,dP - T\,dS - S\,dT
+        \]
+
+        <hr>
+
+        <h5>2) Use the fundamental thermodynamic identity for a simple compressible system</h5>
+
+        <p>For a simple compressible system (and allowing variable particle number):</p>
+        \[
+        dU = T\,dS - P\,dV + \mu\,dN
+        \]
+
+        <p>Substitute into the expression for \(dG\):</p>
+
+        \[
+        dG = (T\,dS - P\,dV + \mu\,dN) + P\,dV + V\,dP - T\,dS - S\,dT
+        \]
+
+        <p>Now cancel what cancels (that's the whole elegance of Legendre transforms):</p>
+        <ul>
+        <li>\(+T\,dS\) cancels \(-T\,dS\)</li>
+        <li>\(-P\,dV\) cancels \(+P\,dV\)</li>
+        </ul>
+
+        <p>What remains:</p>
+
+        \[
+        \boxed{dG = -S\,dT + V\,dP + \mu\,dN}
+        \]
+
+        <hr>
+
+        <h5>3) Natural variables of \(G\)</h5>
+
+        <p>This differential tells you that \(G\) naturally wants to be written as:</p>
+        \[
+        G = G(T, P, N)
+        \]
+
+        So its total differential is also:</p>
+
+        \[
+        dG =
+        \left(\frac{\partial G}{\partial T}\right)_{P,N} dT
+        +
+        \left(\frac{\partial G}{\partial P}\right)_{T,N} dP
+        +
+        \left(\frac{\partial G}{\partial N}\right)_{T,P} dN
+        \]
+
+        Compare this with</p>
+        \[
+        dG = -S\,dT + V\,dP + \mu\,dN
+        \]
+
+        <hr>
+
+        <h5>4) Partial derivative relations (read them off)</h5>
+
+        \[
+        \boxed{\left(\frac{\partial G}{\partial T}\right)_{P,N} = -S}
+        \]
+
+        \[
+        \boxed{\left(\frac{\partial G}{\partial P}\right)_{T,N} = V}
+        \]
+
+        \[
+        \boxed{\left(\frac{\partial G}{\partial N}\right)_{T,P} = \mu}
+        \]
+
+        <hr>
+
+        <h5>5) Bonus: Maxwell relation from \(G(T,P,N)\)</h5>
+
+        <p>If \(G\) is well-behaved, mixed second partials commute:</p>
+        \[
+        \frac{\partial}{\partial P}\left(\frac{\partial G}{\partial T}\right)_{P,N}
+        =
+        \frac{\partial}{\partial T}\left(\frac{\partial G}{\partial P}\right)_{T,N}
+        \]
+
+        Plug in the relations above:</p>
+
+        \[
+        \frac{\partial}{\partial P}(-S)_{T,N}
+        =
+        \frac{\partial}{\partial T}(V)_{P,N}
+        \]
+
+        \[
+        \boxed{\left(\frac{\partial S}{\partial P}\right)_{T,N}
+        =
+        -\left(\frac{\partial V}{\partial T}\right)_{P,N}}
+        \]
+
+        <hr>
+
+        <h5>Final result</h5>
+
+        <p><b>Thermodynamic identity:</b></p>
+        \[
+        \boxed{dG = -S\,dT + V\,dP + \mu\,dN}
+        \]
+
+        <p><b>Corresponding partial derivatives:</b></p>
+        \[
+        \boxed{\left(\frac{\partial G}{\partial T}\right)_{P,N}=-S,\quad
+        \left(\frac{\partial G}{\partial P}\right)_{T,N}=V,\quad
+        \left(\frac{\partial G}{\partial N}\right)_{T,P}=\mu}
+        \]
+
+        <h4>Problem 6</h4>
+        <p>By subtracting \(\mu N\) from \(U\), \(H\), \(F\), or \(G\), one can obtain four new thermodynamic potentials. Of the four, the most useful is the grand free energy (or grand potential):</p>
+        \[
+            \phi \equiv U - TS - \mu N
+        \]
+        <p>Derive the thermodynamic identity for \(\phi\), and obtain the corresponding expressions for the partial derivative of \(\phi\) with respect to \(T\), \(V\) and \(\mu\).</p>
+        <p style="text-indent: 2em;">Answer:</p>
+
+        <p><b>What are we doing?</b><br>
+        We build a new “energy-like” function that prefers the variables we can actually control in many experiments:
+        temperature \(T\), volume \(V\), and chemical potential \(\mu\) (exchange of particles allowed).</p>
+
+        <p><b>Given definition (grand potential):</b></p>
+        \[
+        \phi \equiv U - TS - \mu N
+        \]
+
+        <hr>
+
+        <h5>1) Differentiate the definition</h5>
+
+        \[
+        d\phi = dU - d(TS) - d(\mu N)
+        \]
+
+        Use the product rule:</p>
+        \[
+        d(TS)=T\,dS + S\,dT
+        \]
+        \[
+        d(\mu N)=\mu\,dN + N\,d\mu
+        \]
+
+        So:</p>
+        \[
+        d\phi = dU - (T\,dS + S\,dT) - (\mu\,dN + N\,d\mu)
+        \]
+
+        \[
+        d\phi = dU - T\,dS - S\,dT - \mu\,dN - N\,d\mu
+        \]
+
+        <hr>
+
+        <h5>2) Substitute the fundamental identity for \(U\)</h5>
+
+        <p>For a simple compressible system with variable particle number:</p>
+        \[
+        dU = T\,dS - P\,dV + \mu\,dN
+        \]
+
+        Substitute into \(d\phi\):</p>
+
+        \[
+        d\phi = (T\,dS - P\,dV + \mu\,dN) - T\,dS - S\,dT - \mu\,dN - N\,d\mu
+        \]
+
+        Now cancel terms:</p>
+        <ul>
+        <li>\(+T\,dS\) cancels \(-T\,dS\)</li>
+        <li>\(+\mu\,dN\) cancels \(-\mu\,dN\)</li>
+        </ul>
+
+        What remains:</p>
+        \[
+        \boxed{d\phi = -S\,dT - P\,dV - N\,d\mu}
+        \]
+
+        <hr>
+
+        <h5>3) Natural variables of \(\phi\)</h5>
+
+        <p>The differential shows \(\phi\) naturally wants:</p>
+        \[
+        \phi = \phi(T, V, \mu)
+        \]
+
+        So also:</p>
+        \[
+        d\phi =
+        \left(\frac{\partial \phi}{\partial T}\right)_{V,\mu} dT
+        +
+        \left(\frac{\partial \phi}{\partial V}\right)_{T,\mu} dV
+        +
+        \left(\frac{\partial \phi}{\partial \mu}\right)_{T,V} d\mu
+        \]
+
+        Compare with</p>
+        \[
+        d\phi = -S\,dT - P\,dV - N\,d\mu
+        \]
+
+        <hr>
+
+        <h5>4) Read off the partial-derivative relations</h5>
+
+        \[
+        \boxed{\left(\frac{\partial \phi}{\partial T}\right)_{V,\mu} = -S}
+        \]
+
+        \[
+        \boxed{\left(\frac{\partial \phi}{\partial V}\right)_{T,\mu} = -P}
+        \]
+
+        \[
+        \boxed{\left(\frac{\partial \phi}{\partial \mu}\right)_{T,V} = -N}
+        \]
+
+        <hr>
+
+        <h5>5) (Optional but useful) One Maxwell relation</h5>
+
+        <p>Since mixed partials commute, e.g.</p>
+        \[
+        \frac{\partial}{\partial V}\left(\frac{\partial \phi}{\partial T}\right)_{V,\mu}
+        =
+        \frac{\partial}{\partial T}\left(\frac{\partial \phi}{\partial V}\right)_{T,\mu}
+        \]
+
+        Substitute the “read-off” results:</p>
+        \[
+        \frac{\partial}{\partial V}(-S)_{T,\mu}
+        =
+        \frac{\partial}{\partial T}(-P)_{V,\mu}
+        \]
+
+        \[
+        \boxed{\left(\frac{\partial S}{\partial V}\right)_{T,\mu}
+        =
+        \left(\frac{\partial P}{\partial T}\right)_{V,\mu}}
+        \]
+
+        <hr>
+
+        <h5>Final answer</h5>
+
+        <p><b>Thermodynamic identity:</b></p>
+        \[
+        \boxed{d\phi = -S\,dT - P\,dV - N\,d\mu}
+        \]
+
+        <p><b>Partial derivatives:</b></p>
+        \[
+        \boxed{
+        \left(\frac{\partial \phi}{\partial T}\right)_{V,\mu}=-S,\quad
+        \left(\frac{\partial \phi}{\partial V}\right)_{T,\mu}=-P,\quad
+        \left(\frac{\partial \phi}{\partial \mu}\right)_{T,V}=-N
+        }
         \]
 
         <h4>Problem 7</h4>
@@ -73,8 +695,224 @@
             Q_C < Q_H
          \]
         <p>Therefore, the room will cool down.</p>
-        <p>(C) What happens when you spread salt crystals on an icy sidewalk? Why is this procedure rarely used in very cold climates?</p>
+        <p>(c) What happens when you spread salt crystals on an icy sidewalk? Why is this procedure rarely used in very cold climates?</p>
         <p style="text-indent: 2em;">Answer:</p>
         <p>Salt reduces the freezing point or chemical potential of ice, so layer by layer, the ice gets melting until it reaches equilibrium.</p>
+            
+        <h4>Problem 8</h4>
+        <p>Consider the random walk problem with \(p = q\) and let \(m = n_1 - n_2\) denote the net displacement to the right. After a total of \(N\) steps, calculate the following mean values: \(\langle m \rangle\), \(\langle m^2 \rangle\).</p>
+        <p style="text-indent: 2em;">Answer:</p>
+
+        <p><b>Setup:</b><br>
+        A 1D random walk. Each step is either Right or Left, with equal probability:</p>
+        \[
+        p=q=\frac{1}{2}
+        \]
+
+        <p>Let the number of right steps be \(n_1\), left steps be \(n_2\). Total steps:</p>
+        \[
+        N=n_1+n_2
+        \]
+
+        <p>Net displacement to the right:</p>
+        \[
+        m=n_1-n_2
+        \]
+
+        <p><b>Cleaner viewpoint (coin-toss variables):</b><br>
+        Define a random variable for the \(i^{\text{th}}\) step:</p>
+        \[
+        s_i=
+        \begin{cases}
+        +1 & (\text{Right})\\
+        -1 & (\text{Left})
+        \end{cases}
+        \]
+        Then the net displacement after \(N\) steps is simply:</p>
+        \[
+        m=\sum_{i=1}^{N} s_i
+        \]
+
+        <hr>
+
+        <h5>1) Mean displacement \(\langle m\rangle\)</h5>
+
+        <p>First compute \(\langle s_i\rangle\):</p>
+        \[
+        \langle s_i\rangle=(+1)\frac{1}{2}+(-1)\frac{1}{2}=0
+        \]
+
+        <p>Now use linearity of expectation:</p>
+        \[
+        \langle m\rangle=\left\langle \sum_{i=1}^{N} s_i \right\rangle
+        =\sum_{i=1}^{N}\langle s_i\rangle
+        =\sum_{i=1}^{N} 0 = 0
+        \]
+
+        \[
+        \boxed{\langle m\rangle = 0}
+        \]
+
+        <hr>
+
+        <h5>2) Mean square displacement \(\langle m^2\rangle\)</h5>
+
+        <p>Square \(m\):</p>
+        \[
+        m^2=\left(\sum_{i=1}^{N} s_i\right)^2
+        =\sum_{i=1}^{N} s_i^2 + 2\sum_{i < j} s_i s_j
+        \]
+
+        <p>Now take expectation:</p>
+        \[
+        \langle m^2\rangle=\sum_{i=1}^{N}\langle s_i^2\rangle
+        +2\sum_{i< j}\langle s_i s_j\rangle
+        \]
+
+        <p><b>Key facts:</b></p>
+        <ul>
+        <li>\(s_i^2 = 1\) always, so \(\langle s_i^2\rangle = 1\).</li>
+        <li>Different steps are independent, so for \(i\neq j\):  
+            \(\langle s_i s_j\rangle=\langle s_i\rangle\langle s_j\rangle = 0\cdot 0 = 0\).</li>
+        </ul>
+
+        <p>Therefore:</p>
+        \[
+        \langle m^2\rangle = \sum_{i=1}^{N} 1 + 2\sum_{i< j} 0
+        = N
+        \]
+
+        \[
+        \boxed{\langle m^2\rangle = N}
+        \]
+
+        <hr>
+
+        <h5>Final answers</h5>
+        \[
+        \boxed{\langle m\rangle = 0,\qquad \langle m^2\rangle = N}
+        \]
+
+        <p><b>Interpretation:</b><br>
+        The walk has no preferred direction, so the average displacement is zero.  
+        But the average of the square grows linearly with \(N\), so typical size of \(m\) grows like \(\sqrt{N}\).</p>
+        \[
+        m_{\text{typical}} \sim \sqrt{\langle m^2\rangle} = \sqrt{N}
+        \]
+
+        <h4>Problem 9</h4>
+        <p>Consider two distinguishable, non-interacting particles confined in identical one-dimensional infinite potential wells of length \(L\). The energy levels for each particle are</p>
+        \[
+            E_n = \frac{n^2h^2}{8mL^2}, \quad n = 1,2,3,\ldots
+        \]
+        <p>Let the ground-state energy be denoted by</p>
+        \[
+            E_1 = \frac{h^2}{8mL^2}
+        \]
+        <p>Suppose the total energy of the two-particle system is fixed at</p>
+        \[
+            E_{\text{tot}} = 5E_1
+        \]
+        <p>Assume all accessible microstates compatible with this total energy are equally likely.</p>
+        <p>(a) List all accessible microstates (\(n_1, n_2\)) consistent with the total energy.</p>
+        <p>(b) What is the probability that particle \(1\) is in ground state?</p>
+        <p>(c) Calculate the mean energy of particle \(1\).</p>
+        <p style="text-indent: 2em;">Answer:</p>
+
+        <p><b>Given:</b> Each particle in a 1D infinite well has energies</p>
+        \[
+        E_n=\frac{n^2 h^2}{8mL^2}=n^2E_1,\qquad n=1,2,3,\ldots
+        \]
+        \[
+        E_1=\frac{h^2}{8mL^2}
+        \]
+        <p>Total energy is fixed (microcanonical condition):</p>
+        \[
+        E_{\text{tot}}=5E_1
+        \]
+
+        <p><b>Key translation:</b> Since \(E_n=n^2E_1\), the total energy condition becomes</p>
+        \[
+        E_{n_1}+E_{n_2}=(n_1^2+n_2^2)E_1=5E_1
+        \]
+        So we need integer solutions of</p>
+        \[
+        n_1^2+n_2^2=5
+        \]
+
+        <hr>
+
+        <h5>(a) List all accessible microstates \((n_1,n_2)\)</h5>
+
+        <p>Try squares: \(1^2=1\), \(2^2=4\), \(3^2=9\) (already too big).</p>
+
+        <p>The only way to make 5 is:</p>
+        \[
+        1+4=5
+        \]
+        So:</p>
+        \[
+        (n_1,n_2)=(1,2)\quad \text{or}\quad (2,1)
+        \]
+
+        <p><b>Accessible microstates:</b></p>
+        \[
+        \boxed{(1,2),\ (2,1)}
+        \]
+
+        <hr>
+
+        <h5>(b) Probability that particle 1 is in the ground state</h5>
+
+        <p>Particle 1 is in the ground state when \(n_1=1\).</p>
+
+        <ul>
+        <li>\((1,2)\): particle 1 is in ground state</li>
+        <li>\((2,1)\): particle 1 is not in ground state</li>
+        </ul>
+
+        <p>All accessible microstates are equally likely, and there are 2 of them, so:</p>
+        \[
+        P(n_1=1)=\frac{1}{2}
+        \]
+
+        \[
+        \boxed{P(\text{particle 1 in ground state})=\frac{1}{2}}
+        \]
+
+        <hr>
+
+        <h5>(c) Mean energy of particle 1</h5>
+
+        <p>Compute \(E_{n_1}\) in each microstate and average.</p>
+
+        <ul>
+        <li>If \((n_1,n_2)=(1,2)\), then \(E_1 = 1^2E_1 = E_1\)</li>
+        <li>If \((n_1,n_2)=(2,1)\), then \(E_2 = 2^2E_1 = 4E_1\)</li>
+        </ul>
+
+        <p>Equal probabilities \(\frac12\) each:</p>
+        \[
+        \langle E_1^{(particle\ 1)}\rangle
+        =\frac{1}{2}(E_1)+\frac{1}{2}(4E_1)
+        =\frac{5}{2}E_1
+        \]
+
+        \[
+        \boxed{\langle E_{\text{particle 1}}\rangle=\frac{5}{2}E_1}
+        \]
+
+        <hr>
+
+        <h5>Final answers</h5>
+        \[
+        \boxed{(a)\ (1,2),\ (2,1)}
+        \]
+        \[
+        \boxed{(b)\ P(n_1=1)=\frac12}
+        \]
+        \[
+        \boxed{(c)\ \langle E_{\text{particle 1}}\rangle=\frac{5}{2}E_1}
+        \]
     </div>
 </body>
