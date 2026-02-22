@@ -50,7 +50,7 @@
         <p>Here, \(f_i\)'s are scalar valued functions.</p>
         <p>A system is non-linear if any one of \(f_i\)'s is non-linear.</p>
 
-        <h4>Example:</h4>
+        <h4>Example 1</h4>
         <p>A two-system can be written as,</p>
         \[
             f_1(x_1, x_2) = x_1^2 + x_2^2 - 5 = 0
@@ -98,14 +98,147 @@
             \end{bmatrix}.
         \]
 
-        <p>we try to ignore the calculation of the inverse of the Jacobian.</p>
+        <p>We try to ignore the calculation of the inverse of the Jacobian.</p>
         <p>We do the following:</p>
         <p style="text-indent: 2em;">- We define \(h = -[J(x^k)]^{-1}f(x^k)\).</p>
         <p style="text-indent: 2em;">- Then solve for \(h\) from the system of linear equations \(J(x^k)h=-f(x^k)\)</p>
         <p style="text-indent: 2em;">- Finally, update the next iterates using \(x^{k+1} = x^k + h\).</p>
-   
-        <h4>Example 1:</h4>
-        <p>Consider the nonlinear system of equations:</p>
+        
+        <h4></h4>
+        \[
+            x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+        \]
+        \[
+            (x_0, y_0), (x_1, y_1), \ldots
+        \]
+        <p>Let \((x_n, y_n)\) is known, then find</p>
+        \[
+            x_{n+1} = x_n + h, \quad y_{n+1} = y_n + k
+        \]
+        <p>Let</p>
+        \[
+            f(x, y) = 0
+            \tag{1}
+        \]
+        \[
+            g(x, y) = 0
+            \tag{2}
+        \]
+        <p>Consider, linearized form</p>
+        \[
+            f(x_n + h, y_n + k) = f(x_n, y_n) + h \frac{\partial f}{\partial x}|_{x_n, y_n} + k \frac{\partial f}{\partial y}|_{x_n, y_n} + O(h^2+k^2)
+            \tag{3}
+        \]
+        \[
+            \boxed{f(x_n, y_n) + h \frac{\partial f}{\partial x}|_{x_n, y_n} + l\frac{\partial f}{\partial y}|_{x_n, y_n}  = 0}
+            \tag{4}
+        \]
+        <p>Consider,</p>
+        \[
+            g(x_n + h, y_n + k) = g(x_n, y_n) + h \frac{\partial g}{\partial x}|_{x_n, y_n} + k \frac{\partial fg}{\partial y}|_{x_n, y_n} + O(h^2 + k^2)
+            \tag{5}
+        \]
+        \[
+            \boxed{g(x_n, y_n) + h \frac{\partial g}{\partial x}|_{x_n, y_n} + l\frac{\partial g}{\partial y}|_{x_n, y_n}  = 0}
+            \tag{6}
+        \]
+        <p>From equation (4) and (6)</p>
+        \[
+            \begin{bmatrix}
+                \frac{\partial f}{\partial x} &
+                \frac{\partial f}{\partial y} \\
+                \frac{\partial g}{\partial x} &
+                \frac{\partial g}{\partial y}
+            \end{bmatrix}_{(x_n, y_n)}
+            \begin{bmatrix}
+                h \\
+                k
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                -f(x_n, y_n) \\
+                -g(x_n, y_n)
+            \end{bmatrix}
+            \tag{7}
+        \]
+        \[
+            J H = F
+            \tag{8}
+        \]
+        <p>where,</p>
+        \[
+            J = \begin{bmatrix}
+                \frac{\partial f}{\partial x} &
+                \frac{\partial f}{\partial y} \\
+                \frac{\partial g}{\partial x} &
+                \frac{\partial g}{\partial y}
+            \end{bmatrix}_{(x_n, y_n)},
+            \quad
+            H = 
+            \begin{bmatrix}
+                h \\
+                k
+            \end{bmatrix},
+            \quad
+            F =
+            \begin{bmatrix}
+                -f(x_n, y_n) \\
+                -g(x_n, y_n)
+            \end{bmatrix},
+        \]
+        \[
+            H = J^{-1} F
+            \tag{9}
+        \]
+        <p><strong>Note:</strong>If \(f\) and \(g\) are linearly independent, then</p>
+        \[
+            |J| \neq 0
+        \]
+        <p>From equation (9)</p>
+        \[
+            \begin{aligned}
+                \begin{bmatrix}
+                x_{n+1} \\
+                y_{n+1}
+                \end{bmatrix}
+                &=
+                \begin{bmatrix}
+                    x_n \\
+                    y_n
+                \end{bmatrix}
+                +
+                \begin{bmatrix}
+                    h \\
+                    k
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    x_n \\
+                    y_n
+                \end{bmatrix}
+                + H \\
+                &=
+                \begin{bmatrix}
+                    x_n \\
+                    y_n
+                \end{bmatrix}
+                +
+                \begin{bmatrix}
+                    \frac{\partial f}{\partial x} &
+                    \frac{\partial f}{\partial y} \\
+                    \frac{\partial g}{\partial x} &
+                    \frac{\partial g}{\partial y}
+                \end{bmatrix}^{-1}_{(x_n, y_n)}
+                \begin{bmatrix}
+                    -f(x_n, y_n) \\
+                    -g(x_n, y_n)
+            \end{bmatrix}
+            \end{aligned}
+        \]
+
+        <hr style="border: 0.1px dashed;">
+        <h4>Example 2</h4>
+        <p>Consider the non-linear system of equations:</p>
         \[
             f_1(x_1, x_2) = x_1^2 + x_2^2 - 4 = 0
         \]
@@ -120,106 +253,387 @@
             0
             \end{bmatrix}.
         \]
-        <p style="text-indent: 2em;">Solution:</p>
-        <p>For this system, we have:</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+
+        <p>Define</p>
         \[
-            f(x) =
+            f(x)=
             \begin{bmatrix}
-                f_1(x_1, x_2) \\
-                f_2(x_1, x_2)
+                f_1(x_1,x_2)\\
+                f_2(x_1,x_2)
             \end{bmatrix}
             =
             \begin{bmatrix}
-                x_1^2 + x_2^2 - 4 \\
-                e^{x_1} + x_2 - 1
+                x_1^2+x_2^2-4\\
+                e^{x_1}+x_2-1
             \end{bmatrix}.
         \]
-        <p>The Jacobian matrix \(J(x)\) is:</p>
+
+        <p>The Jacobian matrix is</p>
         \[
-            J(x)
-            =
+            J(x)=
+            \begin{bmatrix} 
+                \frac{\partial f_1}{\partial x_1} & 
+                \frac{\partial f_1}{\partial x_2} \\ 
+                \frac{\partial f_2}{\partial x_1} & 
+                \frac{\partial f_2}{\partial x_2} 
+            \end{bmatrix} =
             \begin{bmatrix}
-            \frac{\partial f_1}{\partial x_1} &
-            \frac{\partial f_1}{\partial x_2} \\
-            \frac{\partial f_2}{\partial x_1} &
-            \frac{\partial f_2}{\partial x_2}
-            \end{bmatrix}
-            =
-            \begin{bmatrix}
-            2x_1 &
-            2x_2 \\
-            e^{x_1} &
-            1
-            \end{bmatrix}
+                2x_1 & 2x_2\\
+                e^{x_1} & 1
+            \end{bmatrix}.
         \]
-        <p>For the initial guess 
-            \(x^0 = \begin{bmatrix}
-                1 \\
+
+        <p>Newton's method computes, for each iteration \(k\), the step \(h^{(k)}\) from</p>
+        \[
+            J(x^{(k)})\,h^{(k)}=-f(x^{(k)}),
+        \]
+        <p>and then updates</p>
+        \[
+            x^{(k+1)}=x^{(k)}+h^{(k)}.
+        \]
+
+        <p><strong>Iteration 0</strong></p>
+        \[
+            x^{(0)}=
+            \begin{bmatrix}
+                1\\
                 0
-                \end{bmatrix}
-            \),
-        </p>
-        <p>Compute:</p>
+            \end{bmatrix}
+        \]
+
         \[
-            f(x^0)=
+            f(x^{(0)})=
             \begin{bmatrix}
-            1^2 + 0^2 - 4 \\
-            e^1 + 0 - 1
+                1^2+0^2-4\\
+                e^{1}+0-1
             \end{bmatrix}
             =
             \begin{bmatrix}
-            3 \\
-            e-1
+                -3\\
+                e-1
             \end{bmatrix}
-        \]
-        <p>and</p>
-        \[
-            J(x^0)=
+            \approx
             \begin{bmatrix}
-            2(1) &
-            2(0) \\
-            e^1 &
-            1 
+                -3\\
+                1.7182
+            \end{bmatrix}.
+        \]
+
+        \[
+            J(x^{(0)})=
+            \begin{bmatrix}
+                2(1) & 2(0)\\
+                e^{1} & 1
             \end{bmatrix}
             =
             \begin{bmatrix}
-            2 &
-            0 \\
-            e &
-            1
-            \end{bmatrix}
+                2 & 0\\
+                2.7182 & 1
+            \end{bmatrix}.
         \]
-        <p>Solving \(J(x^0)h = -f(x^0)\) gives h.</p>
+
+        <p>Solve \(J(x^{(0)})h^{(0)}=-f(x^{(0)})\):</p>
         \[
             \begin{bmatrix}
-            2 &
-            0 \\
-            e &
-            1
+                2 & 0\\
+                2.7182 & 1
             \end{bmatrix}
             \begin{bmatrix}
-            h_1 \\
-            h_2
+                h_1^{(0)}\\
+                h_2^{(0)}
             \end{bmatrix}
             =
             -
             \begin{bmatrix}
-            3 \\
-            e - 1
+                -3\\
+                1.7182
             \end{bmatrix}
-        \]
-        <p>Then we update the solutin as \(x^1 = x^0 + h\).</p>
-        \[
-            x^1 = 
+            =
             \begin{bmatrix}
-                1 \\
+                3\\
+                -1.7182
+            \end{bmatrix}.
+        \]
+
+        \[
+            h^{(0)}\approx
+            \begin{bmatrix}
+                1.5000\\
+                -5.7957
+            \end{bmatrix}.
+        \]
+
+        \[
+            x^{(1)}=x^{(0)}+h^{(0)}
+        \]
+        \[
+            x^{(1)} =
+            \begin{bmatrix}
+                1\\
                 0
             \end{bmatrix}
             +
-
+            \begin{bmatrix}
+                1.5000\\
+                -5.7957
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                2.5000\\
+                -5.7957
+            \end{bmatrix}.
         \]
-        <p>The process is repeated until convergence.</p>
 
+        <p><strong>Iteration 1</strong></p>
+        \[
+            x^{(1)}= 
+            \begin{bmatrix}
+                2.5000\\
+                -5.7957
+            \end{bmatrix}
+        \]
+
+        \[
+            f(x^{(1)}) =
+            \begin{bmatrix}
+                35.8401\\
+                5.3867
+            \end{bmatrix},
+        \]
+        
+        \[
+            J(x^{(1)}) =
+            \begin{bmatrix}
+                5.0000 & -11.5914\\
+                12.1824 & 1.0000
+            \end{bmatrix}.
+        \]
+
+        <p>Solve \(J(x^{(1)})h^{(1)}=-f(x^{(1)})\):</p>
+        \[
+            \begin{bmatrix}
+                5.0000 & -11.5914\\
+                12.1824 & 1.0000
+            \end{bmatrix}
+            \begin{bmatrix}
+                h_1^{(1)}\\
+                h_2^{(1)}
+            \end{bmatrix}
+            =
+            -
+            \begin{bmatrix}
+                35.8401\\
+                5.3867
+            \end{bmatrix}.
+        \]
+
+        \[
+            h^{(1)} =
+            \begin{bmatrix}
+                -0.6721\\
+                2.8020
+            \end{bmatrix},
+        \]
+
+        \[
+            x^{(2)}=x^{(1)}+h^{(1)}
+        \]
+
+        \[
+            x^{(2)} = 
+            \begin{bmatrix}
+                2.5000\\
+                -5.7957
+            \end{bmatrix}
+            +
+            \begin{bmatrix}
+                -0.6721\\
+                2.8020
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                1.82782\\
+                -2.9936
+            \end{bmatrix}.
+        \]
+
+        <p><strong>Iteration 2</strong></p>
+        \[
+            x^{(2)} = 
+            \begin{bmatrix}
+                1.8278\\
+                -2.9936
+            \end{bmatrix}
+        \]
+
+        \[
+            f(x^{(2)}) = 
+            \begin{bmatrix}
+                8.30311094\\
+                2.22663444
+            \end{bmatrix}
+        \]
+
+        \[
+            J(x^{(2)}) =
+            \begin{bmatrix}
+                3.65564402 & -5.98737928\\
+                6.22032408 & 1.00000000
+            \end{bmatrix}.
+        \]
+
+        <p>Solve \(J(x^{(2)})h^{(2)}=-f(x^{(2)})\):</p>
+        \[
+            \begin{bmatrix}
+                3.65564402 & -5.98737928\\
+                6.22032408 & 1.00000000
+            \end{bmatrix}
+            \begin{bmatrix}
+                h_1^{(2)}\\
+                h_2^{(2)}
+            \end{bmatrix}
+            =
+            -
+            \begin{bmatrix}
+                8.30311094\\
+                2.22663444
+            \end{bmatrix}.
+        \]
+
+        \[
+            h^{(2)} = 
+            \begin{bmatrix}
+                -0.52898046\\
+                1.06379543
+            \end{bmatrix}
+        \]
+
+        \[
+            x^{(3)} = 
+            \begin{bmatrix}
+                1.29884155\\
+                -1.92989421
+            \end{bmatrix}.
+        \]
+
+        <p><strong>Iteration 3</strong></p>
+        \[
+            x^{(3)}=
+            \begin{bmatrix}
+                1.2988\\
+                -1.9298
+            \end{bmatrix}
+        \]
+
+        \[
+            f(x^{(3)})\approx
+            \begin{bmatrix}
+                1.41148104\\
+                0.73515423
+            \end{bmatrix},
+            \qquad
+            J(x^{(3)})\approx
+            \begin{bmatrix}
+                2.59768310 & -3.85978842\\
+                3.66504844 & 1.00000000
+            \end{bmatrix}.
+        \]
+
+        \[
+            h^{(3)}\approx
+            \begin{bmatrix}
+                -0.25376387\\
+                0.19490263
+            \end{bmatrix},
+            \qquad
+            x^{(4)}\approx
+            \begin{bmatrix}
+                1.04507769\\
+                -1.73499158
+            \end{bmatrix}.
+        \]
+
+        <hr/>
+
+        <p><strong>Iteration 4</strong> (\(x^{(4)}\approx \begin{bmatrix}1.04507769\\-1.73499158\end{bmatrix}\)):</p>
+
+        \[
+            f(x^{(4)})\approx
+            \begin{bmatrix}
+                0.10238314\\
+                0.10862785
+            \end{bmatrix},
+            \qquad
+            J(x^{(4)})\approx
+            \begin{bmatrix}
+                2.09015537 & -3.46998315\\
+                2.84361942 & 1.00000000
+            \end{bmatrix}.
+        \]
+
+        \[
+            h^{(4)}\approx
+            \begin{bmatrix}
+                -0.04008541\\
+                0.00535980
+            \end{bmatrix},
+            \qquad
+            x^{(5)}\approx
+            \begin{bmatrix}
+                1.00499228\\
+                -1.72963178
+            \end{bmatrix}.
+        \]
+
+        <hr/>
+
+        <p><strong>Iteration 5</strong> (\(x^{(5)}\approx \begin{bmatrix}1.00499228\\-1.72963178\end{bmatrix}\)):</p>
+
+        \[
+            f(x^{(5)})\approx
+            \begin{bmatrix}
+                0.00163557\\
+                0.00225440
+            \end{bmatrix},
+            \qquad
+            J(x^{(5)})\approx
+            \begin{bmatrix}
+                2.00998456 & -3.45926356\\
+                2.73188618 & 1.00000000
+            \end{bmatrix}.
+        \]
+
+        \[
+            h^{(5)}\approx
+            \begin{bmatrix}
+                -0.00082320\\
+                -0.00000551
+            \end{bmatrix},
+            \qquad
+            x^{(6)}\approx
+            \begin{bmatrix}
+                1.00416908\\
+                -1.72963729
+            \end{bmatrix}.
+        \]
+
+        <p><strong>Approximate solution:</strong></p>
+        \[
+            x \approx
+            \begin{bmatrix}
+                1.00416908\\
+                -1.72963729
+            \end{bmatrix},
+            \qquad
+            f(x)\approx
+            \begin{bmatrix}
+                6.78\times 10^{-7}\\
+                9.25\times 10^{-7}
+            \end{bmatrix}\approx 0.
+        \]
+
+        <hr style="border: 0.05px dashed;">
         <h4>Example 2:</h4>
         <p>Solve the following system of non-linear equations using Newton's method:</p>
         \[
@@ -229,15 +643,16 @@
             x_1 + x_2 + x_3 &= 0
             \end{aligned}
         \]
-        <p style="text-indent: 2em;">Solution:</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
 
+        <hr style="border: 0.05px dashed;">
         <h4>Example 3:</h4>
         <p>Use Newton's root finding method for system to minimize the following function:</p>
         \[
             g(x_1, x_2) = x_1^4 + 2x_1^2x_2^2 + x_2^4
         \]
         <p>Take the initial guess of the form \((a, a)\).</p>
-        <p style="text-indent: 2em;">Solution:</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
         <p>We want to minimize the function \(g(x_1, x_2)\).</p>
         <p>We can reformulate this problem as finding the roots of the gradient of the function,</p>
         \[
@@ -341,6 +756,124 @@
                 a \\
                 a
             \end{bmatrix}
+        \]
+
+        <h4>Example 4</h4>
+        \[
+            3x^2 + 4y^2 - 1=0, \quad y^3-8x^3 - 1 = 0
+        \]
+        <p>Let \((x_0, y_0) = \left(-\frac{1}{2},\frac{1}{4}\right)\)</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+        \[
+            f(x,y) = 3x^2 + 4y^2 - 1=0
+        \]
+        \[
+            g(x,y) = y^3-8x^3 - 1 = 0
+        \]
+        \[
+            \begin{bmatrix}
+                6x &
+                8y \\
+                -24x^2 &
+                3y^2
+            \end{bmatrix}_{x_n, y_n}
+            \begin{bmatrix}
+                h \\
+                k
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                -(3x^2 + 4y^2 -1) \\
+                -(y^3 - 8x^3 - 1)
+            \end{bmatrix}
+        \]
+        <p><strong>Iteration 1</strong></p>
+        \[
+            x_0 = -\frac{1}{2}, \quad y_0 = \frac{1}{4}
+        \]
+        \[
+            \begin{bmatrix}
+                -3 &
+                2 \\
+                -6 &
+                \frac{3}{16}
+            \end{bmatrix}_{x_n, y_n}
+            \begin{bmatrix}
+                h \\
+                k
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                -0 \\
+                -\frac{1}{64}
+            \end{bmatrix}
+        \]
+        \[
+            \begin{bmatrix}
+                h \\
+                k
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                \frac{1}{366} \\
+                \frac{1}{244}
+            \end{bmatrix}
+        \]
+        \[
+            x_1 = x_0 + h
+        \]
+        \[
+            x_1 = -\frac{1}{2} + \frac{1}{366} = -0.4972
+        \]
+        \[
+            y_1 = y_0 + h
+        \]
+        \[
+            y_1 = \frac{1}{4} + \frac{1}{244} = 0.2541
+        \]
+        <p><strong>Iteration 1</strong></p>
+        \[
+            x_1 = -0.4972, \quad y_1 = 0.2541
+        \]
+        \[
+            \begin{bmatrix}
+                -\frac{182}{61} &
+                \frac{124}{61} \\
+                -\frac{728}{183} &
+                \frac{93}{488}
+            \end{bmatrix}_{x_n, y_n}
+            \begin{bmatrix}
+                h \\
+                k
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                -\frac{2}{3721} \\
+                -\frac{5}{226981}
+            \end{bmatrix}
+        \]
+        \[
+            \begin{bmatrix}
+                h \\
+                k
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                -\frac{11067}{22326} \\
+                \frac{7561}{29768}
+            \end{bmatrix}
+        \]
+        \[
+            x_2 = x_1 + h
+        \]
+        \[
+            x_2 = -0.4972 + -\frac{11067}{22326} = -0.9929
+        \]
+        \[
+            y_2 = y_1 + h
+        \]
+        \[
+            y_2 = 0.2541 + \frac{7561}{29768} = 0.5080
         \]
     </div>
 </body>

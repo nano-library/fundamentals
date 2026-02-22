@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Binary Machine Numbers</title>
@@ -28,8 +27,142 @@
         <hr>
     </div>
     <div id="chapter">
+        <li style="text-align: center;"><a href="conversion-to-ieee-754-format.html">Conversion to IEEE 754 Format</a></li>
         <p>IEEE (Institute for Electrical and Electronic Engineers) provides standards for binary and decimal floating point numbers, formats for data interchange, algorithms for rounding arithmetic operations, and for the handling of exceptions.</p>
         <p>Formats are specified for single, double, and extended precisions, and these standards are generally followed by all microcomputer manufacturers using floating-point hardware.</p>
+        <p> The IEEE floating-point system was developed under the leadership of Prof. William Kahan at the University of California, Berkeley. Project 754 was initiated in 1970 with the objective of establishing  a precise and standardized definition of floating-point arithmetic. </p>
+
+        <p> The IEEE 754 Standard specifies: </p>
+
+        <ul>
+            <li>Definition of floating-point numbers</li>
+            <li>Rounding operations</li>
+            <li>Format conversion</li>
+            <li>Exception rules (invalid operation, division by zero, overflow, underflow)</li>
+        </ul>
+
+        <h4>General Representation (IEEE 754)</h4>
+
+        <p>A normalized floating-point number in IEEE 754 format is represented as</p>
+
+        \[
+        (-1)^{\text{sign}} \times 1.\text{mantissa} \times 2^{\text{exponent} - \text{bias}}
+        \]
+        <ul>
+            <li><strong>Sign bit:</strong> Determines whether the number is positive or negative.</li>
+            <li><strong>Mantissa (Fraction):</strong> Stores the significant digits. In normalized form, the leading 1 is implicit.</li>
+            <li><strong>Exponent:</strong> Stored with a bias to allow representation of both positive and negative exponents.</li>
+        </ul>
+
+        <h4>IEEE Single Precision (32-bit)</h4>
+
+        <ul>
+            <li>32-bit word</li>
+            <li>1 bit for sign</li>
+            <li>8 bits for biased exponent</li>
+            <li>23 bits for fractional part (mantissa)</li>
+        </ul>
+
+        <p>Exponent range:</p>
+
+        \[
+            L = -126, \quad U = 127
+        \]
+
+        <strong>Largest Representable Number</strong>
+
+        \[
+            (2 - 2^{-23}) \cdot 2^{127} \approx 3.4028 \times 10^{38}
+        \]
+
+        <strong>Smallest Positive Normalized Number</strong>
+
+        \[
+            2^{-126} \approx 1.1755 \times 10^{-38}
+        \]
+
+        <strong>Unit Roundoff (Machine Precision)</strong>
+
+        \[
+            u = 2^{-24} \approx 5.96 \times 10^{-8}
+        \]
+
+        <p>
+            This corresponds to approximately seven decimal places of precision.
+        </p>
+
+        <h4>IEEE Double Precision (64-bit)</h4>
+
+        <ul>
+            <li>64-bit word (or two 32-bit words)</li>
+            <li>1 bit for sign</li>
+            <li>11 bits for biased exponent</li>
+            <li>52 bits for fractional part (mantissa)</li>
+        </ul>
+
+        <p>Exponent range:</p>
+
+        \[
+            L = -1022, \quad U = 1023
+        \]
+
+        <strong>Largest Representable Number</strong>
+
+        \[
+            (2 - 2^{-52}) \cdot 2^{1023} \approx 1.7977 \times 10^{308}
+        \]
+
+        <strong>Smallest Positive Normalized Number</strong>
+
+        \[
+            2^{-1022} \approx 2.2251 \times 10^{-308}
+        \]
+
+        <strong>Unit Roundoff</strong>
+
+        \[
+            u = 2^{-53} \approx 1.11 \times 10^{-16}
+        \]
+
+        <h4>Spacing of Floating-Point Numbers</h4>
+
+        <p>
+            The interval \([1,2]\) is approximated by the numbers:
+        </p>
+
+        \[
+        \{1,\; 1+2^{-52},\; 1+2\cdot2^{-52},\; \ldots,\; 2\}
+        \]
+
+        <p>
+            with uniform spacing \(2^{-52}\).
+        </p>
+
+        <p>
+            The interval \([2,4]\) is approximated by:
+        </p>
+
+        \[
+        2 \times
+        \{1,\; 1+2^{-52},\; 1+2\cdot2^{-52},\; \ldots,\; 2\}
+        \]
+
+        <p>
+            with spacing \(2 \cdot 2^{-52}\).
+        </p>
+
+        <p>
+            More generally, the interval \([2^j, 2^{j+1}]\), for \(j \ge 0\),
+            is approximated by scaling the spacing in \([1,2]\) by \(2^j\).
+            As numbers grow larger, the absolute spacing increases.
+        </p>
+
+        <p>
+            Therefore, floating-point systems guarantee bounded <em>relative</em> error,
+            not bounded absolute error. Large numbers have larger gaps between adjacent
+            representable values.
+        </p>
+        </section>
     </div>  
 </body>
 </html>

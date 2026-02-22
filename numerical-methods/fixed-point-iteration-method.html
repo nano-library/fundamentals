@@ -9,10 +9,7 @@
             options: { enableMenu: false }
         };
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
-   
     <link rel="stylesheet" href="../style.css"/>
 </head>
 <body>
@@ -27,7 +24,6 @@
         </nav>
     </div>
     <div id="title">
-        <p style="text-align: center;">Theorem 3 example needs fix.</p>
         <h1>Fixed-Point Iteration Method</h1>
         <hr>
     </div>
@@ -42,9 +38,197 @@
             x_{n+1} = g(x_n), \quad n \geq 0
         \]
 
+        <h4>Sufficient conditions for existance and uniqueness of a fixed point</h4>
+        <h4>Theorem</h4>
+        <p>Let \(g:[a,b] \rightarrow [a,b]\) be continuous, then \(g\) has a fixed point in \([a,b]\).</p>
+        <p>If \(g\) is differentiable on \((a,b)\) such that</p>
+        \[
+            |g'(x)| \leq L, \quad 0 < L < 1, \forall \; x \in (a,b)
+        \]
+        <p>then \(g\) has a unique fixed point.</p>
+        <strong>Proof:</strong>
+        <p>Let \(h:[a,b] \rightarrow \mathbb{R}\) be \(h(x) = g(x) - x\).</p>
+        <p>If</p>
+        \[
+            h(c) = 0 \implies g(c) = c
+        \]
+        <p>\(c\) is a fixed point.</p>
+        <p>Given</p>
+        \[
+            \min_{x \in [a,b]} |g(x)| \geq a \quad \text{and} \quad \max_{x \in [a,b]} |g(x)| \leq b
+        \]
+        \[
+            a \leq g(x) \leq b
+        \]
+        <p>Let \(h(a) = g(a) - a \geq 0\) and \(h(b) = g(b) - b \leq 0\)</p>
+        <p><strong>Case 1:</strong></p>
+        <p>If</p>
+        \[
+            h(a) = 0 \implies g(a) = a
+        \]
+        \[
+            h(b) = 0 \implies g(b) = b
+        \]
+        <p>\(a\) and \(b\) are fixed points.</p>
+        <p><strong>Case 2:</strong></p>
+        <p>If \(h(a) > 0\) and \(h(b) < 0\), since \(h(x)\) is continuous.</p>
+        \[
+            h(c) = 0 \implies g(c) = 0
+        \]
+
+        <h4>Uniqueness</h4>
+        <p>Let \(c\) and \(d\) be two fixed points, such that</p>
+        \[
+            g(c) = c \; text{and} \; g(d) = d
+        \]
+        <p>Consider,</p>
+        \[
+            |c - d| = |g(c) - g(d)|
+        \]
+        <p>By Mean Value Theorem,</p>
+        \[
+            f(b) - f(a) = f'(c)(b-a)
+        \]
+        \[
+            |c - d| = |g'(\xi)(c - d)|
+        \]
+        <p>Since \(g'(\xi) < 1\)</p>
+        \[
+            |c - d| < |c - d|
+        \]
+        <p>which is a contradiction.</p>
+        <p>Therefore, \(g\) has a unique fixed point.</p>
+
+        <h4>Picard Fixed Point Interations</h4>
+        <p>Let \(g:[a,b] \rightarrow [a,b]\) be differentiable on \((a,b)\) and \(|g'(x)| \leq L\), \(0 < L < 1\), then for any \(x_0 \in (a,b)\), the sequence</p>
+        \[
+            x_{n+1} = g(x_n), \quad n = 0,1,2,3, \ldots
+        \]
+        <p>converges to a unique fixed point \(c\).</p>
+        <strong>Proof</strong>
+        <p>Consider,</p>
+        \[
+            x_n - c = g(x_{n-1}) - g(c)
+        \]
+        \[
+            x_{n+1} - c = g(x_n) - g(c) = g'(\xi)(x_n - c)
+        \]
+        \[
+            |x_{n+1} - c| \leq L|x_n - c|, \quad |g'(x)| < L 
+        \]
+        \[
+            |x_{n+1} - c| \leq L \times L|x_n - c|
+        \]
+        <p>In general,</p>
+        \[
+            |x_{n+1} - c| \leq L^{n+1}|x_0 - c|
+        \]
+
+        \[
+            \lim_{n \rightarrow \infty} |x_{n+1} - c| = 0, \quad \text{if} \; |L| < 1, \; \text{or} \; 0 < L < 1
+        \]
+        <p><strong>Case 1</strong></p>
+        <p>If \(L = 2\), then</p>
+        \[
+            |x_{n+1} - c| \leq 2^{n+1} |x_0 - c| \rightarrow \infty, \quad \text{Diverges}
+        \]
+        <p><strong>Case 2</strong></p>
+        <p>If \(L = \frac{1}{2}\), then</p>
+        \[
+            |x_{n+1} - c| \leq 2^{-(n+1)} |x_0 - c| \rightarrow 0, \quad \text{Converges}
+        \]
+
+        <li style="text-align: center;"><a href="order-of-convergence.html">Order Of Convergence</a></li>
+
+        <hr style="border: 0.1px dashed;">
+
+        <h4>Example:</h4>
+        <p>If \(x_0\), \(c\) and \(L\) are known, find \(|x_0 - c| < \epsilon\) such that \(\epsilon\) is fixed.</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+
+        <hr style="border: 0.05px dashed;">
+        
+        <h4>Example:</h4>
+        <p>\(f(x) = 3x - \cos{(x)} - 1 = 0, \; x \in [0, 1]\), \(x_0 = \frac{1}{2}\)</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+        \[
+            x_{n+1} = g(x_n), \quad n=0,1,\ldots \quad \text{and} \quad |g'(x)| \leq L, \; 0 < L < 1
+        \]
+        \[
+            3x = 1 + \cos{(x)}
+        \]
+        \[
+            x = \frac{1}{3}(1 + \cos{(x)})
+        \]
+        \[
+            x_{n+1} = \frac{1}{3}(1 + \cos{(x_n)}), n=0,1,\ldots
+        \]
+        <p>Let \(g(x) = \frac{1}{3}(1 + \cos{(x)})\)</p>
+        \[
+            g'(x) = \frac{1}{3}(0 - \sin{(x)}), \quad \forall \; x \in [0,1]
+        \]
+        \[
+            |g'(x)| \leq \frac{1}{3}
+        \]
+        <p><strong>Iteration 1</strong></p>
+        \[
+            x_1 = \frac{1}{3}(1 + \cos{(x_0)})
+        \]
+        \[
+            x_1 = \frac{1}{3}(1 + \cos{(\frac{1}{2})})
+        \]
+        \[
+            x_1 = 0.6258
+        \]
+        \[
+            |x_1 - x_0| = |0.6258 - 0.5| = 0.1258 
+        \]
+        <p><strong>Iteration 2</strong></p>
+        \[
+            x_2 = \frac{1}{3}(1 + \cos{(x_1)})
+        \]
+        \[
+            x_2 = \frac{1}{3}(1 + \cos{(0.6528)})
+        \]
+        \[
+            x_2 = 0.6034
+        \]
+         \[
+            |x_2 - x_1| = |0.6034 - 0.6258| = 0.0224
+        \]
+        <p><strong>Iteration 3</strong></p>
+        \[
+            x_3 = \frac{1}{3}(1 + \cos{(x_2)})
+        \]
+        \[
+            x_3 = \frac{1}{3}(1 + \cos{(0.6034)})
+        \]
+        \[
+            x_3 = 0.6078
+        \]
+         \[
+            |x_3 - x_2| = |0.6078 - 0.6034| = 4.4 \times 10^{-3}
+        \]
+        <p><strong>Iteration 4</strong></p>
+        \[
+            x_4 = \frac{1}{3}(1 + \cos{(x_3)})
+        \]
+        \[
+            x_4 = \frac{1}{3}(1 + \cos{(0.6078)})
+        \]
+        \[
+            x_4 = 0.6069
+        \]
+         \[
+            |x_4 - x_3| = |0.6069 - 0.6078| = 9 \times 10^{-4}
+        \]
+
+
+
+        <hr style="border: 0.05px dashed;">
         <h4>Example 1:</h4>
         <p>Determine any fixed points of the function \(g(x) = x^2 - 2\).</p>
-        <p style="text-align: 2em;">Solution:</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
         <p> A fixed point \(c\) of \(g\) satisfies the definition
         \[
         g(c)=c.
@@ -74,7 +258,6 @@
         \]
         </p>
 
-
         <h4>Theorem 1</h4>
         <p>Let \(g: [a,b] \rightarrow [a,b]\) be continuous. Then \(x = g(x)\) has at least one solution in \([a,b]\).</p>
         <h4>Theorem 2</h4>
@@ -96,7 +279,7 @@
         <p>converges to \(\sqrt{2}\) whenever \(x_0 > \sqrt{2}\).</p>
         <p>b) Use the fact that \(0 < (x_0 - \sqrt{2})^2\) whenever \(x_0 \neq \sqrt{2}\) to show that if \(0 < x_0 < \sqrt{2}\), then \(x_1 > \sqrt{2}\).</p>
         <p>c) Use the results of parts (a) and (b) to show that the sequence in (a) converges to \(\sqrt{2}\) whenever \(x_0 > 0\)</p>
-        <p style="text-indent: 2em;">Solution:</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
 
 
         <h4>Theorem 3</h4>
@@ -111,7 +294,7 @@
     
         <h4>Example</h4>
         <p>Let \(r\) be a fixed point of g and suppose \(g\) is continuously differentiable in some neighbourhood of \(r\) with \(|g(r)| < 1\). Then the results of previous theorem still hold provided \(x_0\) is sufficiently close to \(r\).</p>
-        <p style="text-indent: 2em;">Solution:</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
         <p>Since \(g'\) is continuous at \(r\) and \(g'(r) < 1\), we can pick a number \(lambda\) such that</p>
         \[
             |g'(r)| < \lambda < 1

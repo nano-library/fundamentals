@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="../style.css"/>
 </head>
 <body>
-    
     <div id="navigation">
         <nav class="concept-nav" aria-label="Concept navigation">
             <a class="nav-btn prev" href="root-finding-methods.html" rel="prev">\(\leftarrow\) Root Finding Methods</a>
@@ -23,7 +22,6 @@
             <a class="nav-btn next" href="secant-method.html" rel="next">Secant Method \(\rightarrow\)</a>
         </nav>
     </div>
-
     <div id="title">
         <h1>Bisection Method</h1>
         <hr>
@@ -54,11 +52,14 @@
         
         <p>which provides an easily calculated error bound for the approximations.</p>
 
+        <li style="text-align: center;"><a href="number-of-iterations.html">Number of Iterations</a></li>
         <li style="text-align: center;"><a href="order-of-convergence.html">Order of Convergence</a></li>
+
+        <hr style="border: 0.1px dashed;">
 
         <h4>Example 1</h4>
         <p>Show that \(f(x) = x^3 + 4x^2 - 10 = 0\) has a root in \([1,2]\), and use the Bisection method to determine an approximation to the root that is accurate to at least within \(10^{-4}\).</p>
-        <p style="text-indent: 2em;">Solution:</p>
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
         <p>Substituting interval endpoints</p>
         \[
             f(1) = (1)^3 + 4(1)^2 - 10 = -5 \; \text{and} \; f(2) = 2^3 + 4(2)^2 - 10 = 14
@@ -67,13 +68,42 @@
         \[
             f(1) \cdot f(2) = -70 < 0
         \]
-        <p>Therefore, function is continuous has a root in \([1,2]\).</p>
+        <p>Hence, root lies in \([1,2]\).</p>
+        <p>For bisection, after \(n\) iterations, the interval length is</p>
+        \[
+            \frac{b_1 - a_1}{2^n}
+        \]
+        <p>and the midpoint \(x_n\) satisfies the absolute error bound</p>
+        \[
+            |x - x_n| \leq \frac{b_1 - a_1}{2^{n+1}}
+        \]
+        <p>Here,</p>
+        \[
+            \frac{2-1}{2^{n+1}} = \frac{1}{2^{n+1}} \leq 10^{-4}
+        \]
+        \[
+            2^{n+1} \geq 10^{-4}
+        \]
+        \[
+            n+1 \geq 14
+        \]
+        \[
+            n \geq 13
+        \]
+        <p>We need at least 13 iterations.</p>
         <p>For the first iteration of the Bisection method we use the fact that at the midpoint of \([1,2]\).</p>
         \[
             x_1 = \frac{1+2}{2} = 1.5
         \]
         \[
             f(x_1) = (1.5)^3 + 4(1.5)^2 - 10 = 2.375 > 0
+        \]
+        <p>Now,</p>
+        <p style="text-indent: 2em;">If \(f(x_1) \cdot f(a_1) > 0\). Set \(a_2 = x_1\) and \(b_2 = b_1\).</p>
+        <p style="text-indent: 2em;">If \(f(x_1) \cdot f(a_1) < 0\). Set \(a_2 = a_1\) and \(b_2 = x_1\).</p>
+        <p>Here,</p>
+        \[
+            f(x_1) \cdot f(1) = -11.875 < 0
         \]
         <p>This indicates that we should select the interval \([1, 1.5]\) for our second iteration.</p>
         <p>For the second iteration of the Bisection method we use the fact that at the midpoint of \([1,1.5]\).</p>
@@ -83,51 +113,185 @@
         \[
             f(1.25) = (1.25)^3 + 4(1.25)^2 - 10 = -1.796875 < 0
         \]
+        <p>Now,</p>
+        <p style="text-indent: 2em;">If \(f(x_2) \cdot f(a_2) > 0\). Set \(a_3 = x_2\) and \(b_3 = b_2\).</p>
+        <p style="text-indent: 2em;">If \(f(x_2) \cdot f(a_2) < 0\). Set \(a_3 = a_2\) and \(b_3 = x_2\).</p>
+        <p>Here,</p>
+        \[
+            f(x_2) \cdot f(1) = 3.26 > 0
+        \]
         <p>This indicates that we should select the interval \([1.25, 1.5]\) for our second iteration.</p>
-        <p>For the third iteration of the Bisection method we use the fact that at the midpoint of \([1.25,1.5]\).</p>
-        \[
-            x_3 = \frac{1.25+1.5}{2} = 1.375
-        \]
         <p>After 13 iterations, \(x_{13} = 1.365112305\) approximates the root \(x\) with an error.</p>
+        <p>Error:</p>
         \[
-            |x - x_{13}| < |b_{14} - a_{14}| = |1.365234375 - 1.365112305| = 0.000122070
+            |x - x_{13}| \leq \frac{1}{2^{14}} = 6.10 \times 10^{-5} < 10^{-4}
         \]
-        <p>Since \(|a_{14}| < |x|\), we have</p>
+        <strong>Bisection Iterations</strong>
         \[
-            \frac{|x - x_{13}|}{|x|} < \frac{|b_{14} - a_{13}|}{|a_{14}|} \leq 9.0 \times 10^{-5}
+            \begin{array}{c|c|c|c|c|c}
+            n & a & b & c=\frac{a+b}{2} & f(c) & \text{Next interval} \\
+            \hline
+            1 & 1.0000 & 2.0000 & 1.5000 & +2.3750 & [1.0000,\,1.5000] \\
+            2 & 1.0000 & 1.5000 & 1.2500 & -1.7969 & [1.2500,\,1.5000] \\
+            3 & 1.2500 & 1.5000 & 1.3750 & +0.1621 & [1.2500,\,1.3750] \\
+            4 & 1.2500 & 1.3750 & 1.3125 & -0.8484 & [1.3125,\,1.3750] \\
+            5 & 1.3125 & 1.3750 & 1.3438 & -0.3510 & [1.3438,\,1.3750] \\
+            6 & 1.3438 & 1.3750 & 1.3594 & -0.0964 & [1.3594,\,1.3750] \\
+            7 & 1.3594 & 1.3750 & 1.3672 & +0.0324 & [1.3594,\,1.3672] \\
+            8 & 1.3594 & 1.3672 & 1.3633 & -0.0322 & [1.3633,\,1.3672] \\
+            9 & 1.3633 & 1.3672 & 1.3652 & +0.0001 & [1.3633,\,1.3652] \\
+            10 & 1.3633 & 1.3652 & 1.3643 & -0.0161 & [1.3643,\,1.3652] \\
+            11 & 1.3643 & 1.3652 & 1.3647 & -0.0080 & [1.3647,\,1.3652] \\
+            12 & 1.3647 & 1.3652 & 1.3650 & -0.0040 & [1.3650,\,1.3652] \\
+            13 & 1.3650 & 1.3652 & 1.3651 & -0.0019 & [1.3651,\,1.3652] \\
+            \end{array}
         \]
-        <table border="1" cellpadding="6" cellspacing="0">
-        <thead>
-            <tr>
-            <th>\(n\)</th>
-            <th>\(a_n\)</th>
-            <th>\(b_n\)</th>
-            <th>\(p_n\)</th>
-            <th>\(f(p_n)\)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>1.0</td><td>2.0</td><td>1.5</td><td>2.375</td></tr>
-            <tr><td>2</td><td>1.0</td><td>1.5</td><td>1.25</td><td>−1.79687</td></tr>
-            <tr><td>3</td><td>1.25</td><td>1.5</td><td>1.375</td><td>0.16211</td></tr>
-            <tr><td>4</td><td>1.25</td><td>1.375</td><td>1.3125</td><td>−0.84839</td></tr>
-            <tr><td>5</td><td>1.3125</td><td>1.375</td><td>1.34375</td><td>−0.35098</td></tr>
-            <tr><td>6</td><td>1.34375</td><td>1.375</td><td>1.359375</td><td>−0.09641</td></tr>
-            <tr><td>7</td><td>1.359375</td><td>1.375</td><td>1.3671875</td><td>0.03236</td></tr>
-            <tr><td>8</td><td>1.359375</td><td>1.3671875</td><td>1.36328125</td><td>−0.03215</td></tr>
-            <tr><td>9</td><td>1.36328125</td><td>1.3671875</td><td>1.365234375</td><td>0.000072</td></tr>
-            <tr><td>10</td><td>1.36328125</td><td>1.365234375</td><td>1.364257813</td><td>−0.01605</td></tr>
-            <tr><td>11</td><td>1.364257813</td><td>1.365234375</td><td>1.364746094</td><td>−0.00799</td></tr>
-            <tr><td>12</td><td>1.364746094</td><td>1.365234375</td><td>1.364990235</td><td>−0.00396</td></tr>
-            <tr><td>13</td><td>1.364990235</td><td>1.365234375</td><td>1.365112305</td><td>−0.00194</td></tr>
-        </tbody>
-        </table>
-        <p>The approximation is correct to at least within \(10^{-4}\)</p>
 
+        <p>The approximation is correct to at least within \(10^{-4}\)</p>
+        <p>Note that \(x_9\) is closer to \(x\) than is the final approximation \(x_{13}\). You might suspect this is true because \(|f(x_9)| < |f(x_{13})|\), but we cannot be sure of this unless the true answer is known.</p>
+
+        <hr style="border: 0.05px dashed;">
         <h4>Example 2</h4>
         <p>Determine the number of iterations necessary to solve \(f(x) = x^3 + 4x^2 - 10 = 0\) with accuracy \(10^{-3}\) using \(a_1 = 1\) and \(b_1 = 2\).</p>
-        <p style="text-indent: 2em;">Solution:</p>
-        <p></p>
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+        <p>We we will use logarithms to find an integer '\(n\)' that satisfies: </p>
+        \[
+            |x_n - x| \leq 2^{-n}(b-a)
+        \]
+        <p>We have</p>
+        \[
+            |x_n - x| \leq 2^{-n}(2-1) 
+        \]
+        \[
+            |x_n - x| \leq 2^{-n} < 10^{-3}
+        \]
+        <p>Logarithms to any base would suffice, but we will use base-10 logarithms because the tolerance is given as a power of 10.</p>
+        \[
+            \log_{10}{2^{-n}} \leq \log_{10}{10^{-3}}
+        \]
+        \[
+            -n\log_{10}2 < -3\log_{10}{10}
+        \]
+        <p>Since \(\log_{10}{10} = 1\),</p>
+        \[
+            -n\log_{10}2 < -3
+        \]
+        \[
+            n > \frac{3}{\log_{10}{2}} \approx 9.96
+        \]
+        <p>Hence, 10 iterations will ensure an approximation accurate to within \(10^{-3}\)</p>
+
+        <p>In <strong>Example 1</strong>, table shows that the value of \(x_9 = 1.365234375\) is accurate to within \(10^{-4}\). Again, it is important to keep in mind that the error analysis gives only a bound for the number of iterations. In many cases this bound is much larger than the actual number required.</p>
+        
+        <hr style="border: 0.05px dashed;">
+        <h4>Example 3</h4>
+        <p>Find the smallest positive real roots of \(\cos{x}-xe^x = 0\), correct to three decimal places.</p>
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+        <p>Let \(a_0=0.5,\; b_0=0.6\)</p>
+        <p>Substituting interval endpoints</p>
+        \[
+        f(0.5)=\cos(0.5)-0.5e^{0.5}\approx 0.05322 
+        \]
+        \[
+        f(0.6)=\cos(0.6)-0.6e^{0.6}\approx -0.26794
+        \]
+
+        <p>By Intermediate Value Theorem,</p>
+        \[
+            f(0.5) \cdot f(0.6) < 0
+        \]
+        <p>Hence, smallest positive root lies in \([0.5,\,0.6]\).</p>
+        <p>For bisection, after \(n\) iterations, the interval length is</p>
+        \[
+            \frac{b_1 - a_1}{2^n}
+        \]
+        <p>and the midpoint \(x_n\) satisfies the absolute error bound</p>
+        \[
+            |x - x_n| \leq \frac{b_1 - a_1}{2^{n+1}}
+        \]
+        <p>Here,</p>
+        \[
+            \frac{0.6-0.5}{2^{n+1}} = \frac{0.1}{2^{n+1}}
+        \]
+        \[
+            \frac{0.1}{2^{n+1}} \leq 10^{-3}
+        \]
+        \[
+            2^{n+1} \geq 10^2
+        \]
+        <p>We will use base-10 logarithms because the tolerance is given as a power of 10.</p>
+        \[
+            \log_{10}{2^{n+1}} \geq \log_{10}{10^2}
+        \]
+        \[
+            (n+1)\log_{10}{2} \geq 2\log_{10}{10}
+        \]
+        <p>Since \(\log_{10}{10} = 1\),</p>
+        \[
+            (n+1)\log_{10}{2} \geq 2
+        \]
+        \[
+            n+1 \geq \frac{2}{\log_{10}{2}}
+        \]
+        \[
+            n+1 \geq 6.64
+        \]
+        \[
+            n \geq 5.64
+        \]
+        <p>We need at least 6 iterations.</p>
+        <p>For the first iteration of the Bisection method we use the fact that at the midpoint of \([0.5,0.6]\).</p>
+        \[
+            x_1 = \frac{0.5+0.6}{2} = 0.55
+        \]
+        \[
+            f(x_1) = \cos{0.55} - (0.55)e^{0.55} = -0.100 < 0
+        \]
+        <p>Now,</p>
+        <p style="text-indent: 2em;">If \(f(x_1) \cdot f(a_1) > 0\). Set \(a_2 = x_1\) and \(b_2 = b_1\).</p>
+        <p style="text-indent: 2em;">If \(f(x_1) \cdot f(a_1) < 0\). Set \(a_2 = a_1\) and \(b_2 = x_1\).</p>
+        <p>Here,</p>
+        \[
+            f(x_1) \cdot f(0.5) = -0.00532 < 0
+        \]
+        <p>This indicates that we should select the interval \([0.5, 0.55]\) for our second iteration.</p>
+        <p>For the second iteration of the Bisection method we use the fact that at the midpoint of \([0.5,0.55]\).</p>
+        \[
+            x_2 = \frac{0.55+0.6}{2} = 1.25
+        \]
+        \[
+            f(1.25) = (1.25)^3 + 4(1.25)^2 - 10 = -1.796875 < 0
+        \]
+        <p>Now,</p>
+        <p style="text-indent: 2em;">If \(f(x_2) \cdot f(a_1) > 0\). Set \(a_3 = x_2\) and \(b_3 = b_2\).</p>
+        <p style="text-indent: 2em;">If \(f(x_2) \cdot f(a_1) < 0\). Set \(a_3 = a_2\) and \(b_3 = x_2\).</p>
+        <p>Here,</p>
+        \[
+            f(x_2) \cdot f(0.5) = -0.095 < 0
+        \]
+        <p>This indicates that we should select the interval \([0.5, 0.525]\) for our second iteration.</p>
+
+        <strong>Bisection iterations</strong>
+        \[
+            \begin{array}{c|c|c|c|c|c}
+            n & a & b & c=\frac{a+b}{2} & f(c) & \text{Next interval} \\
+            \hline
+            1 & 0.5000 & 0.6000 & 0.5500 & -0.1008 & [0.5000,\,0.5500] \\
+            2 & 0.5000 & 0.5500 & 0.5250 & -0.0222 & [0.5000,\,0.5250] \\
+            3 & 0.5000 & 0.5250 & 0.5125 & +0.0159 & [0.5125,\,0.5250] \\
+            4 & 0.5125 & 0.5250 & 0.5188 & -0.0030 & [0.5125,\,0.5188] \\
+            5 & 0.5125 & 0.5187 & 0.5156 & +0.0065 & [0.5156,\,0.5188] \\
+            6 & 0.5156 & 0.5187 & 0.5172 & +0.0017 & [0.5172,\,0.5188] \\
+            7 & 0.5172 & 0.5187 & 0.5180 & -0.0006 & [0.5172,\,0.5180] \\
+            \end{array}
+        \]
+        <p>After 7 steps, the interval is:</p>
+        \[
+            [\,0.5172,\;0.5187\,]
+        \]
+        <p>Its error is \(0.5179-0.5187=0.0008&lt;0.001\), so the root is determined to three decimal places.</p>
+
+        <p>The smallest positive real root is: \(x \approx 0.518\).</p>
     </div>
 </body>
 </html>

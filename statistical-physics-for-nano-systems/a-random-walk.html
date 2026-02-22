@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>A random walk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+     <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="floating-points.html" rel="prev">\(\leftarrow\) Floating Point System</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="root-finding-methods.html" rel="next">Root Finding Problem \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>A random walk</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>Markov Chain</h4>
+        <p> 
+            Consider a sequence of random variables \(X_0 , X_1 , \ldots\), and  suppose that the set of possible values of these random variables is \({0, 1, \ldots , M}.\)
+            It will be helpful to interpret \(X_n\) as being the state of some system at time \(n\), and, in accordance with this interpretation, we say that the system is in state \(i\) at time \(n\) if \(X_n = i\). 
+            The sequence of random variables is said to form a Markov chain if, each time the system is in state \(i\), there is some fixed probability, P_{ij}, that the system will next be in state \(j\). 
+            That is, for all \(i_0,\ldots, i_{n-1}, i, j,\)
+        </p>
+        \[
+            P\{X_{n+1} = j | X_n = i, X_{n-1},\ldots,X_i = i_1,X_0 = i_0\} = P_{ij}
+        \]
+        <p>The values \(P_{ij}, 0 \leq i \leq M, 0 \leq j \leq N\), are called the <em>transition probabilities</em> of the Markov chain, and they satisfy</p>
+        \[
+            \sum_{j=0}^{M} P_{ij} = 1
+        \],
+        <p>if \(P_{ij} \geq 0\) and \(i = 0,1,\ldots,M\).</p>
+
+        <h4>A random walk</h4>
+        <p>
+            Random walk tracks a particle as it moves along a one-dimensional axis. 
+            Suppose that at each point in time the particle will move either one step to the right or one step to the left with respective probabilities \(p\) and \(1 - p\). 
+            That is, suppose the particle's path follows a Markov chain with transition probabilities.
+        </p>
+        \[
+            P_{i, i+1} = p = 1 - P_{i, i-1}, \quad i = 0,\pm 1, \ldots
+        \]
+        <p>If the particle is at state \(i\), then the probability that it will be at state \(j\) after \(n\) transitions is the probability that \(\frac{(n - i + j)}{2}\) of these steps are to the right and \(n - [\frac{(n - i + j)}{2}] = \frac{(n + i - j)}{2}\) are to the left.</p>
+        <p style="text-indent: 2em;">Since each step will be to the right, independently of the other steps, with probability \(p\), it follows that the above is just the binomial probability,</p>
+        \[
+        P_{ij}^{(n)} = \binom{n}{\frac{(n-i+j)}{2}} p^{\frac{n-i+j}{2}} (1-p)^{\frac{n+i-j}{2}}
+        \]
+        <p>
+            where 
+            \(\begin{pmatrix}
+                n \\
+                x
+            \end{pmatrix}\)
+            is taken to equal \(0\) when \(x\) is not a nonnegative integer less than or equal to \(n\).
+        </p>
+        <p>Although the \(P^{(n)}_{ij}\) denote conditional probabilities, we can use them to derive expressions for unconditional probabilities by conditioning on the initial state. For instance,</p>
+        <strong>Law of total probability</strong>
+        \[
+        P\{X_n = j\}
+        =
+        \sum_i P\{X_n = j \mid X_0 = i\} P\{X_0 = i\}
+        =
+        \sum_i P_{ij}^{(n)} P\{X_0 = i\}
+        \]
+
+        <p>For a large number of Markov chains, it turns out that \(P^{(n)}_{ij}\) converges, as \(n \rightarrow \infty\), to a value \(\pi_j\) that depends only on \(j\). That is, for large values of \(n\), the probability of being in state \(j\) after \(n\) transitions is approximately equal to \(\pi_j\), no matter what the initial state was.</p>
+
+        <strong>Convergence to stationary distribution</strong>
+        \[
+        P_{ij}^{(n)} \to \pi_j \quad \text{as } n \to \infty
+        \]
+
+        <strong>Ergodicity condition</strong>
+        \[
+            P_{ij}^{(n)} > 0 
+            \quad \text{for all } i,j = 0,1,\ldots,M
+            \tag{2.1}
+        \]
+
+        <p>Markov chains that satisfy Equation (2.1) are said to be ergodic. Since Proposition 2.1 yields</p>
+
+        <strong>Chapman-Kolmogorov relation</strong>
+        \[
+            P_{ij}^{(n+1)} = \sum_{k=0}^{M} P_{ik}^{(n)} P_{kj}
+        \]
+
+        <p>t follows, by letting \(n \rightarrow \infty\), that, for ergodic chains,</p>
+
+        <strong>Stationary distribution equation</strong>
+        \[
+            \pi_j = \sum_{k=0}^{M} \pi_k P_{kj}
+        \]
+
+        <p>Furthermore, since \[ 1 = \sum_{j=0}^{M} P^{(n)}_{ij} \] We also obtain, by letting \(n \rightarrow \infty\),</p>
+
+        <strong>Normalization condition</strong>
+        \[
+            \sum_{j=0}^{M} \pi_j = 1
+        \]
+    </div>
+</body>
+</html>

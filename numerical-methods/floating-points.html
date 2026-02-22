@@ -18,17 +18,95 @@
 <body>
      <div id="navigation">
         <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="introduction.html" rel="prev">\(\leftarrow\) Introduction</a>
+            
             <a class="nav-btn home" href="list-of-contents.html">Contents</a>
 
-            <a class="nav-btn next" href="binary-machine-numbers.html" rel="next">Binary Machine Numbers \(\rightarrow\)</a>
+            <a class="nav-btn next" href="chopping-and-rounding.html" rel="next">Chopping and Rounding \(\rightarrow\)</a>
         </nav>
     </div>
     <div id="title">
-        <h1>Floating Point System</h1>
+        <h1>Floating Point System (\(F\))</h1>
         <hr>
     </div>
     <div id="chapter">
-    
+        <p>
+            A computer does not keep real numbers in their full mathematical form. 
+            Instead, it records a structured approximation made of three parts: 
+            a <em>sign</em>, a finite sequence of <em>digits</em>, and an <em>exponent</em>.
+        </p>
+
+        <h4>The general form (base \(\beta\) )</h4>
+
+        <p>
+            Using base \(\beta\), any non-zero number \(x\) in a floating-point system is written as
+        </p>
+
+        \[
+            x = s \cdot (.a_1a_2\ldots a_t )_\beta \cdot \beta^{\,e}
+        \]
+        \[
+            x = (\text{sign})\cdot(\text{fractional part})\cdot(\text{exponent})
+        \]
+
+        <p>where the pieces follow these rules:</p>
+
+        <ul>
+            <li>\(s = -1\) or \(s = +1\)</li>
+            <li>\(0 \le a_i \le \beta - 1\)</li>
+            <li>\(L \le e \le U\), with \(e\) an integer and typically \(L&lt;0&lt;U\)</li>
+        </ul>
+
+        <h3>What does the “fractional part” mean?</h3>
+
+        <p>
+            The string \((.a_1a_2\ldots a_t)_\beta\) is just shorthand for a finite base-\(\beta\) expansion:
+        </p>
+
+        \[
+            (.a_1a_2\ldots a_t)_\beta
+            = \frac{a_1}{\beta} + \frac{a_2}{\beta^2} + \cdots + \frac{a_t}{\beta^t}
+        \]
+
+        <h3>Normalization</h3>
+        <p>
+            We usually assume \(a_1 \ne 0\). That condition is called a normalized floating-point system.
+            The normalization condition ensures uniqueness of representation by preventing 
+            more than one digit sequence from corresponding to the same number, 
+            such as those obtained by introducing leading zeros in the fractional part.
+        </p>
+
+        <h3>How we name a floating-point system</h3>
+
+        <p>The parameters \((\beta, t, L, U)\) specify the arithmetic characteristics of the floating-point system:</p>
+
+        <ul>
+            <li>\(\beta\): base</li>
+            <li>\(t\): number of digits kept in the fractional part (precision)</li>
+            <li>\(L, U\): smallest and largest allowed exponents (range)</li>
+        </ul>
+
+        <p> In such a system, a floating-point number is determined by the tuple \(\{s, a_1, a_2, \ldots, a_t, e\}\). </p>
+
+        <p>On modern computers, the base \(\beta = 2\), i.e., we use the binary number system. There are only two digits, \({0, 1}\), which can be easily represented in computer hardware</p>
+
+        <h4>Two unavoidable consequences</h4>
+        <ol>
+            <li>
+            <strong>Not every real number can be represented.</strong>
+            <ul>
+                <li>So there are <em>gaps</em> in \(F\).</li>
+            </ul>
+            </li>
+            <li>
+            <strong>Very small and very large numbers can't be represented.</strong>
+            <ul>
+                <li>Because the exponent is trapped between \(L\) and \(U\).</li>
+            </ul>
+            </li>
+        </ol>
+
+        <p>In spite of these limitations, modern computers have enough precision in representing real numbers which allows us to obtain useful numerical answers to mathematical equations modeling nature.</p>
     </div>  
 </body>
 </html>

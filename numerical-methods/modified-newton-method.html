@@ -58,35 +58,19 @@
             g'(x) = 1-\frac{q(x)}{mq(x)+(x-r)q'(x)} - (x-r)\frac{d}{dx}\left( \frac{q(x)}{mq(x)+(x-r)q'(x)} \right)
         \]
         <p>This implies \(g'(r) = 1-\frac{1}{m} \neq 0\).</p>
-        <p>Therefore, in this case we only have rate of convergence.</p>
+        <p>Therefore, in this case we only have linear rate of convergence.</p>
         <p>To recover the quadratic rate of convergence one can use the following modified Newton's method.</p>
         \[
             x_{n+1} = x_n - m\frac{f(x_n)}{f'(x_n)}, \quad n \geq 0
         \]
         <p>where \(m\) is the multiplicity of the root of \(f\).</p>
-        <h4>Note</h4>
-        <p>If</p>
-        \[
-            f(\alpha) = f'(\alpha) = ... = f^{(m-1)}(\alpha) = 0
-        \]
-        <p>and</p>
-        \[
-            f^{(m)}(\alpha) \neq 0,
-        \]
-        <p>then \(\alpha\) is a root of \(f\) with multiplicity \(m\).</p>
-        
-        <h4>Example</h4>
+        <p><strong>Note:</strong> If \(f(\alpha) = f'(\alpha) = ... = f^{(m-1)}(\alpha) = 0\) and \(f^{(m)}(\alpha) \neq 0,\), then \(\alpha\) is a root of \(f\) with multiplicity \(m\).</p>
+
+        <hr style="border: 0.1px dashed;">
+        <h4>Example 1</h4>
         <p>Show that \(f(x) = e^{x^2}-1\) has a root \(0\) with multiplicity \(2\). Then apply modified Newton's method to find the root.</p>
-        <p style="text-indent: 2em;">Solution:</p>
-        <p>If</p>
-        \[
-            f(\alpha) = f'(\alpha) = ... = f^{(m-1)}(\alpha) = 0
-        \]
-        <p>and</p>
-        \[
-            f^{(m)}(\alpha) \neq 0,
-        \]
-        <p>then \(\alpha\) is a root of \(f\) with multiplicity \(m\).</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+        <p>If \(f(\alpha) = f'(\alpha) = ... = f^{(m-1)}(\alpha) = 0\) and \(f^{(m)}(\alpha) \neq 0,\), then \(\alpha\) is a root of \(f\) with multiplicity \(m\).</p>
         <p>Here,</p>
         \[
             f(0) = 0
@@ -102,152 +86,42 @@
             \begin{aligned}
             x_{n+1} 
             &= x_n - 2 \frac{f(x_n)}{f'(x_n)}, 
-            \qquad n = 0,1,2,\ldots \\
+            \qquad n \geq 0 \\
             &= x_n - 2 \frac{e^{x_n^2} - 1}{2x_n e^{x_n^2}} \\
             &= x_n - \frac{e^{x_n^2} - 1}{x_n e^{x_n^2}}.
             \end{aligned}
         \]
-        <p>
-        Time to choose one initial guess. Let us take \(x_0 = 0.5\). Note that in Newton’s method we
-        cannot choose \(x_0\) such that \(f'(x_0)=0\). Then use a calculator to calculate the following:
-        </p>
-
-        <p style="text-align:center; line-height:1.8;">
-        \(x_0 = 0.5\)<br>
-        \(x_1 = 0.0576\)<br>
-        \(x_2 = 9.5446 \times 10^{-5}\)<br>
-        \(x_3 = 5.8160 \times 10^{-12}\)
-        </p>
-
+        <p>Time to choose one initial guess. Let us take \(x_0 = 0.5\). Note that in Newton's method we cannot choose \(x_0\) such that \(f'(x_0)=0\).</p>
+        <p><strong>Iteration 1</strong></p>
+        \[
+            x_1 = x_0 - \frac{e^{x_0^2} - 1}{x_0 e^{x_0^2}}
+        \]
+        \[
+            x_1 = 0.5 - \frac{e^{0.5^2} - 1}{0.5 \cdot e^{0.5^2}}
+        \]
+        \[
+            x_1 = 0.0576
+        \]
+        <p><strong>Iteration 2</strong></p>
+        \[
+            x_2 = x_1 - \frac{e^{x_1^2} - 1}{x_1 e^{x_1^2}}
+        \]
+        \[
+            x_2 = 0.0576 - \frac{e^{0.0576^2} - 1}{0.0576 \cdot e^{0.0576^2}}
+        \]
+        \[
+            x_2 = 9.5446 \times 10^{-5}
+        \]
+        <p><strong>Iteration 3</strong></p>
+        \[
+            x_3 = x_2 - \frac{e^{x_2^2} - 1}{x_2 e^{x_2^2}}
+        \]
+        \[
+            x_2 = (9.5446 \times 10^{-5}) - \frac{e^{(9.5446 \times 10^{-5})^2} - 1}{(9.5446 \times 10^{-5}) \cdot e^{(9.5446 \times 10^{-5})^2}}
+        \]
+        \[
+            x_3 = 5.8160 \times 10^{-12}
+        \]
         <p>which is almost zero.</p>
-
-
-
-
-
-        <h4>Example 1</h4>
-        <p>
-        Use modified Newton's method to find solutions accurate to within \(10^{-5}\) to
-        \[
-        1 - 4x\cos x + 2x^2 + \cos 2x = 0, \qquad 0 \le x \le 1.
-        \]
-        </p>
-
-        <p style="text-indent: 2em;"><b>Solution:</b></p>
-
-        <h4>Step 1: Define \(f(x)\) and simplify (to see the multiplicity)</h4>
-        <p>
-        Let
-        \[
-        f(x)=1 - 4x\cos x + 2x^2 + \cos 2x.
-        \]
-        Use the identity \(\cos 2x = 2\cos^2 x - 1\):
-        \[
-        f(x)=1 - 4x\cos x + 2x^2 + (2\cos^2 x - 1)
-        =2\cos^2 x - 4x\cos x + 2x^2
-        =2(\cos x - x)^2.
-        \]
-        </p>
-
-        <p>
-        So \(f(x)=0 \iff (\cos x - x)^2=0 \iff \cos x = x\).
-        Since \(f(x)\) is a square, the root in \([0,1]\) has <b>multiplicity</b> \(m=2\).
-        </p>
-
-        <h4>Step 2: Compute \(f'(x)\)</h4>
-        <p>
-        Differentiate the original form:
-        \[
-        f'(x)=\frac{d}{dx}\Big(1 - 4x\cos x + 2x^2 + \cos 2x\Big)
-        = (-4\cos x + 4x\sin x) + 4x - 2\sin 2x.
-        \]
-        So
-        \[
-        f'(x)= -4\cos x + 4x\sin x + 4x - 2\sin 2x.
-        \]
-        </p>
-
-        <h4>Step 3: Modified Newton iteration (for multiplicity \(m=2\))</h4>
-        <p>
-        The modified Newton method is
-        \[
-        x_{n+1}=x_n - m\frac{f(x_n)}{f'(x_n)}.
-        \]
-        (Notice: it is \(m\frac{f(x_n)}{f'(x_n)}\), not \(m\frac{x_n}{f'(x_n)}\).)
-        For this problem \(m=2\), hence
-        \[
-        x_{n+1}=x_n - 2\frac{f(x_n)}{f'(x_n)}.
-        \]
-        </p>
-
-        <h4>Step 4: Iterations (take \(x_0=0.5\))</h4>
-        <p>
-        We iterate until \(|x_{n+1}-x_n|<10^{-5}\).
-        </p>
-
-        <table border="1" cellpadding="6" cellspacing="0">
-        <tr>
-            <th>\(n\)</th>
-            <th>\(x_n\)</th>
-            <th>\(|x_{n}-x_{n-1}|\)</th>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>\(0.5000000000\)</td>
-            <td>--</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>\(0.7552224171\)</td>
-            <td>\(2.552224171\times 10^{-1}\)</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>\(0.7391416661\)</td>
-            <td>\(1.608075096\times 10^{-2}\)</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>\(0.7390851339\)</td>
-            <td>\(5.653223000\times 10^{-5}\)</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>\(0.7390851620\)</td>
-            <td>\(2.812261700\times 10^{-8}\)</td>
-        </tr>
-        </table>
-
-        <p>
-        Since \(|x_4-x_3| \approx 2.8\times 10^{-8} < 10^{-5}\), we stop.
-        Therefore, the solution in \([0,1]\) accurate to within \(10^{-5}\) is
-        \[
-        \boxed{x \approx 0.73909}.
-        \]
-        </p>
-
-
-        <h4>Example 2</h4>
-        <p>Use modified Newton's method to find solutions accurate to within \(10^{-5}\) to the equation
-        \[
-            x^2 + 6x^5 + 9x^4 - 2x^3 - 6x^2 + 1 = 0, \qquad -3 \le x \le -2.
-        \]
-        </p>
-
-        <h4>Example 3</h4>
-        <p>Use modified Newton's method to find solutions accurate to within \(10^{-5}\) to the equation
-        \[
-            \sin 3x + 3e^{-2x}\sin x - 3e^{-x}\sin 2x - e^{-3x} = 0, \qquad 3 \le x \le 4.
-        \]
-        </p>
-
-        <h4>Example 4</h4>
-        <p>Use modified Newton's method to find solutions accurate to within \(10^{-5}\) to the equation
-        \[
-            e^{3x} - 27x^6 + 27x^4 e^x - 9x^2 e^{2x} = 0, \qquad 3 \le x \le 5.
-        \]
-        </p>
-
-
     </div>
 </body>

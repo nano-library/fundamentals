@@ -15,7 +15,7 @@
 <body>
     <div id="navigation">
         <nav class="concept-nav" aria-label="Concept navigation">
-            <a class="nav-btn prev" href="root-finding-methods.html" rel="prev">\(\leftarrow\) Root Finding Methods</a>
+            <a class="nav-btn prev" href="bisection-method.html" rel="prev">\(\leftarrow\) Bisection Method</a>
 
             <a class="nav-btn home" href="list-of-contents.html">Contents</a>
 
@@ -47,7 +47,7 @@
         \]
 
         <h4>Example 1:</h4>
-        <p>For x_{n+1} = x_n^2, with x_0 = \frac{1}{3}</p>
+        <p>For \(x_{n+1} = x_n^2\), with \(x_0 = \frac{1}{3}\)</p>
         \[
             c=0 
         \]
@@ -75,11 +75,377 @@
         \]
 
         <h4>Bisection Method</h4>
+        <p>Let \(x_n\) be a sequence of real numbers and \(c\) is a root of \(f(x) = 0, \; x \in [a,b]\). Then</p>
         \[
             |x_n - c| \leq \frac{b-a}{2^n},
         \]
         \[
-            |x_{n+1} - c| \leq \frac{b-a}{2^{n+1}}.
+            |x_{n+!} - c| \leq \frac{b-a}{2^{n+1}},
         \]
+        \[
+            e_n \simeq \frac{b-a}{2^n}
+        \]
+        \[
+            e_{n+1} \simeq \frac{b-a}{2^{n+1}}
+        \]
+        <p>Consider,</p>
+        \[
+            \frac{e_{n+1}}{e_n} = \frac{1}{2} \implies e_{n+1} \simeq \frac{1}{2}e_n
+        \]
+        <p>Order, \(p=1\)</p>
+        <p>Asymptotic error constant, \(M = \frac{1}{2}\)</p>
+
+        <h4>Secant Method</h4>
+
+        <p>
+        Let \(f(c)=0\) and assume \(f'(c)\neq 0\) and \(f\) is sufficiently smooth near \(c\).
+        Define the errors
+        \[
+            e_n = x_n - c,\qquad e_{n-1}=x_{n-1}-c,\qquad e_{n+1}=x_{n+1}-c.
+        \]
+        </p>
+
+        <p>
+        The Secant iteration is
+        \[
+            x_{n+1}=x_n - f(x_n)\,\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})},\qquad n\ge 1.
+        \]
+        Substituting \(x_n=c+e_n\) and \(x_{n-1}=c+e_{n-1}\) gives
+        \[
+            \begin{aligned}
+            c+e_{n+1} &=(c+e_n)-f(c+e_n)\,
+            \frac{(c+e_n)-(c+e_{n-1})}{f(c+e_n)-f(c+e_{n-1})} \\
+            &=
+            (c+e_n)-f(c+e_n)\,\frac{e_n-e_{n-1}}{f(c+e_n)-f(c+e_{n-1})}.
+            \end{aligned}    
+        \]
+        (Note: the numerator must involve \(e_{n-1}\), not \(e_{n+1}\), because the method uses \(x_n\) and \(x_{n-1}\).)
+        </p>
+
+        <p>
+        Use Taylor expansion about \(c\) (with \(f(c)=0\)):
+        \[
+            f(c+e_n)= e_n f'(c)+\frac{e_n^2}{2}f''(c)+O(e_n^3),
+        \]
+        \[
+            f(c+e_{n-1})= e_{n-1} f'(c)+\frac{e_{n-1}^2}{2}f''(c)+O(e_{n-1}^3).
+        \]
+        Subtract:
+        \[
+            f(c+e_n)-f(c+e_{n-1})
+            =(e_n-e_{n-1})f'(c)+\frac{(e_n^2-e_{n-1}^2)}{2}f''(c)+\cdots
+        \]
+        \[
+            =(e_n-e_{n-1})\left[f'(c)+\frac{(e_n+e_{n-1})}{2}f''(c)+\cdots\right].
+        \]
+        </p>
+
+        <p>
+        Substitute these into the Secant formula. The factor \((e_n-e_{n-1})\) cancels, and keeping the leading terms gives
+        \[
+            e_{n+1}
+            =
+            \frac{f''(c)}{2f'(c)}\,e_n e_{n-1}
+            + \text{higher-order terms}.
+        \]
+        Let
+        \[
+            M_1=\frac{f''(c)}{2f'(c)},
+        \]
+        so the dominant error relation is
+        \[
+            e_{n+1}\approx M_1 e_n e_{n-1}.
+        \]
+        </p>
+
+        <p>
+        To find the order of convergence, assume
+        \[
+            e_{n+1}\approx M e_n^{\,p},
+            \qquad
+            e_n\approx M e_{n-1}^{\,p}.
+        \]
+        From the second relation,
+        \[
+            e_{n-1}\approx \left(\frac{e_n}{M}\right)^{1/p}.
+        \]
+        Substitute into \(e_{n+1}\approx M_1 e_n e_{n-1}\):
+        \[
+            e_{n+1}\approx M_1 e_n\left(\frac{e_n}{M}\right)^{1/p}
+            =\frac{M_1}{M^{1/p}}\,e_n^{\,1+\frac{1}{p}}.
+        \]
+        But also \(e_{n+1}\approx M e_n^{\,p}\), so the exponents must match:
+        \[
+            p = 1+\frac{1}{p}.
+        \]
+        Hence
+        \[
+            p^2-p-1=0
+            \quad\Rightarrow\quad
+            p=\frac{1+\sqrt{5}}{2}\approx 1.618.
+        \]
+        </p>
+
+        <p>
+        Therefore, the Secant method converges with order
+        \[
+            p=\frac{1+\sqrt{5}}{2}\approx 1.618.
+        \]
+        </p>
+        <p>
+        From the dominant error relation for the Secant method,
+        </p>
+
+        \[
+        e_{n+1} \approx M_1 e_n e_{n-1},
+        \qquad
+        M_1 = \frac{f''(c)}{2f'(c)},
+        \]
+
+        <p>
+        assume the asymptotic form
+        </p>
+
+        \[
+        e_{n+1} \approx C e_n^{\,p},
+        \]
+
+        <p>
+        where \(p = \dfrac{1+\sqrt{5}}{2}\) is the order of convergence.
+        Using the relation \(e_n \approx C e_{n-1}^{\,p}\), we obtain
+        </p>
+
+        \[
+        e_{n-1} \approx \left(\frac{e_n}{C}\right)^{1/p}.
+        \]
+
+        <p>
+        Substituting into \(e_{n+1} \approx M_1 e_n e_{n-1}\),
+        </p>
+
+        \[
+        e_{n+1}
+        \approx
+        M_1 e_n
+        \left(\frac{e_n}{C}\right)^{1/p}
+        =
+        \frac{M_1}{C^{1/p}}\, e_n^{\,1+\frac{1}{p}}.
+        \]
+
+        <p>
+        Since \(1+\frac{1}{p}=p\), comparison with \(e_{n+1}\approx C e_n^{\,p}\) gives
+        </p>
+
+        \[
+        C = \frac{M_1}{C^{1/p}}.
+        \]
+
+        <p>
+        Hence
+        </p>
+
+        \[
+        C^{\,1+\frac{1}{p}} = M_1.
+        \]
+
+        <p>
+        Because \(1+\frac{1}{p}=p\), we obtain
+        </p>
+
+        \[
+        C^{\,p} = M_1,
+        \qquad
+        C = |M_1|^{\,1/p}.
+        \]
+
+        <p>
+        Using \(M_1=\dfrac{f''(c)}{2f'(c)}\) and
+        \(\dfrac{1}{p}=\dfrac{\sqrt{5}-1}{2}\),
+        </p>
+
+        \[
+        C
+        =
+        \left|
+        \frac{f''(c)}{2f'(c)}
+        \right|^{\frac{\sqrt{5}-1}{2}}.
+        \]
+
+        <p>
+        Therefore, for the Secant method,
+        </p>
+
+        \[
+        |x_{n+1}-c|
+        \approx
+        \left|
+        \frac{f''(c)}{2f'(c)}
+        \right|^{\frac{\sqrt{5}-1}{2}}
+        |x_n-c|^{\frac{\sqrt{5}+1}{2}}.
+        \]
+
+        <p>
+        Thus, the Secant method converges superlinearly with order
+        \(p=\dfrac{1+\sqrt{5}}{2}\).
+        </p>
+
+        <h4>Fixed Point Method</h4>
+        <p>Let \(c\) be a fixed point.</p>
+        \[
+            g(c) = c, \quad f(c) = 0
+            \tag{fpm-1}
+        \]
+        \[
+            x_{n+1} = g(x_n)
+        \]
+        <p>Consider,</p>
+        \[
+            \begin{aligned}
+                e_{n+1} &= x_{n+1} - c \\
+                        &= g(x_n) - g(c) \\
+                        &= g(c + e_n) - g(c) \\
+                        &= g(c) + \frac{e_n}{1!}g'(c) + \frac{e_n^2}{2!}g''(c) + \ldots
+            \end{aligned}
+        \]
+        \[
+            e_{n+1} = \frac{e_n}{1!}g'(c) + \frac{e_n^2}{2!}g''(c) + \ldots
+            \tag{fpm-2}
+        \]
+        <p><strong>Case 1</strong></p>
+        <p>Let \(g(c) = c\), \(g'(c) \neq 0\)</p>
+        \[
+            (fpm-2) \implies e_{n+1} \simeq Me_n, \quad M = g'(c), \; p = 1
+        \]
+        <p><strong>Case 2</strong></p>
+        <p>Let \(g(c) = c\), \(g'(c) = 0\), \(g''(c) \neq 0\)</p>
+        \[
+            (fpm-2) \implies e_{n+1} \simeq Me_n^2, \quad M = \frac{g''(c)}{2!}, \; p = 2
+        \]
+        <p>In general, for order \(p\),</p>
+        \[
+            g'(c) = g''(c) = \ldots = g^{(p-1)}(c) = 0, \quad g^p(c) \neq 0
+        \]
+
+        <h4>Example</h4>
+
+        <p>Given</p>
+        \[
+        x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \quad n = 0,1,2,\ldots
+        \]
+
+        <p>and</p>
+        \[
+        f(c) = 0, \quad f'(x) \neq 0
+        \]
+
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+
+        <p>Let \( x_{n+1} = g(x_n) \), where</p>
+        \[
+        g(x) = x - \frac{f(x)}{f'(x)}.
+        \]
+
+        <p><strong>1. Show that \( g(c) = c \)</strong></p>
+
+        \[
+        g(c) = c - \frac{f(c)}{f'(c)} = c - \frac{0}{f'(c)} = c.
+        \]
+
+        <p>Thus, \( c \) is a fixed point of \( g \).</p>
+
+        <p><strong>2. Compute \( g'(x) \)</strong></p>
+
+        \[
+        g(x) = x - \frac{f(x)}{f'(x)}.
+        \]
+
+        Differentiate using the quotient rule:
+
+        \[
+        \left(\frac{f(x)}{f'(x)}\right)' =
+        \frac{f'(x)f'(x) - f(x)f''(x)}{(f'(x))^2}
+        =
+        \frac{(f'(x))^2 - f(x)f''(x)}{(f'(x))^2}.
+        \]
+
+        Therefore,
+
+        \[
+        g'(x)
+        =
+        1 -
+        \frac{(f'(x))^2 - f(x)f''(x)}{(f'(x))^2}.
+        \]
+
+        Simplifying:
+
+        \[
+        g'(x)
+        =
+        \frac{f(x)f''(x)}{(f'(x))^2}.
+        \]
+
+        Evaluate at \( x = c \):
+
+        \[
+        g'(c)
+        =
+        \frac{f(c)f''(c)}{(f'(c))^2}
+        =
+        \frac{0 \cdot f''(c)}{(f'(c))^2}
+        =
+        0.
+        \]
+
+        <p><strong>3. Compute \( g''(c) \)</strong></p>
+
+        Since
+        \[
+        g'(x) = \frac{f(x)f''(x)}{(f'(x))^2},
+        \]
+
+        differentiating and evaluating at \( x = c \) gives
+
+        \[
+        g''(c) = \frac{f''(c)}{f'(c)} \neq 0
+        \]
+
+        (provided \( f''(c) \neq 0 \)).
+
+        <p><strong>4. Conclude quadratic convergence</strong></p>
+
+        Using Taylor expansion of \( g(x) \) about \( c \):
+
+        \[
+        g(x) = g(c) + g'(c)(x-c) + \frac{g''(c)}{2}(x-c)^2 + O((x-c)^3).
+        \]
+
+        Since
+
+        \[
+        g(c)=c, \quad g'(c)=0,
+        \]
+
+        we obtain
+
+        \[
+        x_{n+1} - c
+        =
+        \frac{g''(c)}{2}(x_n - c)^2 + O((x_n - c)^3).
+        \]
+
+        Thus,
+
+        \[
+        e_{n+1} = K e_n^2 + O(e_n^3),
+        \]
+
+        where \( e_n = x_n - c \) and
+
+        \[
+        K = \frac{f''(c)}{2f'(c)}.
+        \]
+
+        <p>Therefore, Newton's method converges quadratically near the root \( c \).</p>
     </div>
 </body>

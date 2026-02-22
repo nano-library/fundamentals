@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>System Of linear Equations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>   
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="modified-newton-method.html" rel="prev">\(\leftarrow\) Modified Newton's Method</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="matrices-and-system-of-linear-equations.html" rel="next">Matrices and System Of Linear Equations \(\rightarrow\)</a>
+        </nav>
+    </div>            
+    <div id="title">
+        <h1>System Of linear Equations</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>Let \(A \in \mathbb{R}^{n \times n}\), \(b \in \mathbb{R}^{n \times 1}\)</p>
+        <p>Find \(x \in \mathbb{R}^{n \times 1}\), such that</p>
+        \[
+            Ax = b, \quad |A| \neq 0
+        \]
+
+        <h4>Cramer's Rule</h4>
+        \[
+            Ax = b
+        \]
+        \[
+            \begin{bmatrix}
+                a_{11} &
+                a_{12} \\
+                a_{21} &
+                a_{22} 
+            \end{bmatrix}
+            \begin{bmatrix}
+                x_1 \\
+                x_2
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                b_1 \\
+                b_2
+            \end{bmatrix}
+        \]
+        \[
+            x_1 =
+            \frac{
+                \begin{bmatrix}
+                b_1 &
+                a_{12} \\
+                b_2 &
+                a_{22} 
+                \end{bmatrix}
+            }{
+                \begin{bmatrix}
+                a_{11} &
+                a_{12} \\
+                a_{21} &
+                a_{22} 
+                \end{bmatrix}
+            }
+
+            \quad
+
+            x_2 =
+            \frac{
+                \begin{bmatrix}
+                a_{11} &
+                b_1 \\
+                a_{21} &
+                b_2 
+                \end{bmatrix}
+            }{
+                \begin{bmatrix}
+                a_{11} &
+                a_{12} \\
+                a_{21} &
+                a_{22} 
+                \end{bmatrix}
+            }
+        \]
+        \[
+            |A| = a_{11}a_{22} - a_{21}a_{21}
+        \]
+        <p>mul is 2 and sub is 1</p>
+        \[
+            T_2 = 2 + 1 = 3
+        \]
+        \[
+            \begin{bmatrix}
+                a_{11} &
+                a_{12} &
+                a_{13} \\
+                a_{21} &
+                a_{22} &
+                a_{23} \\
+                a_{31} &
+                a_{32} &
+                a_{33}
+            \end{bmatrix}
+            \begin{bmatrix}
+                x_1 \\
+                x_2 \\
+                x_3 \\ 
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                b_1 \\
+                b_2 \\
+                b_3 \\ 
+            \end{bmatrix}
+        \]
+        \[
+            A = 
+            a_{11}
+            \begin{vmatrix}
+                a_{22} &
+                a_{23} \\
+                a_{32} &
+                a_{33} 
+            \end{vmatrix}
+            -
+            a_{12}
+            \begin{vmatrix}
+                a_{21} &
+                a_{23} \\
+                a_{31} &
+                a_{33} 
+            \end{vmatrix}
+            +
+            a_{13}
+            \begin{vmatrix}
+                a_{21} &
+                a_{22} \\
+                a_{31} &
+                a_{32} 
+            \end{vmatrix}
+        \]
+        \[
+            T_3 = 3T_2 + 3 + 2
+        \]
+        <p>In General,</p>
+        \[
+            T_n = nT_{n-1} + n + (n-1)
+        \]
+        \[
+            \boxed{T_n = nT_{n-1} + 2n - 1}
+        \]
+        <p>Consider</p>
+        \[
+            T_n = nT_{n-1}
+        \]
+        \[
+            T_2 = 3
+        \]
+        \[
+            T_3 = 3T_2 = 3 \times 3
+        \]
+        \[
+            T_4 = 4T_3 = 4 \times 3 \times 3
+        \]
+        \[
+            T_5 = 5T_4 = 5 \times 4 \times 3 \times 3
+        \]
+        \[
+            \vdots
+        \]
+        \[
+            T_n = n(n-1)(n-2)\ldots 4 \times 3 \times 3
+        \]
+        \[
+            \boxed{T_n \simeq n!}
+        \]
+        <p>In order to solve, \(Ax = b\), \(|A| \neq 0\), \(A \in \mathbb{R}^{n+1}\), then</p>
+        <p>Cramer's rule takes</p>
+        \[
+            (n+1)n! \; \text{operations}
+        \]
+    </div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bisection Method - Number of Iterations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="bisection-method.html" rel="prev">\(\leftarrow\) Bisection Method</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="order-of-convergence.html" rel="next">Order of Convergence \(\rightarrow\)</a>
+        </nav>
+    </div>
+
+    <div id="title">
+        <h1>Bisection Method - Number of Iterations</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>
+            In the bisection method, after \(n\) iterations, the error satisfies
+        </p>
+
+        \[
+        |x_n - c| \le \frac{b-a}{2^n}.
+        \]
+
+        <p>
+            To guarantee accuracy within a prescribed tolerance \(\epsilon\),
+            we require
+        </p>
+
+        \[
+        \frac{b-a}{2^n} \le \epsilon.
+        \]
+
+        <p>
+            Solving for \(n\):
+        </p>
+
+        \[
+        \frac{b-a}{2^n} = \epsilon
+        \]
+
+        \[
+        \log\!\left(\frac{b-a}{2^n}\right) = \log(\epsilon)
+        \]
+
+        \[
+        \log(b-a) - n\log(2) = \log(\epsilon)
+        \]
+
+        \[
+        n = \frac{\log(b-a) - \log(\epsilon)}{\log(2)}.
+        \]
+
+        <p>
+            Since \(n\) must be an integer, we take the smallest integer greater than or equal to this value.
+        </p>
+
+        <h4>Example 1</h4>
+
+        <p>
+            Given
+            \[
+            f(x) = 3x - \cos(x) - 1, 
+            \qquad x \in [0,1], 
+            \qquad \epsilon = 10^{-3},
+            \]
+            find the minimum number of iterations required.
+        </p>
+
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+
+        <p>
+            Here, \(a=0\), \(b=1\), so \(b-a = 1\).
+        </p>
+
+        \[
+        n = \frac{\log(1) - \log(10^{-3})}{\log(2)}.
+        \]
+
+        <p>
+            Since \(\log(1)=0\) and \(\log(10^{-3}) = -3\) (base 10),
+        </p>
+
+        \[
+        n = \frac{0 - (-3)}{\log(2)}
+        = \frac{3}{0.3010}
+        \approx 9.97.
+        \]
+
+        <p>Therefore, the minimum number of iterations required is \(n = 10\).</p>
+    </div>
+</body>
+</html>

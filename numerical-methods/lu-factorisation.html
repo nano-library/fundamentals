@@ -23,10 +23,59 @@
         </nav>
     </div>
     <div id="title">
-        <h1>LU Factorization</h1>
+        <h1>LU Factorization (or decomposition)</h1>
         <hr>
     </div>
     <div id="chapter">
+        <h4>Diagonal system</h4>
+        <p>The solution of a diagonal system is straightforward.</p>
+        <p>Suppose the coefficient matrix has the form</p>
+        \[
+        \begin{bmatrix}
+            d_1    & 0      & 0      & \cdots & 0   \\
+            0      & d_2    & 0      & \cdots & 0   \\
+            0      & 0      & d_3    & \ddots & 0   \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0      & 0      & 0      & \cdots    & d_n
+        \end{bmatrix}
+        \]
+        <p>Here the system \(Ax = b\) can be written </p>
+        \[
+            d_1 x_1 = b_1
+        \]
+        \[
+            d_2 x_2 = b_2
+        \]
+        \[
+            \vdots
+        \]
+        \[
+            d_n x_2 = b_n
+        \]
+        <p>The solution for x i is simply \(x_i = \frac{b_i}{d_i}\).</p>
+
+        <h4>Upper Triangular System</h4>
+        <p>Let \(U\) be an upper triangular matrix. The system of linear equations \(Ux = b\) can be expressed as</p>
+        \[
+        \begin{bmatrix}
+            u_{11} & u_{12} & \cdots & u_{1n} & b_1 \\
+                & u_{22} & \cdots & u_{2n} & b_2 \\
+                &        & \ddots & \vdots & \vdots \\
+                &        &        & u_{nn} & b_n
+        \end{bmatrix}
+        \]
         
+        <p>A better idea to write \(A\) in the following form \(A = LU\), where \(L\) is lower triangular and \(U\) is upper triangular.</p>
+
+        <h4>LU factorization</h4>
+
+        <p>We say \(A\) has \(LU\) factorization (or decomposition) if \(A\) can be expressed as \(A = LU\), where \(L\) is a lower triangular matrix and \(U\) is an upper triangular matrix. </p>
+        <p>Note that for any invertible diagonal matrix \(D\),</p>
+        \[
+            A = LU = L D D^{-1} U = \tilde{L}\tilde{U}.
+        \]
+        <p>Thus, LU factorisation is not unique</p>
+
+        <li style="text-align: center;"><a href="doolittle-factorisation.html">Doolittle's Factorisation</a></li>
     </div>
 </body>

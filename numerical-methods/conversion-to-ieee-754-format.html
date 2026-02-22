@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Conversion to IEEE 754 Format</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+     <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="binary-machine-numbers.html" rel="prev">\(\leftarrow\) Binary Machine Numbers</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="root-finding-methods.html" rel="next">Root Finding Problem \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Conversion to IEEE 754 Format</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>To convert a real number into IEEE 754 format, the following systematic steps are applied.</p>
+
+        <h4>Step 1: Determine the Sign Bit</h4>
+        <p>If the number is positive, the sign bit is set to \(0\).</p>
+        <p>If the number is negative, the sign bit is set to \(1\).</p> 
+            
+        <h4>Step 2: Convert to Binary</h4>
+        <p>Express the given decimal number in binary form.</p>
+        <p>The integer part and the fractional part are converted separately.</p>
+
+        <h4>Step 3: Normalize the Binary Representation</h4>
+        <p>The binary number is normalized so that the leading digit is always \(1\).</p>
+        <p>The normalized form is written as:</p>
+
+        \[
+          1.a_1 a_2 a_3 \ldots \times 2^n
+        \]
+
+        <p>The binary point is positioned immediately after the first non-zero digit.</p>
+
+        <h4>Step 4: Calculate the Exponent</h4>
+        <p>In IEEE 754, the exponent is stored using a <em>bias</em>. The bias depends on the precision:</p>
+
+        <ul>
+            <li><strong>Single precision (32-bit):</strong> Bias = 127</li>
+            <li><strong>Double precision (64-bit):</strong> Bias = 1023</li>
+        </ul>
+
+        <p>The stored exponent is computed as:</p>
+
+        \[
+          \text{Stored Exponent} = n + \text{Bias}
+        \]
+
+        <h4>Step 5: Store the Mantissa</h4>
+        <p>The fractional part of the normalized binary representation (excluding the leading \(1\)) is stored as the mantissa.</p>
+
+        <ul>
+            <li>Single precision: 23-bit mantissa</li>
+            <li>Double precision: 52-bit mantissa</li>
+        </ul>
+
+        <h4>Final IEEE 754 Form</h4>
+
+        \[
+          (-1)^{\text{sign}} \times 1.\text{mantissa} \times 2^{(\text{stored exponent} - \text{bias})}
+        \]
+
+        <p>Thus, every floating-point number is encoded using three fields: <strong>sign</strong>, <strong>biased exponent</strong>, and <strong>mantissa</strong>.</p>
+
+        <hr style="border: 0.1px dashed;">
+
+        <h4>Example 1</h4>
+        <p>Convert the following IEEE 754 single-precision binary number to decimal:</p>
+
+        \[
+          \boxed{1} \quad
+          \boxed{10000001} \quad
+          \boxed{11000000000000000000000}
+        \]
+
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+
+        <p>The IEEE 754 single-precision format consists of three fields:
+        </p>
+
+        <ul>
+            <li><strong>Sign bit:</strong> 1</li>
+            <li><strong>Exponent (8 bits):</strong> 10000001</li>
+            <li><strong>Mantissa (23 bits):</strong> 11000000000000000000000</li>
+        </ul>
+
+        <strong>Step 1: Determine the Sign</strong>
+
+        <p>Since the sign bit is 1, the number is negative.</p>
+
+        <strong>Step 2: Convert the Exponent</strong>
+
+        \[
+          10000001_2 = 129_{10}
+        \]
+
+        <p>The bias for single precision is 127.</p>
+        <p>Therefore, the actual exponent is:</p>
+
+        \[
+          129 - 127 = 2
+        \]
+
+        <strong>Step 3: Form the Mantissa</strong>
+
+        <p>In normalized IEEE format, the leading 1 is implicit.</p>
+        <p>Thus, the significand becomes:</p>
+
+        \[
+          1.11000000000000000000000_2
+        \]
+
+        <strong>Step 4: Convert Mantissa to Decimal</strong>
+
+        \[
+          1.11000_2 = 1 + 1 \cdot 2^{-1} + 1 \cdot 2^{-2} = 1 + \frac{1}{2} + \frac{1}{4} = 1.75
+        \]
+
+        <strong>Step 5: Multiply by \(2^{2}\)</strong>
+
+        \[
+        1.75 \times 2^2 = 1.75 \times 4 = 7
+        \]
+
+        <strong>Final Result</strong>
+
+        <p>Including the sign:</p>
+
+        \[
+        (-1)^1 \times 7 = -7
+        \]
+
+        <p>Therefore, the given IEEE 754 single-precision number represents: -7</p>
+
+        <hr style="border: 0.1px dashed;">
+
+        <h4>Example 2</h4>
+        <p>Find the IEEE 754 single-precision binary representation of the decimal number \(-7.25\).</p>
+
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+
+        <h4>Step 1: Determine the Sign Bit</h4>
+        <p>Since the number is negative, the sign bit is:</p>
+
+        \[
+        \text{Sign} = 1
+        \]
+
+        <h4>Step 2: Convert to Binary</h4>
+
+        <p style="text-indent: 2em;"><strong>Integer part:</strong></p>
+
+        \[
+          7_{10} = 111_2
+        \]
+
+        <p style="text-indent: 2em;"><strong>Fractional part:</strong></p>
+
+        \[
+          0.25_{10} = 0.01_2
+        \]
+
+        <p>Therefore,</p>
+
+        \[
+          7.25_{10} = 111.01_2
+        \]
+
+        <strong>Step 3: Normalize</strong>
+
+        \[
+        111.01_2 = 1.1101_2 \times 2^2
+        \]
+
+        <strong>Step 4: Determine the Exponent</strong>
+
+        <p>Single precision uses a bias of 127.</p>
+
+        \[
+          \text{Biased exponent} = 127 + 2 = 129
+        \]
+
+        \[
+          129_{10} = 10000001_2
+        \]
+
+        <strong>Step 5: Determine the Mantissa</strong>
+
+        <p>The leading 1 is implicit.</p>
+        <p>The mantissa consists of the fractional part of the normalized form:</p>
+
+        \[
+          11010000000000000000000
+        \]
+
+        <h4>Final IEEE 754 Representation</h4>
+
+        \[
+          \boxed{1} \quad
+          \boxed{10000001} \quad
+          \boxed{11010000000000000000000}
+        \]
+
+        <p>
+            Thus, the IEEE 754 single-precision representation of \(-7.25\) is:
+        </p>
+
+        \[
+        1 \; 10000001 \; 11010000000000000000000
+        \]
+
+        <h4>Example 3</h4>
+        <p>Convert the following IEEE 754 single-precision binary number to decimal:</p>
+
+        \[
+        \boxed{0} \quad
+        \boxed{10000000} \quad
+        \boxed{10101010101010101010101}
+        \]
+
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+
+        <strong>Step 1: Identify the Components</strong>
+
+        <ul>
+          <li><strong>Sign bit:</strong> 0 → positive number</li>
+          <li><strong>Exponent:</strong> \(10000000_2\)</li>
+          <li><strong>Mantissa:</strong> \(10101010101010101010101\)</li>
+        </ul>
+
+        <strong>Step 2: Convert the Exponent</strong>
+
+        \[
+          10000000_2 = 128_{10}
+        \]
+
+        <p>Single precision bias = 127.</p>
+
+        \[
+          \text{Actual exponent} = 128 - 127 = 1
+        \]
+
+        <strong>Step 3: Form the Normalized Mantissa</strong>
+
+        <p>The leading 1 is implicit, so the significand is:</p>
+
+        \[
+          1.10101010101010101010101_2
+        \]
+
+        <strong>Step 4: Convert Mantissa to Decimal</strong>
+
+        \[
+        1.10101010101010101010101_2
+        =
+        1
+        + 2^{-1}
+        + 2^{-3}
+        + 2^{-5}
+        + \cdots
+        \]
+
+        <p>This is a repeating alternating pattern. Evaluating the finite 23-bit expansion:</p>
+
+        \[
+          \text{Mantissa} \approx 1.6666667
+        \]
+
+        <strong>Step 5: Multiply by } \(2^1\)</strong>
+
+        \[
+          \text{Value} \approx 1.6666667 \times 2 = 3.3333334
+        \]
+
+        <strong>Final result</strong>
+
+        \[
+          \boxed{3.3333334}
+        \]
+
+        <p>(The small deviation from \(3.\overline{3}\) arises because the mantissa is finite and cannot represent the infinite repeating binary expansion exactly.)</p>
+
+    
+        <h4>Example 3</h4>
+
+        <p>Find the IEEE 754 single-precision binary representation of the decimal number \(13.5\).</p>
+
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+
+        <strong>Step 1: Sign Bit</strong>
+        <p>
+          Since \(13.5 > 0\), the sign bit is
+          \[
+            \text{sign} = 0.
+          \]
+        </p>
+
+        <strong>Step 2: Convert \(13.5\) to Binary</strong>
+
+        <p><strong>Integer part:</strong></p>
+        \[
+          13_{10} = 1101_2
+        \]
+
+        <p><strong>Fractional part:</strong></p>
+        \[
+          0.5_{10} = 0.1_2
+        \]
+
+        <p>
+          Therefore,
+          \[
+            13.5_{10} = 1101.1_2.
+          \]
+        </p>
+
+        <strong>Step 3: Normalize</strong>
+        \[
+          1101.1_2 = 1.1011_2 \times 2^3
+        \]
+
+        <strong>Step 4: Exponent (Biased)</strong>
+        <p>
+          Single precision bias \(=127\). Hence,
+        </p>
+        \[
+          \text{stored exponent} = 3 + 127 = 130
+        \]
+        \[
+          130_{10} = 10000010_2
+        \]
+
+        <strong>Step 5: Mantissa (23 bits)</strong>
+        <p>
+          Drop the leading \(1\) from \(1.1011_2\). The mantissa is the fractional part padded with zeros:
+        </p>
+
+        \[
+          \text{mantissa} = 10110000000000000000000
+        \]
+
+        <strong>Final IEEE 754 (Single Precision) Form</strong>
+
+        \[
+          \boxed{0}
+          \quad
+          \boxed{10000010}
+          \quad
+          \boxed{10110000000000000000000}
+        \]
+
+        <p>
+          So, the IEEE 754 single-precision representation of \(13.5\) is:
+        </p>
+
+        \[
+          0\; 10000010\; 10110000000000000000000
+        \]
+    </div>
+</body>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Doolittle's Factorisation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="lu-factorisation.html" rel="prev">\(\leftarrow\) LU Factorization</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href=".html" rel="next"> \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Doolittle's Factorisation</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>A matrix A is said to have a Doolittle factorization if there exists a unit lower triangular matrix \(L\) and an upper triangular matrix \(U\) such that \(A = LU\).</p>
+        <p>For Doolittle LU without pivoting (i.e., \(A=LU\) with \(L\) having 1's on the diagonal, and no row swaps), a standard sufficient condition is:</p>
+        \[
+            D_1 \neq 0, D_2 \neq 0, \ldots, D_n \neq = 0
+        \]
+
+        <h4>Note:</h4>
+        <p>1. Inverse of lower triangular matrix is a lower trianglar matrix.</p>
+        <p>2. Inverse of upper trianglar matrix is a upper triangular matrix.</p>
+
+        <h4>Theorem: Doolittle Factorisation is Unique</h4>
+        <strong>Proof:</strong>
+        <p>Let \(A = LU\), \(|A| \ne 0\), where \(L\) is a unit lower triangular matrix, \(|L|= 1\) and \(U\) is a upper trianglar matrix, \(U = u_{11}u_{22}\ldots u_{nn} \ne 0\)</p>
+        <p>Let \(A = L_1U_1 = L_2U_2, \; L_1 ne L_2, \; U_1 \ne U_2\)</p>
+        <p>We have</p>
+        \[
+            L_1U_1 = L_2U_2
+        \]
+        \[
+            L_2^{-1}(L_1U_1) = L_2^{-1}(L_2U_2)
+        \]
+        \[
+            (L_2^{-1}L_1)U_1 = (L_2^{-1}L_2)U_2
+        \]
+        \[
+            L_2^{-1}L_2 = I
+        \]
+        \[
+            (L_2^{-1}L_1)U_1 = U_2
+        \]
+        \[
+            (L_2^{-1}L_1)U_1U_1^{-1} = U_2U_1^{-1}
+        \]
+        \[
+            U_1U_1^{-1} = I
+        \]
+        \[
+            L_2^{-1}L_1 =  U_2U_1^{-1} = I
+        \]
+        \[
+            L_2^{-1}L_1 = I \quad \text{and} \quad U_2U_1^{-1} = I
+        \]
+        \[
+            L_2 = L_1 \quad \text{and} \quad U_2 = U_1
+        \]
+
+        <hr style="border: 0.1px dashed;">
+        <h4>Example 1</h4>
+        <p>Find the Doolittle LU factorization of the following matrix.</p>
+
+        \[
+        A =
+        \begin{bmatrix}
+        4 & 2 & 2 \\
+        2 & 5 & 1 \\
+        2 & 1 & 6
+        \end{bmatrix}.
+        \]
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+        <h5>Step 1: Check leading principal minors</h5>
+
+        <p>The leading principal minors are:</p>
+
+        \[
+        D_1 = \det[4] = 4 \ne 0,
+        \]
+
+        \[
+        D_2 = \det
+        \begin{bmatrix}
+        4 & 2 \\
+        2 & 5
+        \end{bmatrix}
+        = (4)(5) - (2)(2)
+        = 20 - 4
+        = 16 \ne 0,
+        \]
+
+        \[
+        D_3 = \det(A) =
+        \det
+        \begin{bmatrix}
+        4 & 2 & 2 \\
+        2 & 5 & 1 \\
+        2 & 1 & 6
+        \end{bmatrix}.
+        \]
+
+        <p>Expanding \(D_3\) along the first row:</p>
+
+        \[
+        D_3 =
+        4
+        \begin{vmatrix}
+        5 & 1 \\
+        1 & 6
+        \end{vmatrix}
+        -
+        2
+        \begin{vmatrix}
+        2 & 1 \\
+        2 & 6
+        \end{vmatrix}
+        +
+        2
+        \begin{vmatrix}
+        2 & 5 \\
+        2 & 1
+        \end{vmatrix}.
+        \]
+
+        <p>Computing the \(2\times2\) determinants:</p>
+
+        \[
+        \begin{vmatrix}
+        5 & 1 \\
+        1 & 6
+        \end{vmatrix}
+        = (5)(6) - (1)(1)
+        = 30 - 1
+        = 29,
+        \]
+
+        \[
+        \begin{vmatrix}
+        2 & 1 \\
+        2 & 6
+        \end{vmatrix}
+        = (2)(6) - (1)(2)
+        = 12 - 2
+        = 10,
+        \]
+
+        \[
+        \begin{vmatrix}
+        2 & 5 \\
+        2 & 1
+        \end{vmatrix}
+        = (2)(1) - (5)(2)
+        = 2 - 10
+        = -8.
+        \]
+
+        <p>Thus,</p>
+
+        \[
+        D_3 = 4(29) - 2(10) + 2(-8)
+        = 116 - 20 - 16
+        = 80 \ne 0.
+        \]
+
+        <p>Since all leading principal minors are non-zero, the matrix \(A\) admits an LU factorization without row exchanges.</p>
+
+        <h5>Step 2: Define the matrices</h5>
+
+        <p>In the Doolittle factorization, we seek matrices \(L\) and \(U\) such that \(A = LU\), where \(L\) is lower triangular with diagonal entries equal to 1, and \(U\) is upper triangular.</p>
+
+        \[
+        L =
+        \begin{bmatrix}
+        1 & 0 & 0 \\
+        \ell_{21} & 1 & 0 \\
+        \ell_{31} & \ell_{32} & 1
+        \end{bmatrix},
+        \qquad
+        U =
+        \begin{bmatrix}
+        u_{11} & u_{12} & u_{13} \\
+        0 & u_{22} & u_{23} \\
+        0 & 0 & u_{33}
+        \end{bmatrix}.
+        \]
+
+        <h5>Step 3: Set up \(A = LU\)</h5>
+
+        \[
+        \begin{bmatrix}
+        4 & 2 & 2 \\
+        2 & 5 & 1 \\
+        2 & 1 & 6
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        1 & 0 & 0 \\
+        \ell_{21} & 1 & 0 \\
+        \ell_{31} & \ell_{32} & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+        u_{11} & u_{12} & u_{13} \\
+        0 & u_{22} & u_{23} \\
+        0 & 0 & u_{33}
+        \end{bmatrix}.
+        \]
+
+        Multiplying,
+
+        \[
+        =
+        \begin{bmatrix}
+        u_{11} & u_{12} & u_{13} \\
+        \ell_{21}u_{11} & \ell_{21}u_{12} + u_{22} & \ell_{21}u_{13} + u_{23} \\
+        \ell_{31}u_{11} & \ell_{31}u_{12} + \ell_{32}u_{22} &
+        \ell_{31}u_{13} + \ell_{32}u_{23} + u_{33}
+        \end{bmatrix}.
+        \]
+
+        <h3>Step 4: Compute the elements</h3>
+
+        \[
+        u_{11} = 4,
+        \quad
+        u_{12} = 2,
+        \quad
+        u_{13} = 2.
+        \]
+
+        \[
+        \ell_{21}u_{11} = 2
+        \Rightarrow
+        \ell_{21} = \frac{2}{4} = \frac12,
+        \]
+
+        \[
+        \ell_{31}u_{11} = 2
+        \Rightarrow
+        \ell_{31} = \frac{2}{4} = \frac12.
+        \]
+
+        \[
+        \ell_{21}u_{12} + u_{22} = 5
+        \Rightarrow
+        u_{22} = 5 - \frac12(2) = 4.
+        \]
+
+        \[
+        \ell_{21}u_{13} + u_{23} = 1
+        \Rightarrow
+        u_{23} = 1 - \frac12(2) = 0.
+        \]
+
+        \[
+        \ell_{31}u_{12} + \ell_{32}u_{22} = 1
+        \Rightarrow
+        1 = \frac12(2) + 4\ell_{32}
+        \Rightarrow
+        \ell_{32} = 0.
+        \]
+
+        \[
+        \ell_{31}u_{13} + \ell_{32}u_{23} + u_{33} = 6
+        \Rightarrow
+        u_{33} = 6 - \frac12(2) = 5.
+        \]
+
+        <h3>Step 5: Write the final factorization</h3>
+
+        \[
+        A = LU =
+        \begin{bmatrix}
+        1 & 0 & 0 \\
+        \frac12 & 1 & 0 \\
+        \frac12 & 0 & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+        4 & 2 & 2 \\
+        0 & 4 & 0 \\
+        0 & 0 & 5
+        \end{bmatrix}.
+        \]
+
+        <hr style="border: 0.05px dashed;">
+        <h4>Example 2</h4>
+        \[
+            \begin{bmatrix}
+                6  & -2  & 2 & 4  \\
+                12 & -8  & 6 & 10 \\
+                3  & -13 & 9 & 3  \\
+                -6 & 4   & 1 & -18
+            \end{bmatrix}
+            \begin{bmatrix}
+                x_1 \\
+                x_2 \\
+                x_3 \\
+                x_4 \\
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                12 \\
+                34 \\
+                27 \\
+                -38 \\
+            \end{bmatrix}
+        \]
+        <p style="text-indent: 2em;"><strong>Solution</strong></p>
+        <p>Let</p>
+        \[
+            A = \ell U
+        \]
+        \[
+            A = 
+            \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            \ell_{21} & 1 & 0 & \\
+            \ell_{31} & \ell_{32} & 1 & 0 \\
+            \ell_{41} & \ell_{42} & \ell_{43} & 1
+            \end{bmatrix}
+            \begin{bmatrix}
+            u_{11} & u_{12} & u_{13} & u_{14} \\
+            0 & u_{22} & u_{23} & u_{24} \\
+            0 & 0 & u_{33} & u_{34} \\
+            0 & 0 & 0 & u_{44}
+            \end{bmatrix}
+        \]
+        \[
+            {\tiny
+            A =
+            \begin{bmatrix}
+            u_{11} & u_{12} & u_{13} & u_{14} \\
+
+            \ell_{21}u_{11} &
+            \ell_{21}u_{12}+u_{22} &
+            \ell_{21}u_{13}+u_{23} &
+            \ell_{21}u_{14}+u_{24} \\
+
+            \ell_{31}u_{11} &
+            \ell_{31}u_{12}+\ell_{32}u_{22} &
+            \ell_{31}u_{13}+\ell_{32}u_{23}+u_{33} &
+            \ell_{31}u_{14}+\ell_{32}u_{24}+u_{34} \\
+
+            \ell_{41}u_{11} &
+            \ell_{41}u_{12}+\ell_{42}u_{22} &
+            \ell_{41}u_{13}+\ell_{42}u_{23}+\ell_{43}u_{33} &
+            \ell_{41}u_{14}+\ell_{42}u_{24}+\ell_{43}u_{34}+u_{44}
+            \end{bmatrix}
+            }
+        \]
+        <p>Comparing the elements, we obtain,</p>
+        \[
+            a_{11} = u_{11} \implies u_{11} = 6
+        \]
+        \[
+            a_{12} = u_{12} \implies u_{12} = -2
+        \]
+        \[
+            a_{13} = u_{13} \implies u_{13} = 2
+        \]
+        \[
+            a_{14} = u_{14}, \implies u_{14} = 4
+        \]
+        \[
+            \ell_{21}u_{11} = a_{21} \implies \ell_{21} \cdot 6 = 12 \implies \ell_{21} = 2
+        \]
+        \[
+            \ell_{31}u_{11} = a_{31} \implies \ell_{31} \cdot 6 = 3 \implies \ell_{31} = \frac{1}{2}
+        \]
+        \[
+            \ell_{41}u_{11} = a_{41} \implies \ell_{41} \cdot 6 = -6 \implies \ell_{41} = -1
+        \]
+
+        \[
+            \ell_{21}u_{12}+u_{22} = a_{22} \implies u_{22} = a_{22} - \ell_{21}u_{12}
+        \]
+        \[
+            u_{22} = -8 -2 \cdot -2 = -4
+        \]
+        \[
+            \ell_{21}u_{13}+u_{23} = a_{22} \implies u_{23} = a_{23} - \ell_{21}u_{13}
+        \]
+        \[
+            u_{23} = 6 -2 \cdot 2 = 2
+        \]
+        \[
+            \ell_{21}u_{14}+u_{24} = a_{24} \implies u_{24} = a_{24} - \ell_{21}u_{14}
+        \]
+        \[
+            u_{24} = 10 -2 \cdot 4 = 2
+        \]
+        \[
+            \ell_{31}u_{12} + \ell_{32}u_{22} = a_{32} \implies \ell_{32} = \frac{a_{32}-\ell_{31}u_{12}}{u_{22}}
+        \]
+        \[
+            \ell_{32} = \frac{-13-\frac{1}{2}\cdot -2}{-4} =3
+        \]
+        \[
+            \ell_{31}u_{13} + \ell_{32}u_{23} + u_{33} = a_{33} \implies u_{33} = a_{33} - (\ell_{31}u_{13}+\ell_{32}u_{23})
+        \]
+        \[
+            u_{33} = 9 - (\frac{1}{2} \cdot 2 + 3 \cdot 2) = 2
+        \]
+        \[
+            \ell_{31}u_{14} + \ell_{32}u_{24} + u_{34} = a_{34} \implies u_{34} = a_{34} - (\ell_{31}u_{14}+\ell_{32}u_{24})
+        \]
+        \[
+            u_{34} = 3 - (\frac{1}{2} \cdot 4 + 3 \cdot 2) = -5
+        \]
+        \[
+            \ell_{41}u_{12} + \ell_{42}u_{22} = a_{42} \implies \ell_{42} = \frac{1}{u_{22}}(a_{42} - \ell_{41}u_{12})
+        \]
+        \[
+            \ell_{42} = \frac{1}{-4}(4-(-1) \cdot (-2)) = -\frac{1}{2}
+        \]
+        \[
+            \ell_{41}u_{13} + \ell_{42}u_{23} + \ell_{43}u_{33} = a_{43}
+        \]
+        \[
+            \ell_{43} = \frac{1}{u_{23}}(a_{43} - \ell_{41}u_{13}+\ell_{42}u_{23})
+        \]
+        \[
+            \ell_{43} = \frac{1}{2}(1-(-1\cdot 2)+(\frac{-1}{2} \cdot 2)) = 2
+        \]
+        \[
+            \ell_{41}u_{14} + \ell_{42}u_{24} + \ell_{43}u_{34} + u_{44} = a_{44}
+        \]
+        \[
+            u_{44} = a_{44} - (\ell_{41}u_{14} + \ell_{42}u_{24}+\ell_{43}u_{34})
+        \]
+        \[
+            u_{44} = -18 - ((-1 \cdot 4) + (- \frac{1}{2} \cdot 2) + (2 \cdot -5)) = -3
+        \]
+        \[
+            A=LU
+        \]
+        \[
+            A=
+            \begin{bmatrix}
+            1 & 0 & 0 & 0\\
+            2 & 1 & 0 & 0\\
+            \frac{1}{2} & 3 & 1 & 0\\
+            -1 & -\frac{1}{2} & 2 & 1
+            \end{bmatrix}
+            \begin{bmatrix}
+            6 & -2 & 2 & 4\\
+            0 & -4 & 2 & 2\\
+            0 & 0 & 2 & -5\\
+            0 & 0 & 0 & -3
+            \end{bmatrix}
+        \]
+        \[
+            Ax=b \implies LUx = b \implies Ly = b
+        \]
+        <p>Consider \(Ly = b\)</p>
+        \[
+            \begin{bmatrix}
+            1 & 0 & 0 & 0\\
+            2 & 1 & 0 & 0\\
+            \frac{1}{2} & 3 & 1 & 0\\
+            -1 & -\frac{1}{2} & 2 & 1
+            \end{bmatrix}
+            \begin{bmatrix}
+                y_1 \\
+                y_2 \\
+                y_3 \\
+                y_4
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                12 \\
+                34 \\
+                27 \\
+                -38
+            \end{bmatrix}
+        \]
+        \[
+            y_1 = 12
+        \]
+        \[
+            2y_1 + y_2 = 34 
+        \]
+        \[
+            y_2 = 34 - 2y_1 = 34 - 2(12) = 10
+        \]
+        \[
+            \frac{y_1}{2} + 3y_2 + y_3 = 27
+        \]
+        \[
+            y_3 = 26 - \left(\frac{12}{2} + 3(10)\right)
+        \]
+        \[
+            y_3 = -9
+        \]
+        \[
+            -y_1 - \frac{y_2}{2} + 2y_3 + y_4 = -38
+        \]
+        \[
+            y_4 = -38 + y_1 + \frac{y_2}{2} - 2y_3
+        \]
+         \[
+            y_4 = -38 + 12 + \frac{10}{2} - 2(-9)
+        \]
+        \[
+            y_4 = -3
+        \]
+        <p>Consider \(Ux = y\)</p>
+        \[
+        \begin{bmatrix}
+        6 & -2 & 2 & 4\\
+        0 & -4 & 2 & 2\\
+        0 & 0 & 2 & -5\\
+        0 & 0 & 0 & -3
+        \end{bmatrix}
+        \begin{bmatrix}
+        x_1\\
+        x_2\\
+        x_3\\
+        x_4
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        12\\
+        10\\
+        -9\\
+        -3
+        \end{bmatrix}
+        \]
+
+
+
+        \[
+        -3x_4 = -3
+        \]
+        \[
+        x_4 = \frac{-3}{-3} = 1
+        \]
+
+        \[
+        2x_3 - 5x_4 = -9
+        \]
+        \[
+        2x_3 - 5(1) = -9
+        \]
+        \[
+        2x_3 = -9 + 5 = -4
+        \]
+        \[
+        x_3 = \frac{-4}{2} = -2
+        \]
+
+        \[
+        -4x_2 + 2x_3 + 2x_4 = 10
+        \]
+        \[
+        -4x_2 + 2(-2) + 2(1) = 10
+        \]
+        \[
+        -4x_2 -4 +2 = 10
+        \]
+        \[
+        -4x_2 -2 = 10
+        \]
+        \[
+        -4x_2 = 12
+        \]
+        \[
+        x_2 = \frac{12}{-4} = -3
+        \]
+
+        \[
+        6x_1 - 2x_2 + 2x_3 + 4x_4 = 12
+        \]
+        \[
+        6x_1 - 2(-3) + 2(-2) + 4(1) = 12
+        \]
+        \[
+        6x_1 +6 -4 +4 = 12
+        \]
+        \[
+        6x_1 +6 = 12
+        \]
+        \[
+        6x_1 = 6
+        \]
+        \[
+        x_1 = \frac{6}{6} = 1
+        \]
+
+        \[
+        x_1 = 1, \quad x_2 = -3, \quad x_3 = -2, \quad x_4 = 1
+        \]
+
+        <p>Thus,</p>
+
+        \[
+        L=
+        \begin{bmatrix}
+            1 & 0 & 0 & 0\\
+            2 & 1 & 0 & 0\\
+            \frac{1}{2} & 3 & 1 & 0\\
+            -1 & -\frac{1}{2} & 2 & 1
+        \end{bmatrix},
+        \qquad
+        U=
+        \begin{bmatrix}
+        6 & -2 & 2 & 4\\
+        0 & -4 & 2 & 2\\
+        0 & 0 & 2 & -5\\
+        0 & 0 & 0 & -3
+        \end{bmatrix}
+        \]
+
+        <p>Forward substitution: \(Ly=b\)</p>
+        \[
+        y=
+        \begin{bmatrix}
+        12\\ 10\\ -9\\ -3
+        \end{bmatrix}
+        \]
+
+        <p>Back substitution: \(Ux=y\)</p>
+        \[
+        x=
+        \begin{bmatrix}
+        1\\ -3\\ -2\\ 1
+        \end{bmatrix}
+        \]
+    </div>
+</body>
+</html>

@@ -51,10 +51,83 @@
         <p>The key idea behind the method is that a linear approximation of the function \(f(x)\) at the point \(x_n\) can be used to find a better estimate of the root.</p>
         <p>The approximation is given by the tangent line at \(x_n\) , which intersects the x-axis at a point that is closer to the root \(\alpha\) than \(x_n\).</p>
     
-        <h4>Example:</h4>
-        <p>Consider the function \(f(x) = \cos{x}-x = 0\). Approximate a root of \(f\) using Newton's Method.</p>
-        <p style="text-indent: 2em;">Solution:</p>
-    
+        <h4>Example 1</h4>
+        <p>Find the smallest positive real root of \(\cos(x) - x e^x = 0\), correct to three decimal places.</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+        <p>Let \(f(x) = \cos(x) - x e^x\) and \(f'(x) = -\sin(x)-e^x(1+x)\)</p>
+        <p>Let \(x_0=0.5\)</p>
+        <p>To obtain the root correct to three decimal places, the error in the approximation must be less than half a unit in the third decimal place.</p>
+
+        <p>If a number is correct to three decimal places, then rounding will not change its value provided the error is less than</p>
+
+        \[
+        \frac{1}{2}\times 10^{-3} = 5\times 10^{-4}.
+        \]
+
+        <p>Since the exact root is unknown, the absolute error \(|x - \alpha|\) cannot be computed directly. Hence, we use the difference between successive approximations as an estimate of the error. Therefore, we require</p>
+
+        \[
+        |x_{n+1} - x_n| \le 5\times 10^{-4},
+        \]
+
+        <p>which ensures that the approximation is accurate to three decimal places.</p>
+        <p>Newton-Raphson method approximation formula,</p>
+        \[
+            x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \quad n \geq 0
+        \]
+        <p><strong>Iteration 1</strong></p>
+        \[
+            x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}
+        \]
+        \[
+            f(x_0)=f(0.5)=\cos(0.5)-0.5e^{0.5}\approx 0.0532219
+        \]
+        \[
+            f'(x_0)=f'(0.5)=-\sin(0.5)-e^{0.5}(1+0.5)\approx -2.9525074
+        \]
+        \[
+            x_1 = 0.5 - \frac{0.0532219}{-2.9525074}\approx 0.5180260
+        \]
+        \[
+            |x_1-x_0|=|0.5180260-0.5|\approx 0.0180260
+        \]
+
+        <p><strong>Iteration 2</strong></p>
+        \[
+            x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}
+        \]
+        \[
+            f(x_1)=f(0.5180260)=\cos(0.5180260)-(0.5180260)e^{0.5180260}\approx -8.174369\times 10^{-4}
+        \]
+        \[
+            f'(x_1)=f'(0.5180260)=-\sin(0.5180260)-e^{0.5180260}(1+0.5180260)\approx -3.0434925
+        \]
+        \[
+            x_2 = 0.5180260 - \frac{-8.174369\times 10^{-4}}{-3.0434925}\approx 0.5177574
+        \]
+        \[
+            |x_2-x_1|=|0.5177574-0.5180260|\approx 2.6859\times 10^{-4}
+        \]
+
+        <p>Since</p>
+        \[
+        |x_2-x_1| \approx 2.6859\times 10^{-4} < 5\times 10^{-4},
+        \]
+        <p>the approximation is correct to three decimal places. Therefore, the smallest positive real root is</p>
+        \[
+        x \approx 0.518.
+        \]
+        <h4>Example 2</h4>
+        <p>Use Newton-Raphson method to find a root of \(f(x) = x e^x\), \(x_0 = 2\).</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+
+        <h4>Example 3</h4>
+        <p>Use Newton-Raphson method to find a root of \(f(x) = x^3 - x - 3\), \(x_0 = 0\).</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+
+        <h4>Example 4</h4>
+        <p>Use Newton-Raphson method to find a root of \(f(x) =\tan^{-1}{(x)}\), \(x_0 = 1.45\).</p>
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
     </div>
 </body>
 </html>

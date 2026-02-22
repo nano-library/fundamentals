@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Decimal Machine Numbers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="root-finding-methods.html" rel="prev">\(\leftarrow\) Root Finding Methods</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="secant-method.html" rel="next">Secant Method \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Decimal Machine Numbers</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>
+        The use of binary digits tends to conceal the computational difficulties that occur 
+        when a finite collection of machine numbers is used to represent all the real numbers. 
+        </p>
+        <p>
+        To examine these problems, we will use more familiar decimal numbers instead of binary 
+        representation. Specifically, we assume that machine numbers are represented in the 
+        normalized <em>decimal</em> floating-point form
+        </p>
+
+        \[
+            \pm 0.d_1 d_2 \ldots d_k \times 10^n,
+            \qquad
+            1 \le d_1 \le 9,
+            \quad
+            0 \le d_i \le 9
+        \]
+
+        <p>for each \( i = 2, \ldots, k \).</p>
+        <p> Numbers of this form are called <em>k-digit decimal machine numbers</em>.</p>
+
+        <p>
+        Any positive real number within the numerical range of the machine can be normalized 
+        to the form
+        </p>
+
+        \[
+        y = 0.d_1 d_2 \ldots d_k d_{k+1} d_{k+2} \ldots \times 10^n.
+        \]
+
+        <p>
+        The floating-point form of \( y \), denoted \( fl(y) \), is obtained by terminating 
+        the mantissa of \( y \) at \( k \) decimal digits. There are two common ways of 
+        performing this termination.
+        </p>
+
+        <p>
+        One method, called <strong>chopping</strong>, is to simply remove the digits 
+        \( d_{k+1}, d_{k+2}, \ldots \). This produces the floating-point form
+        </p>
+
+        \[
+        fl(y) = 0.d_1 d_2 \ldots d_k \times 10^n.
+        \]
+
+        <p>
+        The other method, called <strong>rounding</strong>, adds 
+        \( 5 \times 10^{-(k+1)} \) to \( y \) and then chops the result to obtain a number 
+        of the form
+        </p>
+
+        \[
+        fl(y) = 0.\delta_1 \delta_2 \ldots \delta_k \times 10^n.
+        \]
+
+        <p>
+        For rounding, when \( d_{k+1} \ge 5 \), we add 1 to \( d_k \) to obtain \( fl(y) \); 
+        that is, we <em>round up</em>. When \( d_{k+1} < 5 \), we simply chop off all but the 
+        first \( k \) digits; so we <em>round down</em>. If we round down, then 
+        \( \delta_i = d_i \) for each \( i = 1,2,\ldots,k \). However, if we round up, the 
+        digits (and even the exponent) might change.
+        </p>
+
+        
+
+    </div>
+</body>

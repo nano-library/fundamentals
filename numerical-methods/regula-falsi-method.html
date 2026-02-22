@@ -41,19 +41,103 @@
         <p>The steps of the Regular-Falsi method are as follows:</p>
         <p style="text-indent: 2em;">1. <strong>Initial Points</strong></p> 
         <p>Choose initial approximations \(x_0\) and \(x_1\) with \(f(x_0) \cdot f(x_1) < 0\).</p>
-        <p style="text-indent: 2em;">2. <strong>Compute the Interpolated Point</strong></strong></p>
-        <p>The next approximations \(x_n\) are chosen in the same manner as in the Secant method.</p>
+        <p style="text-indent: 2em;">2. <strong>Compute the Interpolated Point</strong></p>
+        <p>The next approximation is chosen using the same formula as the Secant method (the line through the two bracket endpoints).</p>
         \[
-            x_n = b - \frac{f(b) \cdot (b-a)}{f(b) - f(a)}
+            x_{n+1}=x_n - f(x_n)\,\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}.
         \]
         <p style="text-indent: 2em;">3. <strong>Update the Intervals</strong></p>
-        <p style="text-indent: 4em;">- If \(f(x_n) \cdot f(a) < 0\), set the interval to \([a, x_n]\)</p>
-        <p style="text-indent: 4em;">- If \(f(x_n) \cdot f(b) < 0\), set the interval to \([x_n, b]\)</p>
+        <p style="text-indent: 4em;">- If \(f(x_{n+1}) \cdot f(x_{n-1}) < 0\), set the interval to \([x_{n-1}, x_{n+1}]\)</p>
+        <p style="text-indent: 4em;">- If \(f(x_{n+1}) \cdot f(x_n) < 0\), set the interval to \([x_{n+1}, x_n]\)</p>
         <p style="text-indent: 2em;">4. <strong>Iteration</strong></p>
-        <p>Repeat steps 2 and 3 until the solution coverges to a desired accuracy level.</p>
+        <p>Repeat steps 2 and 3 until the solution converges to a desired accuracy level.</p>
 
-        <h4>Example:</h4>
-        <p>Use the method of False Position to find a solution to \(x = \cos{x}-x\), with initial approximations \(x_0 = 0.5\) and \(x_1 = \frac{\pi}{4}\).</p>
-        <p style="text-indent: 2em;">Solution:</p>
+        <hr style="border: 0.1px dashed;">
+
+        <h4>Example 1</h4>
+        <p>Find the smallest positive real root of \(\cos(x) - x e^x = 0\), correct to three decimal places.</p>
+
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+        <p>Let \(x_0=0.5,\; x_1=0.6\)</p>
+        <p>Let \(f(x) = \cos(x) - x e^x\)</p>
+
+        \[
+            f(0.5)=\cos(0.5)-0.5e^{0.5}\approx 0.0532219
+        \]
+        \[
+            f(0.6)=\cos(0.6)-0.6e^{0.6}\approx -0.2679357
+        \]
+
+        <p>Hence, a root lies in \([0.5,\,0.6]\).</p>
+
+        <p>To obtain the root correct to three decimal places, the error in the approximation must be less than half a unit in the third decimal place.</p>
+
+        <p>If a number is correct to three decimal places, then rounding will not change its value provided the error is less than</p>
+
+        \[
+        \frac{1}{2}\times 10^{-3} = 5\times 10^{-4}.
+        \]
+
+        <p>Since the exact root is unknown, the absolute error \(|x - \alpha|\) cannot be computed directly. Hence, we use the difference between successive approximations as an estimate of the error. Therefore, we require</p>
+
+        \[
+        |x_{n+1} - x_n| \le 5\times 10^{-4},
+        \]
+
+        <p>which ensures that the approximation is accurate to three decimal places.</p>
+
+        <p>The Regular-Falsi (False Position) iterate uses the secant line through the current bracket endpoints.</p>
+        \[
+            x_{n+1}=x_n - f(x_n)\,\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}.
+        \]
+
+        <p><strong>Iteration 1</strong></p>
+        \[
+            x_2 = x_1 - f(x_1)\,\frac{x_1-x_{0}}{f(x_1)-f(x_{0})}
+        \]
+        \[
+            x_2 = 0.6 - (-0.2679357)\frac{0.6-0.5}{-0.2679357-0.0532219}
+        \]
+        \[
+            x_2 = \approx 0.5165719
+        \]
+        \[
+            f(x_2)=f(0.5165719)\approx 3.60274\times 10^{-3} > 0
+        \]
+
+        <p>Update the bracket:</p>
+        \[
+            f(x_2)\cdot f(x_0) > 0,\qquad f(x_2)\cdot f(x_1) < 0
+        \]
+        <p>So the new interval is \([x_2,\,x_1]=[0.5165719,\,0.6]\).</p>
+
+        <p><strong>Iteration 2</strong></p>
+        \[
+            x_3 = x_2 - f(x_2) \cdot \frac{x_2-x_1}{f(x_2)-f(x_1)}
+            \approx 0.5176788
+        \]
+        \[
+            f(x_3)=f(0.5176788)\approx 2.38932\times 10^{-4} > 0
+        \]
+
+        <p>Update the bracket:</p>
+        \[
+            f(x_3)\cdot f(x_2) > 0,\qquad f(x_3)\cdot f(x_1) < 0
+        \]
+        <p>So the new interval is \([x_3,\,x_1]=[0.5176788,\,0.6]\).</p>
+
+        <p><strong>Iteration 3</strong></p>
+        \[
+            x_4 = x_3 - f(x_3)\,\frac{x_3-x_1}{f(x_3)-f(x_1)}
+            \approx 0.5177522
+        \]
+        \[
+            |x_4-x_3|\approx 7.33\times 10^{-5} < 5\times 10^{-4}
+        \]
+
+        <p>Therefore, the smallest positive root correct to three decimal places is</p>
+        \[
+            x \approx 0.518.
+        \]
     </div>
 </body>

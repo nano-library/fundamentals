@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chopping and Rounding</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+     <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="floating-points.html" rel="prev">\(\leftarrow\) Floating Point System</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="error-in-computer-representation.html" rel="next">Error in Computer Representation \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Chopping and Rounding</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>
+            Because a computer has only a finite amount of storage, most real numbers cannot be represented exactly. Instead, a real number must be replaced by a nearby number that belongs to the floating-point system.
+            This replacement is achieved by truncating the number so that it fits within the allowed precision.
+        </p>
+
+        <p>There are two standard methods for doing this: <strong>chopping</strong> and <strong>rounding</strong>.</p>
+
+        <h3>Real Number Representation</h3>
+
+        <p>Consider a real number of the form:</p>
+
+        \[
+        x = s \cdot (.a_1 a_2 \ldots a_t a_{t+1} \ldots )_\beta \cdot \beta^e,
+        \qquad a_1 \ne 0,
+        \]
+
+        <p>where the fractional expansion may contain infinitely many digits.</p>
+        <p>Let \(fl : \mathbb{R} \to F\) denote the mapping that assigns to each real number its floating-point approximation. </p>
+
+        \[
+        fl(x) = \text{approximation of } x \in \mathbb{R}
+        \text{ in the floating-point system}.
+        \]
+
+        <h3>Chopped Machine Representation</h3>
+
+        <p>
+            In chopping, all digits beyond the first \(t\) fractional digits are discarded.
+        </p>
+
+        \[
+        fl(x) = s \cdot (.a_1 a_2 \ldots a_t)_\beta \cdot \beta^e.
+        \]
+
+        <h3>Rounded Machine Representation</h3>
+
+        <p>
+            In rounding, the number is replaced by the nearest floating-point number.
+            The decision depends on the digit \(a_{t+1}\).
+        </p>
+
+        \[
+        fl(x) =
+        \begin{cases}
+        s \cdot \big[(.a_1 a_2 \ldots a_t)_\beta + (0.00\ldots1)_\beta\big] \cdot \beta^e,
+        & \text{if } a_{t+1} > \frac{\beta}{2}, \\[6pt]
+        s \cdot \big[(.a_1 a_2 \ldots a_t)_\beta + (0.00\ldots1)_\beta\big] \cdot \beta^e,
+        & \text{if } a_{t+1} = \frac{\beta}{2} \text{ and some } a_{t+s} > 0,\, s \ge 2, \\[6pt]
+        s \cdot (.a_1 a_2 \ldots a_t)_\beta \cdot \beta^e,
+        & \text{otherwise}.
+        \end{cases}
+        \]
+
+        <p>
+            Thus, rounding selects the closest floating-point number,
+            whereas chopping simply removes the extra digits.
+        </p>
+
+        <hr style="border: 0.1px dashed;">
+
+        <h4>Example 1</h4>
+        <p>
+        Determine the five-digit (a) chopping and (b) rounding values of the irrational number \( \pi \).
+        </p>
+
+        <p style="text-indent: 2em;"><strong>Solution:</strong></p>
+
+        <p>
+        The number \( \pi \) has an infinite decimal expansion:
+        \[
+            \pi = 3.14159265\ldots
+        \]
+        Written in normalized decimal form:
+        \[
+            \pi = 0.314159265\ldots \times 10^1.
+        \]
+        </p>
+
+        <p><strong>(a) Five-digit chopping</strong></p>
+        <p>
+        Chopping means we keep only the first five digits of the mantissa and discard the rest:
+        \[
+            0.314159265\ldots \longrightarrow 0.31415.
+        \]
+        Therefore,
+        \[
+            fl(\pi) = 0.31415 \times 10^1 = 3.1415.
+        \]
+        </p>
+
+        <p><strong>(b) Five-digit rounding</strong></p>
+        <p>
+        For rounding, we look at the digit immediately after the fifth mantissa digit.
+        Since
+        \[
+            0.31415\underline{9}265\ldots
+        \]
+        has sixth digit \(9 \ge 5\), we round up. \(\left(a_6 > \frac{\beta}{2}\right)\)
+        </p>
+
+        <p>
+        When rounding to <em>five digits</em>, rounding up increases the fifth digit by one, which is equivalent to adding
+        \[
+            10^{-5} = 0.00001
+        \]
+        to the mantissa:
+        \[
+            0.31415 + 0.00001 = 0.31416.
+        \]
+        </p>
+
+        <p>
+        Hence the five-digit rounded floating-point value is:
+        \[
+            fl(\pi) = 0.31416 \times 10^1 = 3.1416.
+        \]
+        </p>
+    </div>
+</body>
