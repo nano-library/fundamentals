@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cholesky's Decomposition</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="crout-decomposition.html" rel="prev">\(\leftarrow\) Crout's Factorization</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href=".html" rel="next"> \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Cholesky's Decomposition</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>\(LDV\) Decomposition</h4>
+        <p>Consider</p>
+        \[
+            U =
+            \begin{bmatrix}
+                u_{11} & u_{12} \\
+                0 & u_{22}
+            \end{bmatrix},
+            \quad
+            |U| = u_{11}u_{22}
+        \]
+        <p>Let</p>
+        \[
+            D = 
+            \begin{bmatrix}
+                u_{11} & 0 \\
+                0 & u_{22}
+            \end{bmatrix},
+            \quad
+            |D| = u_{11}u_{22}
+        \]
+        \[
+            V = D^{-1}U
+        \]
+        \[
+            V = \frac{1}{u_{11}u_{22}}
+            \begin{bmatrix}
+                u_{22} & 0 \\
+                0 & u_{11}
+            \end{bmatrix}
+            \begin{bmatrix}
+                u_{11} & u_{12} \\
+                0 & u_{22}
+            \end{bmatrix}
+        \]
+        \[
+            V = 
+            \begin{bmatrix}
+                1 & \frac{u_{12}}{u_{11}} \\
+                0 & 1
+            \end{bmatrix}
+        \]
+        \[
+            V = D^{-1}U
+        \]
+        \[
+            U = DV
+        \]
+        \[
+            A = LU = LDV
+        \]
+        <p>where</p>
+        <p style="text-indent: 2em;">\(L\) is a unit lower trianglar</p>
+        <p style="text-indent: 2em;">\(D\) is a diagonal matrix</p>
+        <p style="text-indent: 2em;">\(V\) is a unit upper trianglar</p>
+    
+        <strong>Case 1</strong>
+        <p>If \(A\) is symmetric, \(A = A^{-1}\)</p>
+        \[
+            LDV = (LDV)^{T}
+        \]
+        \[
+            LDV = V^TD^TL^T
+        \]
+        \[
+            \boxed{LDV = V^TDL^T}
+        \]
+        \[
+            L = V^T \quad \text{and} \quad V = L^T
+        \]
+        \[
+            \boxed{A = LDV = LDL^T = V^TDV}
+        \]
+        <strong>Case 2</strong>
+        <p>If \(A\) is positive definite</p>
+        \[
+            Ax = \lambda x, \quad x \ne 0
+        \]
+        \[
+            x^TAx > 0, \quad x = 
+            \begin{bmatrix}
+                x_1 \\
+                x_2
+            \end{bmatrix}
+        \]
+        \[
+            x^TAx = x^T(\lambda x) = \lambda x^T x = \lambda \sum_{i=1}^n x_i^2
+        \]
+        \[
+            \lambda_i > 0, \quad i =1,2,\ldots, n
+        \]
+        <p>From case 1 and case 2</p>
+        \[
+            A = LDL^T, \quad d_{ii}, \quad i=1,2,\ldots,n
+        \]
+        <p>Define</p>
+        \[
+            D^{\frac{1}{2}} = 
+            \begin{bmatrix}
+                \sqrt{d_{11}} & \ldots & 0 \\
+                0 & \sqrt{d_{22}} & 0 \\
+                \ddots \\
+                0 & \ldots & \sqrt{d_{nn}}
+            \end{bmatrix}_{n \times n}
+        \]
+        <p>such that</p>
+        \[
+            D^{\frac{1}{2}}D^{\frac{1}{2}} = D
+        \]
+        \[
+            A = LDL^T = LD^{\frac{1}{2}}D^{\frac{1}{2}}L^T
+        \]
+        <p>Let</p>
+        \[
+            G = LD^{\frac{1}{2}}
+        \]
+        \[
+            G^T = (LD^{\frac{1}{2}})^T = D^{\frac{1}{2}}L^T
+        \]
+        \[
+            \boxed{A = GG^T}
+        \]
+        <p>This is Cholesky's decomposition.</p>
+        <h4>Note:</h4>
+        <p>If all the principal minors are non-zero. The \(A\) is positive definite.</p>
+    </div>
+</body>
+</html>

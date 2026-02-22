@@ -15,11 +15,11 @@
 <body>
     <div id="navigation">
         <nav class="concept-nav" aria-label="Concept navigation">
-            <a class="nav-btn prev" href="doolittle-factorisation.html" rel="prev">\(\leftarrow\) Doolittle Factorization</a>
+            <a class="nav-btn prev" href="doolittle-factorisation.html" rel="prev">\(\leftarrow\) Doolittle's Factorization</a>
 
             <a class="nav-btn home" href="list-of-contents.html">Contents</a>
 
-            <a class="nav-btn next" href=".html" rel="next"> \(\rightarrow\)</a>
+            <a class="nav-btn next" href="cholesky-decomposition.html" rel="next">Cholesky's Decomposition \(\rightarrow\)</a>
         </nav>
     </div>
     <div id="title">
@@ -33,18 +33,209 @@
         <p>where, \(U\) is a unit upper trianglar matrix, \(|U| = 1\) and \(L\) is lower trianglar matrix, \(|L| = \ell_{11}\ell_{22} \ldots \ell_{nn} \ne 0\).</p>
 
         <hr style="border: 0.1px dashed;">
+
         <h4>Example 1</h4>
-        <p>Find the Crout's Decomposition of the following matrix.</p>
+        <p>Find the <strong>Crout's Decomposition</strong> of the following matrix.</p>
+
         \[
-            A =
-            \begin{bmatrix}
-                6  & -2  & 2 & 4  \\
-                12 & -8  & 6 & 10 \\
-                3  & -13 & 9 & 3  \\
-                -6 & 4   & 1 & -18
-            \end{bmatrix}
+        A=
+        \begin{bmatrix}
+        6  & -2  & 2 & 4  \\
+        12 & -8  & 6 & 10 \\
+        3  & -13 & 9 & 3  \\
+        -6 & 4   & 1 & -18
+        \end{bmatrix}
         \]
+
         <p style="text-indent: 2em;"><strong>Solution</strong></p>
+
+        <p>In <strong>Crout's</strong> factorization, we write</p>
+        \[
+        A = LU
+        \]
+        <p>where \(L\) is lower triangular (with <em>non-unit</em> diagonal) and \(U\) is upper triangular with <em>unit diagonal</em>.</p>
+
+        \[
+        A=
+        \begin{bmatrix}
+        \ell_{11} & 0 & 0 & 0\\
+        \ell_{21} & \ell_{22} & 0 & 0\\
+        \ell_{31} & \ell_{32} & \ell_{33} & 0\\
+        \ell_{41} & \ell_{42} & \ell_{43} & \ell_{44}
+        \end{bmatrix}
+        \begin{bmatrix}
+        1 & u_{12} & u_{13} & u_{14}\\
+        0 & 1 & u_{23} & u_{24}\\
+        0 & 0 & 1 & u_{34}\\
+        0 & 0 & 0 & 1
+        \end{bmatrix}
+        \]
+
+        \[
+        {\tiny
+        LU=
+        \begin{bmatrix}
+        \ell_{11} &
+        \ell_{11}u_{12} &
+        \ell_{11}u_{13} &
+        \ell_{11}u_{14}\\
+
+        \ell_{21} &
+        \ell_{21}u_{12}+\ell_{22} &
+        \ell_{21}u_{13}+\ell_{22}u_{23} &
+        \ell_{21}u_{14}+\ell_{22}u_{24}\\
+
+        \ell_{31} &
+        \ell_{31}u_{12}+\ell_{32} &
+        \ell_{31}u_{13}+\ell_{32}u_{23}+\ell_{33} &
+        \ell_{31}u_{14}+\ell_{32}u_{24}+\ell_{33}u_{34}\\
+
+        \ell_{41} &
+        \ell_{41}u_{12}+\ell_{42} &
+        \ell_{41}u_{13}+\ell_{42}u_{23}+\ell_{43} &
+        \ell_{41}u_{14}+\ell_{42}u_{24}+\ell_{43}u_{34}+\ell_{44}
+        \end{bmatrix}
+        }
+        \]
+
+        <p>Comparing entries with \(A\), we compute the unknowns in order.</p>
+
+        <p><strong>Step 1: First row</strong></p>
+        \[
+        a_{11}=\ell_{11}\implies \ell_{11}=6
+        \]
+        \[
+        a_{12}=\ell_{11}u_{12}\implies u_{12}=\frac{a_{12}}{\ell_{11}}=\frac{-2}{6}=-\frac{1}{3}
+        \]
+        \[
+        a_{13}=\ell_{11}u_{13}\implies u_{13}=\frac{a_{13}}{\ell_{11}}=\frac{2}{6}=\frac{1}{3}
+        \]
+        \[
+        a_{14}=\ell_{11}u_{14}\implies u_{14}=\frac{a_{14}}{\ell_{11}}=\frac{4}{6}=\frac{2}{3}
+        \]
+
+        <p><strong>Step 2: First column</strong></p>
+        \[
+        a_{21}=\ell_{21}\implies \ell_{21}=12
+        \qquad
+        a_{31}=\ell_{31}\implies \ell_{31}=3
+        \qquad
+        a_{41}=\ell_{41}\implies \ell_{41}=-6
+        \]
+
+        <p><strong>Step 3: Second column of \(L\) and second row of \(U\)</strong></p>
+        \[
+        a_{22}=\ell_{21}u_{12}+\ell_{22}\implies
+        \ell_{22}=a_{22}-\ell_{21}u_{12}
+        \]
+        \[
+        \ell_{22}=-8-12\left(-\frac{1}{3}\right)=-8+4=-4
+        \]
+
+        \[
+        a_{23}=\ell_{21}u_{13}+\ell_{22}u_{23}\implies
+        u_{23}=\frac{a_{23}-\ell_{21}u_{13}}{\ell_{22}}
+        \]
+        \[
+        u_{23}=\frac{6-12\left(\frac{1}{3}\right)}{-4}
+        =\frac{6-4}{-4}
+        =\frac{2}{-4}
+        =-\frac{1}{2}
+        \]
+
+        \[
+        a_{24}=\ell_{21}u_{14}+\ell_{22}u_{24}\implies
+        u_{24}=\frac{a_{24}-\ell_{21}u_{14}}{\ell_{22}}
+        \]
+        \[
+        u_{24}=\frac{10-12\left(\frac{2}{3}\right)}{-4}
+        =\frac{10-8}{-4}
+        =\frac{2}{-4}
+        =-\frac{1}{2}
+        \]
+
+        <p><strong>Step 4: Third column of \(L\) and \(u_{34}\)</strong></p>
+        \[
+        a_{32}=\ell_{31}u_{12}+\ell_{32}\implies
+        \ell_{32}=a_{32}-\ell_{31}u_{12}
+        \]
+        \[
+        \ell_{32}=-13-3\left(-\frac{1}{3}\right)=-13+1=-12
+        \]
+
+        \[
+        a_{33}=\ell_{31}u_{13}+\ell_{32}u_{23}+\ell_{33}\implies
+        \ell_{33}=a_{33}-\left(\ell_{31}u_{13}+\ell_{32}u_{23}\right)
+        \]
+        \[
+        \ell_{33}=9-\left(3\cdot\frac{1}{3}+(-12)\cdot\left(-\frac{1}{2}\right)\right)
+        =9-(1+6)=2
+        \]
+
+        \[
+        a_{34}=\ell_{31}u_{14}+\ell_{32}u_{24}+\ell_{33}u_{34}\implies
+        u_{34}=\frac{a_{34}-\left(\ell_{31}u_{14}+\ell_{32}u_{24}\right)}{\ell_{33}}
+        \]
+        \[
+        u_{34}=\frac{3-\left(3\cdot\frac{2}{3}+(-12)\cdot\left(-\frac{1}{2}\right)\right)}{2}
+        =\frac{3-(2+6)}{2}
+        =\frac{-5}{2}
+        =-\frac{5}{2}
+        \]
+
+        <p><strong>Step 5: Finish last row of \(L\)</strong></p>
+        \[
+        a_{42}=\ell_{41}u_{12}+\ell_{42}\implies
+        \ell_{42}=a_{42}-\ell_{41}u_{12}
+        \]
+        \[
+        \ell_{42}=4-(-6)\left(-\frac{1}{3}\right)=4-2=2
+        \]
+
+        \[
+        a_{43}=\ell_{41}u_{13}+\ell_{42}u_{23}+\ell_{43}\implies
+        \ell_{43}=a_{43}-\left(\ell_{41}u_{13}+\ell_{42}u_{23}\right)
+        \]
+        \[
+        \ell_{43}=1-\left((-6)\cdot\frac{1}{3}+2\cdot\left(-\frac{1}{2}\right)\right)
+        =1-(-2-1)=4
+        \]
+
+        \[
+        a_{44}=\ell_{41}u_{14}+\ell_{42}u_{24}+\ell_{43}u_{34}+\ell_{44}
+        \implies
+        \ell_{44}=a_{44}-\left(\ell_{41}u_{14}+\ell_{42}u_{24}+\ell_{43}u_{34}\right)
+        \]
+        \[
+        \ell_{44}=-18-\left((-6)\cdot\frac{2}{3}+2\cdot\left(-\frac{1}{2}\right)+4\cdot\left(-\frac{5}{2}\right)\right)
+        \]
+        \[
+        \ell_{44}=-18-\left(-4-1-10\right)=-18-(-15)=-3
+        \]
+
+        <p>Thus, the <strong>Crout decomposition</strong> is</p>
+
+        \[
+        A=LU
+        \]
+
+        \[
+        L=
+        \begin{bmatrix}
+        6 & 0 & 0 & 0\\
+        12 & -4 & 0 & 0\\
+        3 & -12 & 2 & 0\\
+        -6 & 2 & 4 & -3
+        \end{bmatrix},
+        \qquad
+        U=
+        \begin{bmatrix}
+        1 & -\frac{1}{3} & \frac{1}{3} & \frac{2}{3}\\
+        0 & 1 & -\frac{1}{2} & -\frac{1}{2}\\
+        0 & 0 & 1 & -\frac{5}{2}\\
+        0 & 0 & 0 & 1
+        \end{bmatrix}
+        \]
     </div>
 </body>
 </html>
