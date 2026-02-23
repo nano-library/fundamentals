@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Surface-to-Volume Ratio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+          options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+     <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="introduction.html" rel="prev">\(\leftarrow\) Introduction</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="" rel="next"> \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Surface-to-Volume Ratio</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>As particle size decreases, the fraction of atoms located at the surface increases. In nanoscale materials, this effect becomes very pronounced due to the high surface-to-volume ratio.</p>
+        <p>Consequently, the specific surface area increases sharply with decreasing particle size.</p>
+        <p>Volume scales with \(r^3\) and surface scales with \(r^2\)</p>
+        <h4>Example</h4>
+        <p>In a ~\(2\) nm platinum nanoparticle, more than \(50%\) of the atoms are located at the surface or interface.</p>
+        <p>In bulk materials composed of nanoscale grains (such as nanocrystalline ceramics and metals), Mechanical properties are strongly influenced by the grain size.</p>
+        <p>Surface atoms have fewer neighboring atoms compared to atoms in the bulk. Due to the coordination, surface atoms possess higher energy and exhibit greater chemical reactivity.</p>
+        <p>This enhanced surface activity leads to <em>lowering of the melting point</em>, <em>formation of thermodynamically stable intermediate phases</em>, and significantly increased <em>catalytic activity of the material</em></p>
+        
+        <h4>Surface Energy Dominance</h4>
+        <strong>Why surface energy dominates in the nano-regime?</strong>
+        <p>The <strong>total free energy (G)</strong> of a material has two major contributions.</p>
+        \[
+            G = G_{\text{bulk}} + \gamma A
+        \]
+        <p>where</p>
+        <p style="text-indent: 1em;">\(gamma\), surface energy \(J m^{-2}\)</p>
+        <p style="text-indent: 1em;">\(A\), surface area</p>
+
+        <p>As particle size decreases, volume scales as \(r^3\) and surface area scales \(r^2\).</p>
+        <p>Therefore, the surface area-to-volume ratio scales as \(~ \frac{1}{r}\)</p>
+    
+        <p>At the nanoscale, the surface term \(\gamma A\) becomes comparable to larger than the bulk free energy, causing surface energy to dominate the material behaviour.</p>
+        
+        <h4 style="text-align:center;">Surface Energy Dominance</h4>
+        <p>
+            When surface energy becomes dominant, matter begins to behave less like a bulk solid and more like a congregation of restless boundaries. 
+        </p>
+        <p style="text-indent: 2em;">Thermodynamically, a large fraction of high energy surface atoms increases the surface contribution to the total free energy, which reduces overall stability and can even stabilize metastable or intermediate phases that would otherwise disappear in bulk systems. </p>
+        <p style="text-indent: 2em;">Thermally, weakly coordinated surface atoms possess lower cohesive binding, so the melting point decreases according to the Gibbs-Thomson effect, while enhanced surface diffusion makes sintering and coalescence easier. </p>
+        <p style="text-indent: 2em;">Chemically, unsaturated surface bonds combined with a high density of active sites elevate reactivity and promote stronger adsorption of molecules.</p>
+        <p style="text-indent: 2em;">Catalytically, the presence of more exposed atoms and edge sites increases activity, and facet dependent surface energy introduces selectivity by favoring particular reaction pathways.</p>
+        <p style="text-indent: 2em;">Mechanically, when interfaces and grain boundaries occupy a significant volume fraction, their influence rivals or surpasses that of the crystal interior. High grain boundary volume leads to grain size dependent strengthening, as described by the Hall-Petch relationship, where yield strength typically scales with the inverse square root of grain size. However, when grains shrink to the nanometer regime, interface dominance can invert this trend, producing the inverse Hall-Petch effect due to grain boundary sliding and diffusion controlled mechanisms.</p>
+        <p style="text-indent: 2em;"> In short, high surface energy shifts control from the interior to the interface, altering thermodynamic stability, melting behavior, reactivity, catalytic performance, and mechanical strength in a tightly coupled and scale dependent manner.</p>
+
+        
+    </div>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tr>
+                <th>Property Category</th>
+                <th>Effect of High Surface Energy</th>
+                <th>Resulting Property Variation</th>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><b>Thermodynamic</b></td>
+                <td>Large fraction of high-energy surface atoms</td>
+                <td>Reduced thermodynamic stability</td>
+            </tr>
+            <tr>
+                <td>Increased surface contribution to free energy</td>
+                <td>Stabilization of metastable / intermediate phases</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><b>Thermal</b></td>
+                <td>Weakly coordinated surface atoms</td>
+                <td>Lower melting point (Gibbs–Thomson effect)</td>
+            </tr>
+            <tr>
+                <td>Enhanced surface diffusion</td>
+                <td>Easier sintering and coalescence</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><b>Chemical Reactivity</b></td>
+                <td>Unsaturated surface bonds</td>
+                <td>Increased chemical reactivity</td>
+            </tr>
+            <tr>
+                <td>High density of active sites</td>
+                <td>Enhanced adsorption of molecules</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><b>Catalytic</b></td>
+                <td>More exposed surface atoms and edges</td>
+                <td>Higher catalytic activity</td>
+            </tr>
+            <tr>
+                <td>Facet-dependent surface energy</td>
+                <td>Selective reaction pathways</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><b>Mechanical</b></td>
+                <td>High grain boundary volume</td>
+                <td>Grain-size-dependent strengthening</td>
+            </tr>
+            <tr>
+                <td>Dominance of interfaces</td>
+                <td>Inverse Hall-Petch effect at very small grain sizes</td>
+            </tr>
+        </table>
+</body>
+</html>
