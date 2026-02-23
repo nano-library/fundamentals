@@ -26,7 +26,7 @@
         </nav>
     </div>
     <div id="title">
-        <h1>Floating Point System (\(F\))</h1>
+        <h1>Floating Point System (\(\mathbb{F}\))</h1>
         <hr>
     </div>
     <div id="chapter">
@@ -38,9 +38,7 @@
 
         <h4>The general form (base \(\beta\) )</h4>
 
-        <p>
-            Using base \(\beta\), any non-zero number \(x\) in a floating-point system is written as
-        </p>
+        <p>Using base \(\beta\), any non-zero number \(x\) in a floating-point system is written as</p>
 
         \[
             x = s \cdot (.a_1a_2\ldots a_t )_\beta \cdot \beta^{\,e}
@@ -57,18 +55,15 @@
             <li>\(L \le e \le U\), with \(e\) an integer and typically \(L&lt;0&lt;U\)</li>
         </ul>
 
-        <h3>What does the “fractional part” mean?</h3>
+        <h4>What does the “fractional part” mean?</h4>
 
-        <p>
-            The string \((.a_1a_2\ldots a_t)_\beta\) is just shorthand for a finite base-\(\beta\) expansion:
-        </p>
+        <p>The string \((.a_1a_2\ldots a_t)_\beta\) is just shorthand for a finite base-\(\beta\) expansion:</p>
 
         \[
-            (.a_1a_2\ldots a_t)_\beta
-            = \frac{a_1}{\beta} + \frac{a_2}{\beta^2} + \cdots + \frac{a_t}{\beta^t}
+            (.a_1a_2\ldots a_t)_\beta = \frac{a_1}{\beta} + \frac{a_2}{\beta^2} + \cdots + \frac{a_t}{\beta^t}
         \]
 
-        <h3>Normalization</h3>
+        <h4>Normalization</h4>
         <p>
             We usually assume \(a_1 \ne 0\). That condition is called a normalized floating-point system.
             The normalization condition ensures uniqueness of representation by preventing 
@@ -76,7 +71,7 @@
             such as those obtained by introducing leading zeros in the fractional part.
         </p>
 
-        <h3>How we name a floating-point system</h3>
+        <h4>How we name a floating-point system</h4>
 
         <p>The parameters \((\beta, t, L, U)\) specify the arithmetic characteristics of the floating-point system:</p>
 
@@ -91,11 +86,12 @@
         <p>On modern computers, the base \(\beta = 2\), i.e., we use the binary number system. There are only two digits, \({0, 1}\), which can be easily represented in computer hardware</p>
 
         <h4>Two unavoidable consequences</h4>
+        <p>Since we have finite memory for each number, \(x \in \mathbb{F}\),</p>
         <ol>
             <li>
             <strong>Not every real number can be represented.</strong>
             <ul>
-                <li>So there are <em>gaps</em> in \(F\).</li>
+                <li>So there are <em>gaps</em> in \(\mathbb{F}\).</li>
             </ul>
             </li>
             <li>

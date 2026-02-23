@@ -28,26 +28,19 @@
         <hr>
     </div>
     <div id="chapter">
-        <p>
-            In the bisection method, after \(n\) iterations, the error satisfies
-        </p>
+        <p> In the bisection method, after \(n\) iterations, the error satisfies</p>
 
         \[
         |x_n - c| \le \frac{b-a}{2^n}.
         \]
 
-        <p>
-            To guarantee accuracy within a prescribed tolerance \(\epsilon\),
-            we require
-        </p>
+        <p>To guarantee accuracy within a prescribed tolerance \(\epsilon\),we require</p>
 
         \[
         \frac{b-a}{2^n} \le \epsilon.
         \]
 
-        <p>
-            Solving for \(n\):
-        </p>
+        <p>Solving for \(n\):</p>
 
         \[
         \frac{b-a}{2^n} = \epsilon
@@ -65,9 +58,7 @@
         n = \frac{\log(b-a) - \log(\epsilon)}{\log(2)}.
         \]
 
-        <p>
-            Since \(n\) must be an integer, we take the smallest integer greater than or equal to this value.
-        </p>
+        <p>Since \(n\) must be an integer, we take the smallest integer greater than or equal to this value.</p>
 
         <h4>Example 1</h4>
 
@@ -83,17 +74,13 @@
 
         <p style="text-indent: 2em;"><strong>Solution</strong></p>
 
-        <p>
-            Here, \(a=0\), \(b=1\), so \(b-a = 1\).
-        </p>
+        <p>Here, \(a=0\), \(b=1\), so \(b-a = 1\).</p>
 
         \[
         n = \frac{\log(1) - \log(10^{-3})}{\log(2)}.
         \]
 
-        <p>
-            Since \(\log(1)=0\) and \(\log(10^{-3}) = -3\) (base 10),
-        </p>
+        <p>Since \(\log(1)=0\) and \(\log(10^{-3}) = -3\) (base 10),</p>
 
         \[
         n = \frac{0 - (-3)}{\log(2)}

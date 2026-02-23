@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Revision Sheet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Revision Sheet</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>Floating Point System (\(\mathbb{F}\))</h4>
+        <p>Using base \(\beta\), any non-zero number \(x\) in a floating-point system is written as</p>
+
+        \[
+            x = s \cdot (.a_1a_2\ldots a_t )_\beta \cdot \beta^{\,e}
+        \]
+        \[
+            x = (\text{sign})\cdot(\text{fractional part})\cdot(\text{exponent})
+        \]
+
+        <h4>Chopping and Rounding</h4>
+
+        <p><strong>Chopping:</strong> Just drop everything after \(t\) digits.</p>
+
+        \[
+        fl(x) = s \cdot (.a_1 \ldots a_t)_\beta \cdot \beta^e
+        \]
+
+        <p><strong>Rounding:</strong> Add one unit in the last place (ULP) only if the tail is at least half.</p>
+
+        \[
+        fl(x) = s \cdot \Big( (.a_1 \ldots a_t)_\beta + \delta \Big) \cdot \beta^e
+        \]
+
+        \[
+        \delta =
+        \begin{cases}
+        (0.00\ldots1)_\beta, & \text{if } a_{t+1} > \frac{\beta}{2} \\
+        (0.00\ldots1)_\beta, & \text{if tie and further digits } \neq 0 \\
+        0, & \text{otherwise}
+        \end{cases}
+        \]
+
+        <h4>Error In Computer Representation</h4>
+        <p>Suppose that \(x^*\) is an approximation to \(x\).</p>
+        <p>
+            The 
+            <strong>absolute error</strong> is 
+            \[ 
+                |x - x^*|
+            \]
+            and the <strong>relative error</strong> is
+            \[
+                \frac{|x - x^*|}{|x|}
+            \]
+            provided that \( x \ne 0 \).
+        </p>
+
+        <h4>General Representation (IEEE 754)</h4>
+
+        <p>A normalized floating-point number in IEEE 754 format is represented as</p>
+
+        \[
+        (-1)^{\text{sign}} \times 1.\text{mantissa} \times 2^{\text{exponent} - \text{bias}}
+        \]
+        <ul>
+            <li><strong>Sign bit:</strong> Determines whether the number is positive or negative.</li>
+            <li><strong>Mantissa (Fraction):</strong> Stores the significant digits. In normalized form, the leading 1 is implicit.</li>
+            <li><strong>Exponent:</strong> Stored with a bias to allow representation of both positive and negative exponents.</li>
+        </ul>
+
+        <h4>IEEE Single Precision (32-bit)</h4>
+
+        <ul>
+            <li>32-bit word</li>
+            <li>1 bit for sign</li>
+            <li>8 bits for biased exponent</li>
+            <li>23 bits for fractional part (mantissa)</li>
+        </ul>
+
+        <h4>IEEE Double Precision (64-bit)</h4>
+
+        <ul>
+            <li>64-bit word (or two 32-bit words)</li>
+            <li>1 bit for sign</li>
+            <li>11 bits for biased exponent</li>
+            <li>52 bits for fractional part (mantissa)</li>
+        </ul>
+
+        <h4>Conversion to IEEE 754 Format</h4>
+        <ul>
+        <li><strong>1. Sign:</strong> 
+            \[
+            s =
+            \begin{cases}
+            0 & \text{if } x \ge 0 \\
+            1 & \text{if } x < 0
+            \end{cases}
+            \]
+        </li>
+
+        <li><strong>2. Convert to binary:</strong> 
+            Write \(x\) in base 2.
+        </li>
+
+        <li><strong>3. Normalize:</strong> 
+            \[
+            x = 1.a_1a_2a_3\ldots \times 2^n
+            \]
+        </li>
+
+        <li><strong>4. Biased exponent:</strong> 
+            \[
+            E = n + \text{Bias}
+            \]
+            (127 single, 1023 double)
+        </li>
+
+        <li><strong>5. Mantissa:</strong> 
+            Store fractional part \(a_1a_2\ldots\)
+            <br>
+            23 bits (single), 52 bits (double)
+        </li>
+        </ul>
+
+        <p><strong>Final form:</strong></p>
+
+        \[
+        (-1)^s \times 1.\text{mantissa} \times 2^{(E - \text{Bias})}
+        \]
+
+        <h4>Decimal to IEEE 754 (Single Precision Example)</h4>
+
+        <p><strong>Example:</strong> Convert \(x = 13.25\)</p>
+
+        <ul>
+        <li><strong>1. Sign:</strong> \(x>0 \Rightarrow s=0\)</li>
+
+        <li><strong>2. Convert to binary:</strong><br>
+            \(13_{10}=1101_2\)<br>
+            \(0.25_{10}=0.01_2\)<br>
+            \[
+            13.25_{10}=1101.01_2
+            \]
+        </li>
+
+        <li><strong>3. Normalize:</strong>
+            \[
+            1101.01_2 = 1.10101_2 \times 2^3
+            \]
+            so \(n=3\)
+        </li>
+
+        <li><strong>4. Biased exponent:</strong>
+            \[
+            E = n + 127 = 3 + 127 = 130
+            \]
+            \[
+            130_{10}=10000010_2
+            \]
+        </li>
+
+        <li><strong>5. Mantissa:</strong>
+            Drop leading 1 → \(10101\)<br>
+            Pad to 23 bits:
+            \[
+            10101000000000000000000
+            \]
+        </li>
+        </ul>
+
+        <p><strong>Final IEEE 754 (32-bit):</strong></p>
+
+        \[
+        \boxed{
+        0\;|\;10000010\;|\;10101000000000000000000
+        }
+        \]
+
+        <h4>Root Finding Methods</h4>
+        <h4 style="text-indent: 1em;">Bisection Method</h4>
+        <ul>
+            <li><strong>Condition:</strong> 
+                \[
+                    f(a) \cdot f(b) < 0
+                \]
+                \(\implies\) there exists root in \([a,b]\)
+            </li>
+            <li><strong>Iteration:</strong>
+                \[
+                    x_n = \frac{a_n + b_n}{2}
+                \]
+                Keep subinterval where sign changes.
+            </li>
+            <li><strong>Error bound:</strong>
+                \[
+                    |x_n - c| \le \frac{b-a}{2^n}
+                \]
+            </li>
+            <li><strong>Iterations for tolerance \(\epsilon\):</strong>
+                \[
+                    n \ge \frac{\log(b-a) - \log(\epsilon)}{\log 2}
+                \]
+            </li>
+            <li><strong>Convergence:</strong>
+                \[
+                    e_{n+1} \approx \frac{1}{2}e_n
+                \]
+                Order \(p=1\), \(M=\frac{1}{2}\)
+            </li>
+        </ul>
+
+        <h4 style="text-indent: 1em;">Secant Method</h4>
+        <ul>
+            <li><strong>Iteration:</strong>
+                \[
+                x_{n+1}
+                =
+                x_n - f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}
+                \]
+            </li>
+            <li><strong>Error relation:</strong>
+                \[
+                e_{n+1} \approx M_1 e_n e_{n-1},
+                \qquad
+                M_1=\frac{f''(c)}{2f'(c)}
+                \]
+            </li>
+            <li><strong>Order of convergence:</strong>
+                \[
+                p = 1+\frac{1}{p}
+                \Rightarrow
+                p=\frac{1+\sqrt5}{2}\approx1.618
+                \]
+            </li>
+            <li><strong>Asymptotic form:</strong>
+                \[
+                e_{n+1}\approx C e_n^{\,p},
+                \qquad
+                C=|M_1|^{1/p}
+                \]
+            </li>
+            <li><strong>Final error model:</strong>
+                \[
+                |x_{n+1}-c|
+                \approx
+                \left|
+                \frac{f''(c)}{2f'(c)}
+                \right|^{\frac{\sqrt5-1}{2}}
+                |x_n-c|^{\frac{\sqrt5+1}{2}}
+                \]
+            </li>
+
+            <li><strong>Convergence:</strong> Superlinear, order \(p\approx1.618\).</li>
+        </ul>
+
+        <h4 style="text-indent: 1em;">Regula-Falsi (False Position)</h4>
+        <ul>
+            <li><strong>Condition (bracketing):</strong>
+                \[
+                    f(a) \cdot f(b) < 0
+                \]
+                \(\implies\) there exist a root in \([a,b]\)
+            </li>
+
+            <li><strong>Formula (same as Secant on endpoints):</strong>
+                \[
+                x_{n+1}
+                =
+                x_n
+                -
+                f(x_n)
+                \frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}
+                \]
+            </li>
+
+            <li><strong>Update rule (keep root bracketed):</strong>
+                <br>
+                If \(f(x_{n+1})f(x_{n-1}) < 0\) → new interval \([x_{n-1},x_{n+1}]\)
+                <br>
+                If \(f(x_{n+1})f(x_n) < 0\) → new interval \([x_{n+1},x_n]\)
+            </li>
+
+            <li><strong>Idea:</strong>  
+                Secant step + Bisection safety.
+            </li>
+
+            <li><strong>Convergence:</strong>  
+                Linear (usually faster than Bisection).
+            </li>
+        </ul>
+
+        <h4 style="text-indent: 1em;">Newton-Raphson Method</h4>
+        <ul>
+            <li><strong>One-point form:</strong>
+                \[
+                x_{n+1} = g(x_n)
+                \]
+            </li>
+
+            <li><strong>Newton iteration:</strong>
+                \[
+                x_{n+1}
+                =
+                x_n - \frac{f(x_n)}{f'(x_n)}
+                \]
+            </li>
+
+            <li><strong>Idea:</strong>
+                Use tangent at \(x_n\) to approximate root.
+            </li>
+
+            <li><strong>Error relation (near root \(\alpha\)):</strong>
+                \[
+                e_{n+1}
+                \approx
+                \frac{f''(\alpha)}{2f'(\alpha)}\, e_n^2
+                \]
+            </li>
+
+            <li><strong>Convergence:</strong>
+                Quadratic, order \(p=2\).
+            </li>
+        </ul>
+
+        <h4 style="text-indent: 1em;">Fixed-Point Iteration</h4>
+        <ul>
+            <li><strong>Fixed point:</strong>
+                \[
+                g(c)=c
+                \]
+            </li>
+            <li><strong>Iteration:</strong>
+                \[
+                x_{n+1}=g(x_n)
+                \]
+            </li>
+            <li><strong>Existence:</strong>  
+                If \(g:[a,b]\to[a,b]\) continuous ⇒ at least one fixed point.
+            </li>
+            <li><strong>Uniqueness + Convergence:</strong>
+                If
+                \[
+                |g'(x)|\le L< 1
+                \]
+                then unique fixed point \(r\) and
+                \[
+                |x_{n+1}-r|\le L|x_n-r|
+                \]
+            </li>
+            <li><strong>Error bound:</strong>
+                \[
+                |x_n-r|\le L^n|x_0-r|
+                \]
+            </li>
+            <li><strong>Convergence condition:</strong>Contractive map \(\implies\) linear convergence.</li>
+        </ul>
+
+        <h4 style="text-indent: 1em;">Modified Newton's Method</h4>
+        <ul>
+            <li><strong>Multiple root:</strong>
+                \[
+                f(x)=(x-r)^m q(x), \quad q(r)\neq0
+                \]
+            </li>
+            <li><strong>Standard Newton:</strong>
+                \[
+                x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}
+                \]
+                For multiplicity \(m>1\):
+                \[
+                g'(r)=1-\frac{1}{m}\neq0
+                \]
+                ⇒ only linear convergence.
+            </li>
+            <li><strong>Modified Newton:</strong>
+                \[
+                x_{n+1}
+                =
+                x_n - m\frac{f(x_n)}{f'(x_n)}
+                \]
+            </li>
+            <li><strong>Result:</strong>  
+                Restores quadratic convergence for root of multiplicity \(m\).
+            </li>
+            <li><strong>Multiplicity test:</strong>
+                \[
+                f(r)=f'(r)=\dots=f^{(m-1)}(r)=0,
+                \quad
+                f^{(m)}(r)\neq0
+                \]
+            </li>
+        </ul>
+
+        <h4 style="text-indent: 1em;">Newton's Method for Systems</h4>
+        <ul>
+            <li><strong>System form:</strong>
+                \[
+                f(x)=0, \quad
+                x=
+                \begin{bmatrix}
+                x_1\\ \vdots\\ x_n
+                \end{bmatrix},
+                \quad
+                f(x)=
+                \begin{bmatrix}
+                f_1\\ \vdots\\ f_n
+                \end{bmatrix}
+                \]
+            </li>
+
+            <li><strong>Jacobian:</strong>
+                \[
+                J(x)=\left[\frac{\partial f_i}{\partial x_j}\right]
+                \]
+            </li>
+
+            <li><strong>Newton iteration:</strong>
+                \[
+                x^{k+1}
+                =
+                x^k - J(x^k)^{-1}f(x^k)
+                \]
+            </li>
+
+            <li><strong>Practical form (no inverse):</strong>
+                Solve
+                \[
+                J(x^k)h=-f(x^k)
+                \]
+                then update
+                \[
+                x^{k+1}=x^k+h
+                \]
+            </li>
+
+            <li><strong>\(2 \times 2\) case:</strong>
+                \[
+                \begin{bmatrix}
+                f_x & f_y\\
+                g_x & g_y
+                \end{bmatrix}
+                \begin{bmatrix}
+                h\\k
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                -f\\-g
+                \end{bmatrix}
+                \]
+            </li>
+
+            <li><strong>Condition:</strong>
+                \[
+                \det(J)\neq0
+                \]
+            </li>
+
+            <li><strong>Convergence:</strong> Quadratic (if initial guess is close and \(J\) nonsingular).</li>
+        </ul>
+
+        <h4>Gaussian Elimination</h4>
+
+        <ul>
+            <li><strong>Goal:</strong>
+                \[
+                AX=b \;\longrightarrow\; Ux=b'
+                \]
+                where \(U\) is upper triangular.
+            </li>
+
+            <li><strong>Forward Elimination (k = 1 to n-1):</strong>
+                <br>
+                Multipliers:
+                \[
+                m_{ik}=\frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}, \quad i=k+1,\dots,n
+                \]
+                Row update:
+                \[
+                a_{ij}^{(k+1)}=a_{ij}^{(k)}-m_{ik}a_{kj}^{(k)}
+                \]
+                \[
+                b_i^{(k+1)}=b_i^{(k)}-m_{ik}b_k^{(k)}
+                \]
+            </li>
+
+            <li><strong>Condition:</strong>
+                \[
+                a_{kk}^{(k)} \neq 0
+                \]
+            </li>
+
+            <li><strong>Back Substitution:</strong>
+                \[
+                x_n=\frac{b_n}{a_{nn}}
+                \]
+                \[
+                x_i=
+                \frac{b_i-\sum_{j=i+1}^{n}a_{ij}x_j}{a_{ii}},
+                \quad i=n-1,\dots,1
+                \]
+            </li>
+
+            <li><strong>Idea:</strong>
+                Eliminate below diagonal → solve upward.
+            </li>
+        </ul>
+
+        <h4>Operation Count - Gaussian Elimination (Total)</h4>
+
+        <ul>
+            <li><strong>Multiplications / Divisions:</strong>
+                \[
+                \frac{n^3}{3} + n^2 - \frac{n}{3}
+                \]
+            </li>
+            <li><strong>Additions / Subtractions:</strong>
+                \[
+                \frac{n^3}{3} + \frac{n^2}{2} - \frac{5n}{6}
+                \]
+            </li>
+            <li><strong>Leading term (dominant cost):</strong>
+                \[
+                \frac{2}{3}n^3 + O(n^2)
+                \]
+            </li>
+            <li><strong>Meaning of terms:</strong>
+                <br>
+                \( \frac{2}{3}n^3 \) → main computational cost (forward elimination)
+                <br>
+                \( O(n^2) \) → lower-order cost (back substitution + smaller terms)
+            </li>
+        </ul>
+
+        <h4>Pivoting</h4>
+        <ul>
+            <li><strong>Pivot problem:</strong> small/zero pivot \(a_{kk}^{(k)}\) makes
+                \[
+                    m_{ik}=\frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}
+                \]
+                unstable/undefined.
+            </li>
+            <li><strong>Partial pivoting (row swaps only):</strong> choose \(p\) in column \(k\)
+                \[
+                    |a_{p,k}^{(k)}|=\max_{i=k,\dots,n}|a_{i,k}^{(k)}|
+                \]
+                then swap rows \(k \leftrightarrow p\).
+            </li>
+            <li><strong>Complete pivoting (row + column swaps):</strong> choose \((p,q)\) in remaining submatrix
+                \[
+                    a_{p,q}^{(k)}|=\max_{i,j=k,\dots,n}|a_{i,j}^{(k)}|
+                \]
+                then swap rows \(k \leftrightarrow p\), columns \(k \leftrightarrow q\) (also swap variables).
+            </li>
+        </ul>
+
+        <h4>Doolittle LU</h4>
+        <ul>
+            <li><strong>Factorization:</strong>
+                \[
+                A=LU
+                \]
+                \(L\): lower triangular with diagonal \(1\)'s (unit lower), \(U\): upper triangular.
+            </li>
+            <li><strong>Existence (no pivoting):</strong>
+                \[
+                D_k\neq0,\quad k=1,\dots,n
+                \]
+                (all leading principal minors nonzero).
+            </li>
+            <li><strong>Entry formulas:</strong>
+                \[
+                u_{ij}=a_{ij}-\sum_{k=1}^{i-1} \ell_{ik}u_{kj},\quad i\le j
+                \]
+                \[
+                \ell_{ij}=\frac{a_{ij}-\sum_{k=1}^{j-1}\ell_{ik}u_{kj}}{u_{jj}},\quad i>j
+                \]
+                with \(\ell_{ii}=1\).
+            </li>
+            <li><strong>Uniqueness:</strong> if \(A=L_1U_1=L_2U_2\) with unit-lower \(L\), then
+                \[
+                L_1=L_2,\quad U_1=U_2
+                \]
+            </li>
+            <li><strong>Solve \(Ax=b\):</strong>
+                \[
+                Ly=b \quad(\text{forward subst.}),\qquad Ux=y \quad(\text{back subst.})
+                \]
+            </li>
+        </ul>
+
+        <h4>Crout's Decomposition</h4>
+        <ul>
+            <li><strong>Factorization:</strong>
+                \[
+                A=LU
+                \]
+                \(L\): lower triangular (diagonal not forced to 1), \(U\): unit upper triangular (\(u_{ii}=1\)).
+            </li>
+            <li><strong>Entry formulas:</strong>
+                \[
+                \ell_{ij}=a_{ij}-\sum_{k=1}^{j-1}\ell_{ik}u_{kj},\quad i\ge j
+                \]
+                \[
+                u_{ij}=\frac{a_{ij}-\sum_{k=1}^{i-1}\ell_{ik}u_{kj}}{\ell_{ii}},\quad i< j
+                \]
+                with \(u_{ii}=1\).
+            </li>
+            <li><strong>Existence condition (no pivoting):</strong>
+                \[
+                \ell_{ii}\neq0,\quad i=1,\dots,n
+                \]
+            </li>
+            <li><strong>Solve \(Ax=b\):</strong>
+                \[
+                Ly=b \quad(\text{forward}),\qquad Ux=y \quad(\text{back})
+                \]
+            </li>
+            <li><strong>Doolittle vs Crout:</strong> Doolittle: \(\ell_{ii}=1\). Crout: \(u_{ii}=1\).</li>
+        </ul>
+    </div>
+</body>
+</html>

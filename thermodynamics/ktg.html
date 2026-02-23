@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Microscopic Model for an Ideal Gas </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="title">
+        <h1> Microscopic Model for an Ideal Gas </h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h2> Ideal gas </h2>
+        <p>The ideal gas have the following properties:</p>
+        <p>- The gas molecules do not interact with each other.</p>
+        <p>- The volume of each molecule is negligible.</p>
+        <p>- The molecules have elastic collision with wall of the container.</p>
+
+        <h2> Boyle's Law </h2>
+        <p>
+            $$
+                V \propto \frac{1}{P}
+            $$
+
+        </p>
+
+        <h2> Charle's Law </h2>
+        <p>
+            $$
+                V \propto T
+            $$
+
+            $$
+                V \propto n
+            $$
+
+            $$
+                P \propto n
+            $$
+        </p>
+
+        <h2> Equation of ideal gas </h2>
+        $$
+            PV = nRT
+            \tag{1}
+        $$
+
+        <h2> Kinetic Molecular Theory </h2>
+        <p>Consider a single molecule bouncing back and forth in a container of volume \(V\).</p>
+        \[
+            V = A \cdot L
+        \]
+        <p>where \(A\) is area of piston and \(L\) is width of the container. </p>
+        <p>The average pressure exerted by the single molecule on the piston.</p>
+        \[
+            \bar{P} = \frac{\bar{F}_x}{A}
+        \]
+        <p>where \(F_x\) is force excerted on the piston.</p>
+        <p>By Newton's third law,</p>
+        \[
+            \bar{P} = \frac{-\bar{F}_x}{A}
+        \]
+        <p>Now, \(F_x\) is the force excerted by the piston on the molecule.</p>
+        \[
+            \bar{P} = \frac{-m \left(\frac{\Delta v_x}{\Delta t}\right)}{A}
+            \tag{2}
+        \]
+        The particle bounces and moves in opposite direction (\(-x\)) by elastic collision.
+        \[
+            \Delta \bar{v}_x = -(\bar{v}_x)_{\text{final}} - (\bar{v}_x)_{\text{initial}} = -2\bar{v}_x
+            \tag{3}
+        \]
+        <p>Consider '\(\Delta t\)' to be time for one period for the collision to occur.</p>
+        <p>The distance travelled by the particle is \(2L\).</p>
+        \[
+            \Delta t = \frac{2L}{\bar{v}_x}
+            \tag{4}
+        \]
+        Substituting equation (3) and (4) in equation (2)
+        \[
+            \bar{P} = \frac{m \cdot \bar{v}_x}{A \cdot L}
+        \]
+        since volume is area of piston times width of the container.
+        \[
+            \bar{P} = \frac{m \cdot \bar{v}_x}{V}
+        \]
+        Multiplying both sides by volume.
+        \[
+            \bar{P}V = m \cdot \bar{v}_x
+        \]
+        <p>Now that is derived for only single molecule.</p>
+        <p>For 'N' number of molecules</p>
+        \[
+            \bar{P}V = m \cdot \bar{v}_{1 x} + m \cdot \bar{v}_{2 x} +....
+        \]
+        <p>For large 'N',</p>
+        \[
+            \bar{P}V = N \cdot m \cdot \bar{v}_x
+            \tag{6}
+        \]
+        From the Ideal Gas Law in its microscopic form,
+        \[
+            PV = Nk_BT
+            \tag{7}
+        \]
+        Substituting Equation (6) in Equation (7) gives us,
+        \[
+            Nm\bar{v}_x = Nk_BT
+        \]
+        \[
+            m\bar{v}_x = k_BT
+        \]
+        Rewritting it as
+        \[
+            \frac{1}{2}m\bar{v}_x = \frac{1}{2}k_BT
+        \]
+        <p>The left had side is kinetic energy in x-direction.</p>
+        \[
+            KE = \frac{1}{2}k_BT
+        \]
+        Similarly for a molecule moving along only y-direction and z-direction
+         \[
+            \frac{1}{2}m\bar{v}_y = \frac{1}{2}k_BT
+        \]
+         \[
+            \frac{1}{2}m\bar{v}_z = \frac{1}{2}k_BT
+        \]
+        Total translation kinetic energy of molecule moving along all three directions
+        \[
+            KE = \frac{1}{2}m(v_x^2 + v_y^2 + v_z^2),
+        \]
+        \[
+            KE_{\text{translational}} = \frac{3}{2}k_BT
+        \]
+    </div>
+</body>
+</html>

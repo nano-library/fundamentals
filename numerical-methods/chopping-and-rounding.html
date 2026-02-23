@@ -30,13 +30,13 @@
     </div>
     <div id="chapter">
         <p>
-            Because a computer has only a finite amount of storage, most real numbers cannot be represented exactly. Instead, a real number must be replaced by a nearby number that belongs to the floating-point system.
-            This replacement is achieved by truncating the number so that it fits within the allowed precision.
+            A computer has only a finite amount of storage, most real numbers cannot be represented exactly. A real number must be replaced by a nearby number that belongs to the floating-point system.
+            This replacement is achieved by shortening the number so that it fits within the allowed precision.
         </p>
 
         <p>There are two standard methods for doing this: <strong>chopping</strong> and <strong>rounding</strong>.</p>
 
-        <h3>Real Number Representation</h3>
+        <h4>Real Number Representation</h4>
 
         <p>Consider a real number of the form:</p>
 
@@ -53,22 +53,17 @@
         \text{ in the floating-point system}.
         \]
 
-        <h3>Chopped Machine Representation</h3>
+        <h4>Chopped Machine Representation</h4>
 
-        <p>
-            In chopping, all digits beyond the first \(t\) fractional digits are discarded.
-        </p>
+        <p>In chopping, all digits beyond the first \(t\) fractional digits are discarded.</p>
 
         \[
         fl(x) = s \cdot (.a_1 a_2 \ldots a_t)_\beta \cdot \beta^e.
         \]
 
-        <h3>Rounded Machine Representation</h3>
+        <h4>Rounded Machine Representation</h4>
 
-        <p>
-            In rounding, the number is replaced by the nearest floating-point number.
-            The decision depends on the digit \(a_{t+1}\).
-        </p>
+        <p>In rounding, the number is replaced by the nearest floating-point number. The decision depends on the digit \(a_{t+1}\).</p>
 
         \[
         fl(x) =
@@ -82,10 +77,7 @@
         \end{cases}
         \]
 
-        <p>
-            Thus, rounding selects the closest floating-point number,
-            whereas chopping simply removes the extra digits.
-        </p>
+        <p>Thus, rounding selects the closest floating-point number, whereas chopping simply removes the extra digits.</p>
 
         <hr style="border: 0.1px dashed;">
 

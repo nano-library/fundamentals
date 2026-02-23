@@ -48,9 +48,9 @@
         \]
         <p>The coefficients \(a_{i,i}^{i}\) belong to system (1)</p>
         <p>That is, we convert the equation \(AX = b\) to \(\mathcal{U}x = b'\)  where \(\mathcal{U}\) is upper triangular. This process is known as <i>forward elimination</i>.</p>
-        <p>we have assumed \(a^{(i)}_{i,i} \neq 0\) in this method.</p>
+        <p>We have assumed \(a^{(i)}_{i,i} \neq 0\) in this method.</p>
         <p>On the \(k^{th}\) (\(k\) runs from \(1\) to \(n - 1\)) step we do the following:</p>
-        <p style="text-indent: 2em;">We eliminate \(x_k\)  from all the equations from \(E_k + 1\) to \(E_n\).</p>
+        <p>We eliminate \(x_k\)  from all the equations from \(E_k + 1\) to \(E_n\).</p>
         <p>To do this we first calculate the multipliers</p>
         \[
             m_{i, k} = \frac{a_{i,k}^{(k)}}{a_{k,k}^{(k)}}, \quad i = k+1,\ldots,n.
@@ -71,7 +71,7 @@
             A^{(n)} x = b^{(n)}
         \]
         <p>where \(A^{(n)} = (a^{(i)}_{i,j})\) is upper triangular.</p>
-        <p style="text-indent: 2em;">We then apply the so called <i>back substitution</i> method to get the solution.</p>
+        <p>We then apply the so called <i>back substitution</i> method to get the solution.</p>
         \[
             x_n = \frac{b^{(n)_n}}{a^{(n)_{n,n}}},
         \]
@@ -79,6 +79,7 @@
             x_i = \frac{b_i^{(i)} - \sum_{j=i+1}^{n} a_{i,j}^{(i)}x_{j}}{a_{i,i}^{(i)}}, \quad i = n-1, n-2,\ldots,1.
         \]
 
+        <hr style="border: 0.1px dashed;">
         <h4>Example 1:</h4>
         <p>Solve the following system using Gaussian elimination:</p>
         \[
