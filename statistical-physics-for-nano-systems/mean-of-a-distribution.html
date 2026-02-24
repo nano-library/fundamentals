@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mean of a Distribution</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="random-walk.html" rel="prev">\(\leftarrow\) Random Walk</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="statistical-formulation-of-the-problem.html" rel="next">Statistical Formulation of the Problem \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Mean of a Distribution</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+
+        <p>
+        Let \( u \) be a parameter that takes values \( u_1, u_2, \ldots, u_N \)
+        with corresponding probabilities \( p(u_1), p(u_2), \ldots, p(u_N) \).
+        </p>
+
+        <p>
+        The mean (or expectation value) of the distribution is defined as
+        </p>
+
+        \[
+        \bar{u}
+        =
+        \frac{\displaystyle \sum_{i=1}^{N} u_i \, p(u_i)}
+        {\displaystyle \sum_{i=1}^{N} p(u_i)}
+        \]
+
+        <p>
+        If the probabilities are normalized, i.e.,
+        </p>
+
+        \[
+        \sum_{i=1}^{N} p(u_i) = 1,
+        \]
+
+        <p>
+        then the mean reduces to
+        </p>
+
+        \[
+        \bar{u}
+        =
+        \sum_{i=1}^{N} u_i \, p(u_i).
+        \]
+
+        <h3>Second Moment (Variance)</h3>
+
+        <p>
+        The second moment about the mean, also called the variance, is
+        </p>
+
+        \[
+        (\Delta u)^2
+        =
+        \sum_{i=1}^{N}
+        p(u_i)
+        \left( u_i - \bar{u} \right)^2,
+        \qquad (\ge 0)
+        \]
+
+        <p>
+        This quantity is always non-negative.
+        </p>
+
+        <h3>Mean of a Function</h3>
+
+        <p>
+        Let \( f(u) \) be a function of the variable \( u \).
+        Then the mean value of \( f(u) \) is
+        </p>
+
+        \[
+        \overline{f(u)}
+        =
+        \sum_{i=1}^{N}
+        p(u_i)\, f(u_i).
+        \]
+
+    </div>
+</body>
+</html>

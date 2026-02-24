@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Heat Engine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="introduction.html" rel="prev">\(\leftarrow\) Laws of Thermodynamics</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="refrigerator-heat-pump.html" rel="next">Refrigerator and Heat Pump\(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Heat Engine<h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>
+        A heat engine is a device that extracts heat from a high-temperature reservoir,
+        converts part of it into mechanical work, and rejects the remaining heat to a
+        low-temperature reservoir.
+        </p>
+
+        <p><strong>Examples:</strong> Steam engines (trains), internal combustion engines (cars),
+        external combustion engines, gas turbines.</p>
+
+        <h4>Working Principle (Cyclic Process)</h4>
+
+        <p>
+        A working substance (for example, water in a steam engine) undergoes a cyclic process:
+        </p>
+
+        <p>
+        Liquid → Vapour → Expansion (drives turbine) → Condensation → Back to liquid.
+        </p>
+
+        <p>
+        Since the process is cyclic, the system returns to its initial state.
+        Therefore, internal energy change over one complete cycle is:
+        </p>
+
+        \[
+        \Delta U_{\text{cycle}} = 0
+        \]
+
+        <p>
+        From the First Law of Thermodynamics:
+        </p>
+
+        \[
+        \Delta U = Q - W
+        \]
+
+        <p>
+        For a complete cycle:
+        </p>
+
+        \[
+        0 = Q_{\text{net}} - W_{\text{net}}
+        \]
+
+        \[
+        W_{\text{net}} = Q_{\text{net}}
+        \]
+
+        <p>
+        If the engine absorbs heat \(Q_h\) from the hot reservoir
+        and rejects heat \(Q_c\) to the cold reservoir, then
+        </p>
+
+        \[
+        Q_{\text{net}} = Q_h - Q_c
+        \]
+
+        \[
+        W = Q_h - Q_c
+        \]
+
+        <h4>Efficiency of a Heat Engine</h4>
+
+        <p>
+        Thermal efficiency is defined as the ratio of useful work output
+        to heat absorbed from the hot reservoir:
+        </p>
+
+        \[
+        e = \frac{W}{Q_{\text{in}}}
+        \]
+
+        <p>
+        Since \(Q_{\text{in}} = Q_h\),
+        </p>
+
+        \[
+        e = \frac{Q_h - Q_c}{Q_h}
+        \]
+
+        \[
+        e = 1 - \frac{Q_c}{Q_h}
+        \]
+
+        <h4>Important Observations</h4>
+
+        <ul>
+        <li>If \(Q_c = 0\), then \(e = 1\).  
+        This would mean 100% efficiency, which is impossible by the Second Law.</li>
+
+        <li>Since \(Q_c > 0\) always,  
+        \[
+        e < 1.
+        \]</li>
+
+        <li>Efficiency increases if:
+        <ul>
+            <li>\(Q_h\) increases, or</li>
+            <li>\(Q_c\) decreases.</li>
+        </ul>
+        </li>
+        </ul>
+
+        <h4>Maximum Possible Efficiency (Carnot Engine)</h4>
+
+        <p>
+        For a reversible engine operating between temperatures \(T_h\) and \(T_c\):
+        </p>
+
+        \[
+        e_{\text{Carnot}} = 1 - \frac{T_c}{T_h}
+        \]
+
+        <p>
+        This is the theoretical upper limit of efficiency for any heat engine
+        operating between two reservoirs.
+        </p>
+    </div>
+</body>
+</html>

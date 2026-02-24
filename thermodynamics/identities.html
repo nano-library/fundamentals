@@ -15,11 +15,11 @@
 <body>
     <div id="navigation">
         <nav class="concept-nav" aria-label="Concept navigation">
-            <a class="nav-btn prev" href="postulate-of-equal-a-priori-probabilities.html" rel="prev">\(\leftarrow\) The Postulate of Equal a priori Probabilitie</a>
+            <a class="nav-btn prev" href="thermodynamic-potentials.html" rel="prev">\(\leftarrow\) Thermodynamic Potentials</a>
 
             <a class="nav-btn home" href="list-of-contents.html">Contents</a>
 
-            <!--<a class="nav-btn next" href="#" rel="next">\(\rightarrow\)</a>-->
+            <a class="nav-btn next" href="free-energy-and-equilibrium.html" rel="next">Free Energy and Equilibrium \(\rightarrow\)</a>
         </nav>
     </div>
     <div id="title">
@@ -43,6 +43,177 @@
         \[
             dG = - SdT + VdP + \mu dN
         \]
+
+        <h4>First Fundamental Identity (simple compressible system with variable \(N\))</h4>
+        <p>Consider a simple compressible system with variable particle number:</p>
+        \[
+        U = U(S,V,N).
+        \]
+        <p>Taking the total differential:</p>
+        \[
+        dU =
+        \left(\frac{\partial U}{\partial S}\right)_{V,N} dS
+        +
+        \left(\frac{\partial U}{\partial V}\right)_{S,N} dV
+        +
+        \left(\frac{\partial U}{\partial N}\right)_{S,V} dN.
+        \]
+        <p>Define the conjugate (intensive) variables:</p>
+        \[
+        T \equiv \left(\frac{\partial U}{\partial S}\right)_{V,N}, \qquad
+        \mu \equiv \left(\frac{\partial U}{\partial N}\right)_{S,V}.
+        \]
+        <p>For a simple compressible system, the mechanical conjugate of \(V\) is:</p>
+        \[
+        -P \equiv \left(\frac{\partial U}{\partial V}\right)_{S,N}
+        \quad \Longrightarrow \quad
+        P = -\left(\frac{\partial U}{\partial V}\right)_{S,N}.
+        \]
+        <p>Hence:</p>
+        \[
+        \boxed{\,dU = T\,dS - P\,dV + \mu\,dN\,}.
+        \]
+
+        <h4>Second Fundamental Identity (Enthalpy form)</h4>
+        <p>Define enthalpy:</p>
+        \[
+        H \equiv U + PV.
+        \]
+        <p>Differentiating:</p>
+        \[
+        dH = dU + P\,dV + V\,dP.
+        \]
+        <p>Substitute \(dU = T\,dS - P\,dV + \mu\,dN\):</p>
+        \[
+        dH = \left(T\,dS - P\,dV + \mu\,dN\right) + P\,dV + V\,dP
+        = T\,dS + V\,dP + \mu\,dN.
+        \]
+        <p>Therefore:</p>
+        \[
+        \boxed{\,dH = T\,dS + V\,dP + \mu\,dN\,}.
+        \]
+        <p>Since \(H\) naturally depends on \((S,P,N)\):</p>
+        \[
+        H = H(S,P,N),
+        \]
+        \[
+        dH =
+        \left(\frac{\partial H}{\partial S}\right)_{P,N} dS
+        +
+        \left(\frac{\partial H}{\partial P}\right)_{S,N} dP
+        +
+        \left(\frac{\partial H}{\partial N}\right)_{S,P} dN.
+        \]
+        <p>Comparing with \(dH = T\,dS + V\,dP + \mu\,dN\), we identify:</p>
+        \[
+        T = \left(\frac{\partial H}{\partial S}\right)_{P,N}, \qquad
+        V = \left(\frac{\partial H}{\partial P}\right)_{S,N}, \qquad
+        \mu = \left(\frac{\partial H}{\partial N}\right)_{S,P}.
+        \]
+        <p><strong>Note (common correction):</strong> The correct identity is
+        \(V = \left(\frac{\partial H}{\partial P}\right)_{S,N}\), not \( \left(\frac{\partial H}{\partial V}\right)_{S,N}\).</p>
+
+        <h4>Third Fundamental Identity (Helmholtz free energy form)</h4>
+        <p>Define Helmholtz free energy:</p>
+        \[
+        F \equiv U - TS.
+        \]
+        <p>Differentiate:</p>
+        \[
+        dF = dU - T\,dS - S\,dT.
+        \]
+        <p>Substitute \(dU = T\,dS - P\,dV + \mu\,dN\):</p>
+        \[
+        dF = (T\,dS - P\,dV + \mu\,dN) - T\,dS - S\,dT
+        = -S\,dT - P\,dV + \mu\,dN.
+        \]
+        <p>Hence:</p>
+        \[
+        \boxed{\,dF = -S\,dT - P\,dV + \mu\,dN\,}.
+        \]
+        <p>Natural variables:</p>
+        \[
+        F = F(T,V,N).
+        \]
+        <p>Total differential:</p>
+        \[
+        dF =
+        \left(\frac{\partial F}{\partial T}\right)_{V,N} dT
+        +
+        \left(\frac{\partial F}{\partial V}\right)_{T,N} dV
+        +
+        \left(\frac{\partial F}{\partial N}\right)_{T,V} dN.
+        \]
+        <p>Comparing with \(dF = -S\,dT - P\,dV + \mu\,dN\):</p>
+        \[
+        S = -\left(\frac{\partial F}{\partial T}\right)_{V,N}, \qquad
+        P = -\left(\frac{\partial F}{\partial V}\right)_{T,N}, \qquad
+        \mu = \left(\frac{\partial F}{\partial N}\right)_{T,V}.
+        \]
+
+        <h4>Fourth Fundamental Identity (Gibbs free energy form)</h4>
+        <p>Define Gibbs free energy:</p>
+        \[
+        G \equiv H - TS = U + PV - TS.
+        \]
+        <p>Differentiate:</p>
+        \[
+        dG = dH - T\,dS - S\,dT.
+        \]
+        <p>Use \(dH = T\,dS + V\,dP + \mu\,dN\):</p>
+        \[
+        dG = (T\,dS + V\,dP + \mu\,dN) - T\,dS - S\,dT
+        = -S\,dT + V\,dP + \mu\,dN.
+        \]
+        <p>Therefore:</p>
+        \[
+        \boxed{\,dG = -S\,dT + V\,dP + \mu\,dN\,}.
+        \]
+        <p>Natural variables:</p>
+        \[
+        G = G(T,P,N).
+        \]
+        <p>Total differential:</p>
+        \[
+        dG =
+        \left(\frac{\partial G}{\partial T}\right)_{P,N} dT
+        +
+        \left(\frac{\partial G}{\partial P}\right)_{T,N} dP
+        +
+        \left(\frac{\partial G}{\partial N}\right)_{T,P} dN.
+        \]
+        <p>Comparing with \(dG = -S\,dT + V\,dP + \mu\,dN\):</p>
+        \[
+        S = -\left(\frac{\partial G}{\partial T}\right)_{P,N}, \qquad
+        V = \left(\frac{\partial G}{\partial P}\right)_{T,N}, \qquad
+        \mu = \left(\frac{\partial G}{\partial N}\right)_{T,P}.
+        \]
+
+        <h4>Extensive and Intensive Variables</h4>
+
+        <h5>Extensive Variables</h5>
+        <p>\(V,\,N,\,S,\,U,\,H,\,F,\,G\)</p>
+
+        <h5>Intensive Variables</h5>
+        <p>\(T,\,P,\,\mu,\) density (e.g. \(N/V\), \(m/V\))</p>
+
+        <h4>Notes</h4>
+        <ul>
+        <li>
+            Multiplying an <strong>intensive</strong> variable by an <strong>extensive</strong> variable gives an
+            <strong>extensive</strong> quantity.
+            <br>
+            <span>\(T S\)</span> is extensive, <span>\(P V\)</span> is extensive, <span>\(\mu N\)</span> is extensive.
+        </li>
+        <li>
+            You can add/subtract only “same-type” quantities:
+            <br>
+            extensive with extensive (OK), intensive with intensive (OK).
+            <br>
+            Example: <span>\(U + PV\)</span> is valid because both are extensive.
+            But <span>\(U + P\)</span> is not meaningful (extensive + intensive).
+        </li>
+        </ul>
     </div>
 </body>
 </html>

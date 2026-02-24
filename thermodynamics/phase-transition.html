@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Phase Transition</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="free-energy-and-equilibrium.html" rel="prev">\(\leftarrow\) Free Energy and Equilibrium</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="" rel="next">\(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Phase Transition</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>
+        Different physical states of a system are called <strong>phases</strong>.
+        A phase transition is a discontinuous change in thermodynamic properties
+        when an external parameter such as temperature or pressure is varied infinitesimally.
+        </p>
+
+        <p><strong>Examples:</strong></p>
+        <ul>
+        <li>\(H_2O\): ice → liquid water → water vapour</li>
+        <li>Carbon: diamond, graphite, graphene</li>
+        </ul>
+
+        <h4>Heating Curve (Temperature vs Time)</h4>
+
+        <p>
+        When ice is heated uniformly:
+        </p>
+
+        <ul>
+        <li>Temperature rises until \(0^\circ C\)</li>
+        <li>At \(0^\circ C\), temperature remains constant during melting (latent heat of fusion)</li>
+        <li>Temperature rises again until \(100^\circ C\)</li>
+        <li>At \(100^\circ C\), temperature remains constant during boiling (latent heat of vaporization)</li>
+        <li>Then vapour temperature increases</li>
+        </ul>
+
+        <p>
+        During phase change, heat is absorbed but temperature remains constant because
+        energy goes into changing molecular configuration rather than kinetic energy.
+        </p>
+
+        <h4>Latent Heat</h4>
+
+        \[
+        Q = mL
+        \]
+
+        <p>
+        where \(L\) is latent heat (fusion or vaporization).
+        </p>
+
+        <h4>Phase Diagram of \(H_2O\)</h4>
+
+        <h4>Triple Point</h4>
+        <p>
+        The triple point is the unique combination of temperature and pressure
+        where all three phases coexist in equilibrium.
+        </p>
+
+        \[
+        T_{\text{triple}} = 273.16\,\text{K}, \quad
+        P_{\text{triple}} \approx 611\,\text{Pa}
+        \]
+
+        <h4>Critical Point</h4>
+        <p>
+        The critical point is the end of the liquid–vapour boundary.
+        Beyond this point, liquid and vapour become indistinguishable.
+        </p>
+
+        \[
+        T_c = 647\,\text{K}, \quad
+        P_c \approx 22.1\,\text{MPa}
+        \]
+
+        <p>
+        Above \(T_c\), the substance becomes a <strong>supercritical fluid</strong>.
+        There is no phase boundary.
+        </p>
+
+        <h4>Important Feature of Water</h4>
+        <p>
+        The solid–liquid boundary has a negative slope.
+        This means increasing pressure lowers the melting point.
+        That is why ice can melt under pressure.
+        </p>
+
+        <h4>Other Examples of Phase Transitions</h4>
+
+        <h4>Type I Superconductor</h4>
+        <p>
+        At critical temperature \(T_c\), electrical resistance drops abruptly to zero.
+        This is a phase transition between normal and superconducting states.
+        </p>
+
+        <h4>Magnetic Phase Transition</h4>
+        <p>
+        At Curie temperature \(T_C\), a ferromagnet becomes paramagnetic.
+        Magnetization drops continuously to zero.
+        </p>
+
+        <h4>Allotropes of Carbon</h4>
+        <p>
+        Diamond, graphite, and graphene are different structural phases of carbon,
+        stable under different pressure–temperature conditions.
+        </p>
+
+        <h4>Gibbs Phase Rule</h4>
+        <p>
+        The Gibbs phase rule tells us how many independent intensive variables
+        can be changed without altering the number of phases in equilibrium.
+        </p>
+
+        \[
+        F = C - P + 2
+        \]
+
+        <p>
+        Where:
+        </p>
+
+        <ul>
+        <li>\(F\) = degrees of freedom</li>
+        <li>\(C\) = number of components</li>
+        <li>\(P\) = number of phases</li>
+        </ul>
+
+        <h4>Example: Single Component System (\(H_2O\))</h4>
+
+        <p>\(C = 1\)</p>
+
+        <h5>1. Single Phase (\(P=1\))</h5>
+        \[
+        F = 1 - 1 + 2 = 2
+        \]
+        <p>
+        Two variables (T and P) can be changed independently.
+        </p>
+
+        <h5>2. Two Phases Coexisting (\(P=2\))</h5>
+        \[
+        F = 1 - 2 + 2 = 1
+        \]
+        <p>
+        Only one variable can be chosen independently.
+        For example, if temperature is fixed, pressure is automatically determined.
+        </p>
+
+        <h5>3. Triple Point (\(P=3\))</h5>
+        \[
+        F = 1 - 3 + 2 = 0
+        \]
+        <p>
+        No freedom. Temperature and pressure are fixed.
+        The system is completely constrained.
+        </p>
+    </div>
+</body>
+</html>

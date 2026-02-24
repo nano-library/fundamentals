@@ -1,44 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> Laws of Thermodynamics </title>
+    <title>Laws of Thermodynamics</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <link rel="stylesheet" href="../style.css"/>
 </head>
 <body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="systems.html" rel="prev">\(\leftarrow\) Types of System</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="heat-engine.html" rel="next">Heat Engine\(\rightarrow\)</a>
+        </nav>
+    </div>
     <div id="title">
-        <h1> Laws of Thermodynamics </h1>
+        <h1>Laws of Thermodynamics<h1>
         <hr>
     </div>
     
     <div id="chapter">
-        <h2> Zeroth Law of Thermodynamics </h2>
-        <p>If a system \(A\) is in thermal equilibrium with system \(C\) and a system \(B\) is also in thermal equilibrium with system \(C\), then \(A\) and \(B\) will be in thermal equilibrium with each other.</p>
-        <h2> First Law of Thermodynamics </h2>
-        <p>The change in internal energy \(U\) for any transition between two equilibrium states is given by
-        $$
-        \Delta U = Q - W  
-        $$
-        $$
-        \text{or}
-        $$
-        $$
-        dU = dQ - dW
-        $$
-        Where \(Q\) is heat exchanged, 
-        </p>
-        \(W\) is work done by the system if \(W > 0\) and W is work done on the system if \(W < 0\).
+        <h4>Zeroth Law of Thermodynamics</h4>
+        <p>If system A is in thermal equilibrium with system C, and system B is also in thermal equilibrium with system C, then A and B are in thermal equilibrium with each other.</p>
 
-        <p>Assumptions: No friction or loss</p>
-        <h2> Second Law of Thermodynamics </h2>
-        <h3> Clausius statement of second law </h3>
-        Heat never flows spontaneously from a colder object to a hotter object. 
-        <h3> Kelvin statement of second law </h3>
-        It is impossible to convert the heat from a single source into work without any other effect.
-        <h3> Planck statement of second law (Entropy statement) </h3>
-        The entropy of an isolated system/closed system never decreases, it remains constant for reversible process and increases for irreversible  process.
+        <h4>First Law of Thermodynamics (Conservation of Energy)</h4>
+        <p>The change in internal energy <span>\(U\)</span> for any transition between two equilibrium states is</p>
+        \[
+            \Delta U = Q - W
+        \]
+        <p>differential form</p>
+        \[
+            dU = \delta Q - \delta W.
+        \]
+        <p>
+        Here <span>\(Q\)</span> is heat added to the system. <span>\(W\)</span> is work done <em>by</em> the system
+        (so if work is done <em>on</em> the system, then <span>\(W&lt;0\)</span>).
+        </p>
+
+        <strong>State function vs path function</strong>
+        <p>
+        Internal energy <span>\(U\)</span> is a state variable. For a change from state A to state B,
+        different paths (1,2,3,...) can have different <span>\(Q\)</span> and <span>\(W\)</span>, but the same
+        <span>\(\Delta U\)</span>.
+        </p>
+        \[
+        Q_1 - W_1 = Q_2 - W_2 = Q_3 - W_3 = \cdots
+        \]
+        \[
+        \Delta U_1 = \Delta U_2 = \Delta U_3 = \cdots
+        \]
+
+        <h4>Problem 1</h4>
+        <p>
+        A system goes from A to B with heat supplied <span>\(Q = 400\,\text{J}\)</span> and work done by the system
+        <span>\(W = 100\,\text{J}\)</span>.
+        </p>
+
+        <strong>(i) Change in internal energy from A to B</strong>
+        \[
+        \Delta U_{A\to B} = Q - W = 400 - 100 = 300\,\text{J}.
+        \]
+
+        <strong>(ii) Change in internal energy from B to A (same endpoints)</strong>
+        \[
+        \Delta U_{B\to A} = -\Delta U_{A\to B} = -300\,\text{J}.
+        \]
+
+        <strong>(iii) From B to A along a different path where \(W' = 400\,\text{J}\) of work is done on the system</strong>
+        <p>
+        “Work done on the system” means work done <em>by</em> the system is negative:
+        <span>\(W = -400\,\text{J}\)</span>.
+        </p>
+        \[
+        \Delta U_{B\to A} = Q - W \;\Rightarrow\; -300 = Q - (-400) = Q + 400
+        \]
+        \[
+        Q = -700\,\text{J}.
+        \]
+        <p>
+        So the system does <strong>not</strong> absorb heat; it <strong>releases</strong> <span>\(700\,\text{J}\)</span> of heat
+        to the surroundings (since <span>\(Q&lt;0\)</span>).
+        </p>
+
+        <h4>Second Law of Thermodynamics</h4>
+        <strong>Free expansion idea (insulated container, vacuum on one side)</strong>
+        <p>
+        If an ideal gas expands into vacuum inside a thermally insulated container, then
+        </p>
+        \[
+        W = 0,\qquad Q = 0 \;\Rightarrow\; \Delta U = 0.
+        \]
+        <p>
+        The first law doesn't forbid the reverse process (gas “un-expanding” back), but nature doesn't
+        spontaneously do that. The second law rules the arrow of spontaneous change.
+        </p>
+
+        <strong>Clausius Statement</strong>
+        <p>Heat never flows spontaneously from a colder body to a hotter body.</p>
+
+        <strong>Kelvin-Planck Statement</strong>
+        < It is impossible to construct a cyclic device whose only net effect is to extract heat from a single
+        resp>
+        ervoir and convert it completely into work.
+        </p>
+
+        <strong>Entropy Statement</strong>
+        <p>
+        For an isolated system,
+        </p>
+        \[
+        \Delta S \ge 0,
+        \]
+        <p>
+        with equality for a reversible process and strict inequality for an irreversible process.
+        </p>
+
+        <h4>Third Law of Thermodynamics</h4>
+        <p>
+        As the temperature approaches absolute zero, the entropy approaches a constant minimum value.
+        For a perfect crystal,
+        </p>
+        \[
+        \lim_{T\to 0} S(T) = 0.
+        \]
+        <p>
+        A common operational consequence: reaching <span>\(T=0\)</span> exactly by a finite number of processes is impossible.
+        </p>    
     </div>
 </body>
 </html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Carnot Cycle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="refrigerator-heat-pump.html" rel="prev">\(\leftarrow\) Refrigerator and Heat Pump</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="ktg.html" rel="next">Microscopic Model for an Ideal Gas  \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Carnot Cycle<h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>Efficiency is defined as</p>
+        \[
+        e = \frac{W}{Q_h}.
+        \tag{1}
+        \]
+
+        <p>For a cyclic process, the system returns to its initial state, so</p>
+        \[
+        \Delta U_{\text{cycle}} = 0.
+        \]
+        <p>From the First Law, \(\Delta U = Q - W\), hence for the cycle</p>
+        \[
+        0 = Q_{\text{net}} - W \quad \Rightarrow \quad W = Q_{\text{net}}.
+        \]
+        <p>If the engine absorbs heat \(Q_h\) from the hot reservoir and rejects \(Q_c\) to the cold reservoir, then</p>
+        \[
+        W = Q_h - Q_c.
+        \]
+        <p>So efficiency becomes</p>
+        \[
+        e = \frac{Q_h - Q_c}{Q_h} = 1 - \frac{Q_c}{Q_h}.
+        \tag{2}
+        \]
+
+        <h4>Carnot Engine Between \(T_h\) and \(T_c\)</h4>
+        <p>
+        For a <strong>reversible</strong> Carnot cycle, the heat transfers occur isothermally:
+        \(Q_h\) at \(T_h\) and \(Q_c\) at \(T_c\). For a reversible cycle,
+        </p>
+        \[
+        \frac{Q_c}{Q_h} = \frac{T_c}{T_h}.
+        \]
+        <p>Substitute this into (2):</p>
+        \[
+        e = 1 - \frac{T_c}{T_h}.
+        \]
+        <p>
+        This is the maximum possible efficiency for any engine operating between these two temperatures.
+        </p>
+
+        <h4>Problem (Carnot Engine)</h4>
+        <p>
+        A Carnot engine operates between \(T_c = 300\,\text{K}\) and \(T_h\).
+        If \(e = 60\% = 0.60\), find \(T_h\).
+        If the engine delivers \(W = 300\,\text{J}\) per cycle, find \(Q_h\) and \(Q_c\).
+        </p>
+
+        <h5>(i) Find \(T_h\)</h5>
+        \[
+        e = 1 - \frac{T_c}{T_h}
+        \;\Rightarrow\;
+        0.60 = 1 - \frac{300}{T_h}
+        \]
+        \[
+        \frac{300}{T_h} = 0.40
+        \;\Rightarrow\;
+        T_h = \frac{300}{0.40} = 750\,\text{K}.
+        \]
+        <p>\(\boxed{T_h = 750\,\text{K}}\)</p>
+
+        <h5>(ii) Find heat absorbed \(Q_h\)</h5>
+        \[
+        e = \frac{W}{Q_h}
+        \;\Rightarrow\;
+        Q_h = \frac{W}{e} = \frac{300}{0.60} = 500\,\text{J}.
+        \]
+        <p>\(\boxed{Q_h = 500\,\text{J}}\)</p>
+
+        <h5>(iii) Find heat rejected \(Q_c\)</h5>
+        \[
+        W = Q_h - Q_c
+        \;\Rightarrow\;
+        Q_c = Q_h - W = 500 - 300 = 200\,\text{J}.
+        \]
+        <p>\(\boxed{Q_c = 200\,\text{J}}\)</p>
+
+        <h5>Quick Consistency Check</h5>
+        \[
+        \frac{Q_c}{Q_h} = \frac{200}{500} = 0.40
+        \quad\text{and}\quad
+        \frac{T_c}{T_h} = \frac{300}{750} = 0.40
+        \]
+        <p>Matches Carnot relation, so the numbers are self-consistent.</p>
+    </div>
+</body>
+</html>

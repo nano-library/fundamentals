@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Refrigerator and Heat Pump</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="heat-engine.html" rel="prev">\(\leftarrow\) Heat Engine</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="carnot-cycle.html" rel="next">Carnot Cycle  \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Refrigerator and Heat Pump<h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>Refrigerator</h4>
+        <p>
+        A refrigerator removes heat from a cold reservoir and rejects it to a hot reservoir by using external work.
+        The heat removed from the cold reservoir is \(Q_c\).
+        </p>
+
+        <h5>Coefficient of Performance (COP) of Refrigerator</h5>
+        \[
+        k_R = \frac{Q_c}{W}
+        \]
+        <p>Since for a complete cycle \(W = Q_h - Q_c\),</p>
+        \[
+        k_R = \frac{Q_c}{Q_h - Q_c}.
+        \]
+
+        <h4>Heat Pump</h4>
+        <p>
+        A heat pump delivers heat to a hot reservoir. It is “the same machine,” just judged by what you care about:
+        a house wants \(Q_h\), not \(Q_c\).
+        </p>
+
+        <h5>Coefficient of Performance (COP) of Heat Pump</h5>
+        \[
+        k_P = \frac{Q_h}{W}
+        \]
+        <p>Using \(W = Q_h - Q_c\),</p>
+        \[
+        k_P = \frac{Q_h}{Q_h - Q_c}.
+        \]
+
+        <h5>Useful Relation Between COPs</h5>
+        \[
+        k_P = \frac{Q_h}{W} = \frac{Q_c + W}{W} = \frac{Q_c}{W} + 1 = k_R + 1.
+        \]
+
+        <h4>Problem 1</h4>
+        <p>
+        A heat engine has efficiency \(e = 35\% = 0.35\) and average power output \(P = 4\,\text{kW} = 4000\,\text{W}\).
+        Find (i) average work done in 1 minute, (ii) minimum heat discharged to air in 1 minute.
+        </p>
+
+        <h5>(i) Average work done in 1 minute</h5>
+        \[
+        W = P\,t = 4000 \times 60 = 240000\,\text{J} = 240\,\text{kJ}.
+        \]
+
+        <h5>(ii) Minimum heat discharged in 1 minute</h5>
+        <p>
+        Efficiency is \(e = \dfrac{W}{Q_h}\Rightarrow Q_h = \dfrac{W}{e}\).
+        Then heat rejected is \(Q_c = Q_h - W\).
+        </p>
+        \[
+        Q_h = \frac{240000}{0.35} = 685714.2857\,\text{J} \approx 6.857\times 10^5\,\text{J}.
+        \]
+        \[
+        Q_c = Q_h - W = 685714.2857 - 240000 = 445714.2857\,\text{J}
+        \approx 4.457\times 10^5\,\text{J}.
+        \]
+        <p>
+        So the <strong>minimum</strong> heat discharged to air in 1 minute is
+        \(\boxed{Q_c \approx 4.46\times 10^5\,\text{J} \;(\approx 446\,\text{kJ})}\).
+        </p>
+    </div>
+</body>
+</html>

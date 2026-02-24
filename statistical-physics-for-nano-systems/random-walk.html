@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Random Walk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="ensemble.html" rel="prev">\(\leftarrow\) Ensemble</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="mean-of-a-distribution.html" rel="next">Mean of a distribution \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Random Walk</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>
+        Consider a particle restricted to one dimension. It starts at the origin and, at each step,
+        moves one unit either to the right or to the left.
+        </p>
+
+        <p>
+        Let \( p \) be the probability of moving one unit to the right, and \( q \) the probability of moving one unit to the left.
+        </p>
+
+        \[
+        p + q = 1
+        \]
+
+        <p>
+        Let \( N \) be the total number of steps. Let \( n_1 \) be the number of steps to the right and \( n_2 \) the number of steps to the left.
+        </p>
+
+        \[
+        N = n_1 + n_2
+        \tag{1}
+        \]
+
+        <p>
+        Define a random variable \( s_i \) for the \( i^{\text{th}} \) step:
+        </p>
+
+        \[
+        s_i =
+        \begin{cases}
+        +1 & \text{for Right (R)} \\
+        -1 & \text{for Left (L)}
+        \end{cases}
+        \]
+
+        <p>
+        The total displacement after \( N \) steps is
+        </p>
+
+        \[
+        m = \sum_{i=1}^{N} s_i
+        \]
+
+        <p>
+        The final position is
+        </p>
+
+        \[
+        x = m \cdot l
+        \qquad \text{or} \qquad
+        m = n_1 - n_2
+        \tag{2}
+        \]
+
+        <p>
+        Using equations (1) and (2),
+        </p>
+
+        \[
+        m = n_1 - (N - n_1) = 2n_1 - N
+        \]
+
+        <p>
+        The probability of one ordered sequence containing \( n_1 \) right steps and \( n_2 \) left steps is
+        </p>
+
+        \[
+        p^{n_1} \cdot q^{n_2}
+        \]
+
+        <p>
+        The number of distinct sequences with \( n_1 \) right steps and \( n_2 \) left steps is
+        </p>
+
+        \[
+        \frac{N!}{n_1! \, n_2!}
+        \]
+
+        <p>
+        Therefore, the total probability of obtaining exactly \( n_1 \) right steps is
+        </p>
+
+        \[
+        P(n_1) =
+        \frac{N!}{n_1! \, n_2!}
+        \cdot
+        p^{n_1}
+        \cdot
+        q^{n_2}
+        \]
+
+        \[
+        P(n_1) =
+        \frac{N!}{n_1! (N - n_1)!}
+        \cdot
+        p^{n_1}
+        \cdot
+        q^{\,N - n_1}
+        \]
+
+        <p>
+        This is the binomial distribution for a one-dimensional random walk.
+        </p>
+
+        <p>Similarly</p>
+        <p>Probability of Total Left Steps</p>
+
+        <p>
+        Similarly, the total probability of obtaining exactly \( n_2 \) left steps is
+        </p>
+
+        \[
+        P(n_2) =
+        \frac{N!}{n_1! \, n_2!}
+        \cdot
+        p^{n_1}
+        \cdot
+        q^{n_2}
+        \]
+
+        <p>
+        Using \( n_1 = N - n_2 \),
+        </p>
+
+        \[
+        P(n_2) =
+        \frac{N!}{(N - n_2)! \, n_2!}
+        \cdot
+        p^{\,N - n_2}
+        \cdot
+        q^{n_2}
+        \]
+
+        <p>
+        Thus, the distribution of left steps is also binomial. 
+        It is simply the same distribution viewed from the complementary variable,
+        since \( n_1 + n_2 = N \).
+        </p>
+    </div>
+</body>
+</html>
