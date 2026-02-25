@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dip Coating</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+          options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+     <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="spin-coating.html" rel="prev">\(\leftarrow\) Spin Coating</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="thermal-evaporation.html" rel="next">Thermal Evaporation \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Dip Coating</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>
+        <strong>Dip coating</strong> is a thin film deposition technique in which a substrate is immersed
+        into a liquid solution and then withdrawn at a controlled speed, leaving behind a liquid layer
+        that later dries to form a solid film.
+        </p>
+
+           <p>
+        Dip coating thickness is not controlled by a single parameter.
+        It emerges from the balance of:
+        </p>
+
+        <ul>
+        <li>Viscous drag</li>
+        <li>Gravity</li>
+        <li>Surface tension</li>
+        <li>Evaporation rate</li>
+        </ul>
+
+        <p>
+        Control the withdrawal speed, viscosity, and evaporation,
+        and you control the film thickness.
+        </p>
+
+        <h3>Basic Steps in Dip Coating</h3>
+
+        <ol>
+        <li><strong>Immersion</strong> - Substrate is dipped into the precursor solution.</li>
+        <li><strong>Dwell (Start-up)</strong> - Substrate remains inside to allow wetting and equilibrium.</li>
+        <li><strong>Withdrawal</strong> - Substrate is pulled upward at speed \( U_0 \).</li>
+        <li><strong>Drying (Evaporation)</strong> - Solvent evaporates, leaving a wet film.</li>
+        <li><strong>Curing</strong> (optional) - Thermal/chemical treatment to densify the film.</li>
+        </ol>
+
+        
+
+        <h3>Film Formation During Withdrawal</h3>
+
+        <p>
+        As the substrate moves upward, two types of forces act on the liquid:
+        </p>
+
+        <ul>
+        <li><strong>Entraining forces</strong> - Pull liquid upward with the substrate (viscous drag).</li>
+        <li><strong>Draining forces</strong> - Pull liquid downward due to gravity.</li>
+        </ul>
+
+        <p>
+        The final wet film thickness is determined by the balance between these forces.
+        </p>
+
+        <p>
+        Viscous drag per unit area \( \sim \eta U_0 \)  
+        <br>
+        Gravitational force per unit area \( \sim \rho g h_0 \)
+        </p>
+
+        <p>
+        Here:
+        </p>
+
+        <ul>
+        <li>\( \eta \) = liquid viscosity</li>
+        <li>\( U_0 \) = withdrawal speed</li>
+        <li>\( \rho \) = liquid density</li>
+        <li>\( g \) = acceleration due to gravity</li>
+        <li>\( h_0 \) = deposited film thickness</li>
+        </ul>
+
+        
+
+        <h3>Three Film Formation Regimes</h3>
+
+        <h4>1. Drainage Regime (High Speed)</h4>
+
+        <p>
+        When withdrawal speed is relatively high (typically &gt; 1 mm/s),
+        viscous drag dominates gravity.
+        </p>
+
+        <p>
+        The film thickness is approximately:
+        </p>
+
+        <p>
+        \( h_0 = c_1 \left( \frac{\eta U_0}{\rho g} \right)^{1/2} \)
+        </p>
+
+        <p>
+        where \( c_1 \approx 0.8 \) for Newtonian liquids.
+        </p>
+
+        <p>
+        Here, solvent evaporation is slower than the motion of the drying line.
+        </p>
+
+        
+
+        <h4>2. Landau-Levich (Surface Tension Controlled) Regime</h4>
+
+        <p>
+        At moderate speeds (about 1-10 mm/s), surface tension becomes important.
+        For a Newtonian, non-evaporating liquid:
+        </p>
+
+        <p>
+        \( h_0 = 0.94 \frac{(\eta U_0)^{2/3}}{\gamma_{LV}^{1/6} (\rho g)^{1/2}} \)
+        </p>
+
+        <p>
+        where \( \gamma_{LV} \) is the liquid-vapor surface tension.
+        </p>
+
+        <p>
+        This model works well in typical dip coating conditions.
+        </p>
+
+        
+
+        <h4>3. Capillary Regime (Very Low Speed)</h4>
+
+        <p>
+        At very low withdrawal speeds (&lt; 1 mm/s), evaporation becomes faster than
+        the movement of the drying line.
+        Liquid rises by capillary action to replenish the film.
+        </p>
+
+        <p>
+        In this case, film thickness depends strongly on evaporation rate:
+        </p>
+
+        <p>
+        \( h_f = k_i \left( \frac{E}{L U_0} \right) \)
+        </p>
+
+        <p>
+        where:
+        </p>
+
+        <ul>
+        <li>\( E \) = evaporation rate</li>
+        <li>\( L \) = film width</li>
+        <li>\( U_0 \) = withdrawal speed</li>
+        </ul>
+
+        <p>
+        This regime typically applies for speeds around 0.01-0.1 mm/s.
+        </p>
+
+        
+
+        <h3>Thickness vs Withdrawal Speed</h3>
+
+        <p>
+        If we combine capillary and drainage contributions, a general expression becomes:
+        </p>
+
+        <p>
+        \( h_f = k_i \left( \frac{E}{L U_0} + D U_0 \right)^{2/3} \)
+        </p>
+
+        <p>
+        This explains why:
+        </p>
+
+        <ul>
+        <li>At very low speeds → thickness decreases with increasing speed (capillary control).</li>
+        <li>At higher speeds → thickness increases with speed (viscous control).</li>
+        </ul>
+
+        <p>
+        Therefore, the thickness vs withdrawal speed curve typically shows
+        a minimum at an intermediate speed.
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Thermal Evaporation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+          options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+     <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="dip-coating.html" rel="prev">\(\leftarrow\) Dip Coating</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="" rel="next"> \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Thermal Evaporation</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>
+        <strong>Thermal evaporation</strong> is a Physical Vapor Deposition (PVD) method
+        where a solid material is heated in vacuum until it evaporates,
+        and the vapor condenses on a cooler substrate to form a thin film.
+        </p>
+
+        
+
+        <h4>Working Principle</h4>
+
+        <ul>
+        <li>The source material is placed in a <strong>crucible</strong> inside a vacuum chamber.</li>
+        <li>It is heated (usually by resistive heating or electron beam heating).</li>
+        <li>When the material reaches sufficient vapor pressure, atoms evaporate.</li>
+        <li>In vacuum, these atoms travel to the substrate.</li>
+        <li>Atoms condense on the substrate surface → forming a thin film.</li>
+        </ul>
+
+        <p>
+        The process is simple:  
+        <strong>Heat → Evaporate → Transport → Condense</strong>
+        </p>
+
+        <h4>Why Vacuum is Required?</h4>
+
+        <p>
+        In vacuum, atoms can travel without frequent collisions.
+        This is described using <strong>mean free path</strong> \( \lambda \).
+        </p>
+
+        <p>
+        The relation between pressure \( P \) and mean free path is:
+        </p>
+
+        <p>
+        \( \lambda = \frac{kT}{\sqrt{2}\pi\sigma^2 P} \)
+        </p>
+
+        <ul>
+        <li>\( k \) = Boltzmann constant</li>
+        <li>\( T \) = temperature</li>
+        <li>\( \sigma \) = molecular diameter</li>
+        <li>\( P \) = pressure</li>
+        </ul>
+
+        <p>
+        Important idea:
+        </p>
+
+        <p>
+        Lower pressure → larger \( \lambda \) → atoms travel in straight lines.
+        </p>
+
+        <p>
+        At high vacuum (~10<sup>-5</sup> Torr or lower),
+        mean free path can be meters long, larger than chamber size.
+        So evaporation becomes <strong>highly directional (line-of-sight deposition)</strong>.
+        </p>
+
+        <h4>Arrival Ratio</h4>
+
+        <p>
+        Arrival ratio = deposition rate / molecular impact rate of residual gas.
+        </p>
+
+        <p>
+        At:
+        </p>
+
+        <ul>
+        <li>10<sup>-1</sup> Torr → strong scattering (poor deposition)</li>
+        <li>10<sup>-5</sup> Torr → clean directional growth</li>
+        <li>10<sup>-7</sup> Torr and below → very high purity deposition</li>
+        </ul>
+
+        <p>
+        Thus, high vacuum improves film purity and uniformity.
+        </p>
+
+        <h4>Deposition Uniformity</h4>
+
+        <p>
+        Thermal evaporation behaves like a <strong>point source</strong>.
+        Flux follows approximately:
+        </p>
+
+        <p>
+        \( \text{Flux} \propto \frac{1}{R^2} \)
+        </p>
+
+        <p>
+        So thickness decreases away from center.
+        This causes:
+        </p>
+
+        <ul>
+        <li>Edge thinning on wafers</li>
+        <li>Shadowing effects</li>
+        <li>Difficulty in coating deep structures</li>
+        </ul>
+
+        <p>
+        Uniformity can be improved by:
+        </p>
+
+        <ul>
+        <li>Substrate rotation</li>
+        <li>Larger source-to-substrate distance</li>
+        <li>Using surface source instead of point source</li>
+        </ul>
+
+        
+
+        <h4>Material Considerations</h4>
+
+        <ul>
+        <li>Best for materials with relatively <strong>high vapor pressure</strong> at moderate temperature.</li>
+        <li>Common metals: Au, Al, Ag.</li>
+        <li>Also good for many organic materials.</li>
+        </ul>
+
+        <p>
+        Example:
+        </p>
+
+        <p>
+        Aluminum boils at ~2470°C at 1 atm,
+        but under vacuum (10<sup>-4</sup> Torr),
+        its evaporation temperature drops significantly (~1300°C).
+        </p>
+
+        
+
+        <h4>Crucible Selection</h4>
+
+        <ul>
+        <li>Crucible must have <strong>higher melting/boiling point</strong> than source.</li>
+        <li>Must not chemically react with source material.</li>
+        <li>Common materials: W, Ta, alumina.</li>
+        </ul>
+
+        
+
+        <h4>Major Limitations</h4>
+
+        <ul>
+        <li>High contamination risk from crucible or heater.</li>
+        <li>Not suitable for multi-component films (different vapor pressures).</li>
+        <li>Limited for very high melting point materials.</li>
+        <li>Poor step coverage due to directional nature.</li>
+        </ul>
+
+        
+
+        <h4>Core Insight</h4>
+
+        <p>
+        Thermal evaporation works best when:
+        </p>
+
+        <ul>
+        <li>Pressure is very low (long mean free path).</li>
+        <li>Source has sufficient vapor pressure.</li>
+        <li>Line-of-sight deposition is acceptable.</li>
+        </ul>
+
+        <p>
+        It is simple, clean, and widely used —
+        but inherently directional and not ideal for complex 3D structures.
+        </p>
+
+        <hr style="border: 1px dashed">
+        <h3>Problem 1</h3>
+         <p>
+        Calculate the vacuum chamber pressure required to achieve a mean free path
+        \( \lambda = 30 \text{ cm} \) for a certain vapor.
+        </p>
+        <p style="text-indent: 2em;"><strong>Answer:</strong></p>
+
+        <p>
+        Given relation (for the assumed conditions in the note):
+        </p>
+
+        <p>
+        \( P(\text{Torr}) \times \lambda(\text{m}) = 7.8 \times 10^{-5} \)
+        </p>
+
+        <p>
+        Convert mean free path to meters:
+        </p>
+
+        <p>
+        \( \lambda = 30 \text{ cm} = 0.30 \text{ m} \)
+        </p>
+
+        <p>
+        Now solve for pressure \(P\):
+        </p>
+
+        <p>
+        \( P = \frac{7.8 \times 10^{-5}}{\lambda} = \frac{7.8 \times 10^{-5}}{0.30} \)
+        </p>
+
+        <p>
+        \( P = 2.6 \times 10^{-4} \text{ Torr} \)
+        </p>
+
+        <p>The required pressure is \( \boxed{2.6 \times 10^{-4}\ \text{Torr}} \).
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Spin Coating</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+          options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+     <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="mechanical-exfoliation.html" rel="prev">\(\leftarrow\) Mechanical Exfoliation</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="dip-coating.html" rel="next">Dip Coating \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Spin Coating</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h3>Spin Coating</h3>
+
+        <p>
+        Spin coating is a simple way to make a <strong>thin, uniform film</strong> on a flat surface (like a silicon wafer).
+        You place a few drops of liquid (solution) on the center, then <strong>spin the wafer fast</strong>. The liquid spreads
+        outward because of the spinning, and as the <strong>solvent evaporates</strong>, a solid thin film is left behind.
+        </p>
+
+        <h4>Basic idea (in simple terms)</h4>
+        <ul>
+        <li><strong>Spin = spread:</strong> spinning pushes the liquid outward, making it cover the surface.</li>
+        <li><strong>Evaporation = solid film:</strong> solvent dries off, solute remains as a thin layer.</li>
+        <li><strong>Fast spin → thinner film</strong> (usually).</li>
+        </ul>
+
+        <h4>Why does the liquid move outward?</h4>
+        <p>
+        During rotation, the required inward (centripetal) force is
+        \(F = \dfrac{mv^2}{r} = m\omega^2 r\).
+        In practice, this rotation creates strong outward flow of the liquid across the wafer, thinning the film.
+        </p>
+
+        <h4>Process steps</h4>
+        <ol>
+        <li><strong>Dispense:</strong> put solution drop(s) on the center of the substrate.</li>
+        <li><strong>Spin-up:</strong> accelerate to the target speed (RPM).</li>
+        <li><strong>Thinning / flow:</strong> liquid spreads outward and excess is flung off the edge.</li>
+        <li><strong>Drying:</strong> solvent evaporates and the film “sets”.</li>
+        <li><strong>(Optional) Bake:</strong> heat to remove leftover solvent and improve film quality.</li>
+        </ol>
+
+        <h4>What controls film thickness?</h4>
+        <ul>
+        <li><strong>Rotation speed (RPM):</strong> higher speed usually gives thinner films.</li>
+        <li><strong>Spin time:</strong> longer time allows more thinning + more solvent evaporation.</li>
+        <li><strong>Viscosity (\(\eta\)):</strong> more viscous solutions usually give thicker films.</li>
+        <li><strong>Evaporation rate (solvent):</strong> fast-evaporating solvents “lock” the film sooner.</li>
+        <li><strong>Concentration (\(C_0\)):</strong> more solute generally gives thicker final film.</li>
+        </ul>
+
+        <h4>Thickness trend (rule-of-thumb)</h4>
+        <p>
+        A common general trend is:
+        \[
+        h_f \propto \frac{1}{\sqrt{\omega}}
+        \]
+        So if you roughly double the spin speed, thickness typically drops (not exactly by half, but it decreases).
+        </p>
+
+        <h4>A more specific thickness model (evaporation-limited example)</h4>
+        <p>
+        One commonly cited form (Meyerhofer-type) for final dry thickness is:
+        \[
+        h_f = \left(\frac{3\eta_0 E}{2(1-C_0)\rho\,\omega^2}\right)^{1/3}
+        \]
+        where \( \rho \) is density, \( \eta_0 \) viscosity, \( E \) solvent evaporation rate,
+        \( C_0 \) initial solute concentration, and \( \omega \) angular speed.
+        </p>
+
+        <h4>Practical tips (what usually causes failures)</h4>
+        <ul>
+        <li><strong>Wetting matters:</strong> the surface should “like” the solution.
+            If the surface is too hydrophobic for that liquid, you get beading, dewetting, and bare spots.</li>
+        <li><strong>Clean substrate:</strong> dust/oil gives pinholes and thickness non-uniformity.</li>
+        <li><strong>Control environment:</strong> humidity and airflow change evaporation and thickness.</li>
+        <li><strong>Choose spin time by solvent:</strong> fast-evaporating solvents often need less time;
+            slow-evaporating solvents may need longer time or a bake.</li>
+        </ul>
+
+        <h4>Solvent blends (why mixing helps)</h4>
+        <ul>
+        <li><strong>Only low-boiling solvent:</strong> evaporates fast → easy coating, but can freeze-in a more disordered film.</li>
+        <li><strong>Only high-boiling solvent:</strong> evaporates slowly → film can dewet and fling off, leaving poor coverage.</li>
+        <li><strong>Mix (mostly low-boiling + some high-boiling):</strong> fast part evaporates to form the film,
+            slow part keeps it slightly plasticized so molecules can level/organize and reduce dewetting.</li>
+        </ul>
+    </div>
+</body>
+</html>
