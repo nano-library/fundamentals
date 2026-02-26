@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Electromagnetic Waves</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="maxwell-equations.html" rel="prev">\(\leftarrow\) Maxwell Equations</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="polarization.html" rel="next">Polarization \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Electromagnetic Waves</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>PLANE WAVE ALONG Z-DIRECTION</h4>
+        <p>Suppose the wave travels along \(z\). Then amplitude is constant on planes of constant \(z\):</p>
+        \[
+            E_s = E_s(z)
+        \]
+
+        <p>The Helmholtz equation reduces to:</p>
+        \[
+            \frac{\partial^2 \mathbf{E_s}^2}{\partial z^2} + k^2 E_s = 0
+        \]
+        <p>with</p>
+        \[
+            k = \omega \sqrt{\varepsilon \mu}
+        \]
+        <p>Solution:</p>
+        \[
+            E_s(z) = E_0 e^{\mp i k z}
+        \]
+        <p>The sign tells direction:</p>
+        <ul>
+            <li>\(e^{- i k z}\): wave moving in \(+z\) direction</li>
+            <li>\(e^{+ i k z}\): wave moving in \(-z\) direction</li>
+        </ul>
+        <p>The full field becomes:</p>
+        \[
+            E(z,t) = E_0 e^{i(kz - \omega t)}
+        \]
+        <p>This is a traveling wave.</p>
+
+        <h4>THE THREE DIMENSIONAL WAVE EQUATION IN A DIELECTRIC</h4>
+
+        <p>The wave equation can be derived if we take curl of equation (1.16), we would obtain</p>
+        \[
+            \nabla\times\nabla\times\mathbf{E} = -\mu \frac{\partial \nabla\times\mathbf{H}}{\partial t} = -\varepsilon \mu \frac{\partial^2 \mathbf{E}^2}{\partial t^2}
+            \tag{2.1}
+        \]
+        <p>where we have used Equation (1.17)</p>
+        <p>Now, the operator \(\nabla^2\mathbf{E}\) is defined by the following equation:</p>
+        \[
+            \nabla^2\mathbf{E} \equiv \nabla(\nabla \cdot \mathbf{E}) - \nabla\times\nabla\times\mathbf{E}
+            \tag{2.2}
+        \]
+        <p>Using Cartesian coordinates, one can show that</p>
+        \[
+            (\nabla^2\mathbf{E})_x = \nabla(\nabla \cdot E_x) = \frac{\partial^2 E_x^2}{\partial x^2} + \frac{\partial^2 E_y^2}{\partial y^2} + \frac{\partial^2 E_z^2}{\partial z^2}
+        \]
+        <p>i.e, a Cartesian component of \(\nabla^2\mathbf{E}\) is the div grad of the Carterisan Component. However, \((\nabla^2\mathbf{E})_r \neq \text{grad div} E_r\). Thus, using</p>
+        \[
+            \nabla\times\nabla\times\mathbf{E} = \nabla(\nabla \cdot \mathbf{E}) - \nabla^2\mathbf{E}
+        \]
+        <p>we obtain</p>
+        \[
+            \nabla(\nabla \cdot \mathbf{E}) - \nabla^2\mathbf{E} - \frac{\partial^2 \mathbf{E}^2}{\partial t^2}
+            \tag{2.3}
+        \]
+        <p>or</p>
+        \[
+            \nabla^2\mathbf{E} = \varepsilon \mu \frac{\partial^2 \mathbf{E}^2}{\partial t^2}
+            \tag{2.4}
+        \]
+        <p>where we have used the Equation \(\nabla \cdot \mathbf{E} = 0\), (1.14). </p>
+
+        <p>Equation (2.4) is known as the <strong>three-dimensional wave equation</strong> and each Carterisan component of \(\mathbf{E}\) satisfies the scale wave equation. (Wave Equation Concept)</p>
+        \[
+            \nabla^2\mathbf{\psi} = \varepsilon \mu \frac{\partial^2 \mathbf{\psi}^2}{\partial t^2}
+            \tag{2.5}
+        \]
+        <p>The velocity of propagation (\(v\)) of the wave is simply given by</p>
+        \[
+            v = \frac{1}{\sqrt{\varepsilon \mu}}
+            \tag{2.6}
+        \]
+        <p>In a similar manner, one can derive the wave equation satisfied by \(\mathbf{H}\).</p>
+        \[
+            \nabla^2\mathbf{H} = \varepsilon \mu \frac{\partial^2 \mathbf{H}^2}{\partial t^2}
+            \tag{2.7}
+        \]
+        <p>It can be seen that the solutions expressed by Equation () and () or Eq () and () indeed satisfy Equations (2.4) and (2.7) provided</p>
+        \[
+            \frac{\omega}{k} = \frac{1}{\sqrt{\varepsilon \mu}}
+            \tag{2.8}
+        \]
+        <p>which is the speed of propagation of the electromagnetic wave.</p>
+
+        <hr>
+
+        <h4>WAVE EQUATION IN A CONDUCTING MEDIUM</h4>
+<h3>Wave Equation in a Conductor (Why Waves Get Tired)</h3>
+
+<p>In a dielectric, the wave equation is “clean”:</p>
+<p>
+∇²E = με ∂²E/∂t²
+</p>
+
+<p>In a conductor, σ adds a friction-like term:</p>
+<p>
+∇²E = με ∂²E/∂t² + μσ ∂E/∂t
+</p>
+
+<p><strong>Feynman translation:</strong></p>
+<ul>
+  <li>με term: inertia + restoring behavior (supports oscillation and propagation)</li>
+  <li>μσ term: damping (turns field energy into Joule heating)</li>
+</ul>
+
+<p>So the wave doesn’t just “travel.” It also fades.</p>
+
+<p><strong>Why assume monochromatic form?</strong> Because linear constant-coefficient equations treat each frequency independently.</p>
+<p>
+E(z,t) = E<sub>s</sub>(z) e<sup>iωt</sup>
+</p>
+
+<p>This converts time derivatives into algebra (∂/∂t → iω), making the spatial equation manageable.</p>
+
+
+        <h4>MONOCHROMATIC (SINGLE FREQUENCY) SOLUTION</h4>
+        <p>Assume a time-harmonic form:</p>
+        \[
+            \mathbf{E}(r,t) = E_s(r) e^{- i \omega t}
+        \]
+        <p><strong>Time derivatives:</strong></p>
+        \[
+            \dfrac{\partial^2}{\partial t^2} e^{- i \omega t} = - \omega^2 e^{- i \omega t}
+        \]
+        <p>Substituting into the wave equation removes time completely:</p>
+        \[
+            \nabla^2 E_s + \omega^2 \mu_0 E_s = 0
+        \]
+        <p>This is the <strong>Helmholtz equation</strong>.</p>
+
+        <h4>MAGNETIC FIELD RELATION</h4>
+
+        <p>From Maxwell's Equation</p>
+        \[
+            \nabla \times \mathbf{E} = i \omega \mathbf{B}
+        \]
+        <p>Carrying out the curl gives:</p>
+        \[
+            B_s = \pm \sqrt{\mu \varepsilon} E_s
+        \]
+        <p>So:</p>
+        <ul>
+        <li>\(\mathbf{B}\) is perpendicular to both \(\mathbf{E}\) and propagation direction</li>
+        <li>
+            \[
+                |B| = \frac{|E|}{v}
+            \]
+        </li>
+        </ul>
+        <p>The magnetic field is not independent. It is generated automatically by the electric field's motion.</p>      
+
+        <h4>REFRACTIVE INDEX</h4>
+        \[
+            n = \frac{c}{v}
+        \]
+        <p>Using</p>
+        \[
+            v = \frac{1}{\sqrt{\varepsilon \mu}}
+        \]
+        <p>Then</p>
+        \[
+            n = \sqrt{\frac{\varepsilon}{\varepsilon_0}}
+        \]
+        <p>So refractive index is really a measure of how much the medium allows electric field polarization.</p>
+        <hr>
+    </div>
+</body>
+</html>

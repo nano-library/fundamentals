@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fundamental Mode</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="transverse-electric-modes-for-symmetric-step-index-planar-waveguide.html" rel="prev">\(\leftarrow\) TE Mode Symmetric Step-Index</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="optical-directional-coupler.html" rel="next">Optical Directional Coupler \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Fundamental Mode</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>FUNDAMENTAL MODE (\(0^{th}\) mode)</h4>
+
+        \[
+            \xi=\left(k_0^2 n_1^2-\beta^2\right)^{1/2}\frac{d}{2}, \qquad 0<\xi<\frac{\pi}{2}.
+        \]
+
+        <p>The fundamental (even) mode corresponds to the lowest solution of the eigenvalue equation. For any finite value of the normalized frequency \(V\), this mode always exists.</p>
+
+        <h4>HIGHER-ORDER MODES (HOM)</h4>
+        <p>The \(m^{\text{th}}\) mode corresponds to higher discrete solutions of the eigenvalue equation.</p>
+        \[
+         m = 0,1,2,\ldots
+        \]
+        <p>Each higher mode has additional field nodes across the core.</p>
+
+        <h4>NORMALIZED PROPAGATION PARAMETER (B-PARAMETER)</h4>
+        <p>The normalized propagation constant is defined as</p>
+
+        \[
+            b=\frac{\dfrac{\beta^2}{k_0^2}-n_2^2}{n_1^2-n_2^2}=1-\frac{\xi^2}{V^2/4}.
+        \]
+        <p>For guided modes:</p>
+
+        \[
+            n_2^2< \frac{\beta^2}{k_0^2}< n_1^2,
+        \]
+
+        \[
+            0< b < 1.
+        \]
+        <figure style="text-align:center;">
+          <img src="img/b-v-graph.png" alt="b-v-graph" width="300">
+          <figcaption><strong>Fig 8.2</strong> Normalized propagation parameter (b) versus normalized frequency (V) for a symmetric step-index planar waveguide, showing TE (solid) and TM (dashed) modes and their cutoff behavior.</figcaption>
+        </figure>
+
+        <h4>CUTOFF CONDITION</h4>
+
+        <p>At cutoff, \(\beta=k_0 n_2\), so \(b=0\).  
+        The eigenvalue relations reduce to:</p>
+
+        \[
+            \frac{V}{2}\tan\left(\frac{V}{2}\right)=0 \quad \text{(symmetric modes)},
+        \]
+
+        \[
+            \frac{V}{2}\cot\left(\frac{V}{2}\right)=0 \quad \text{(antisymmetric modes)}.
+        \]
+
+        <p>Hence the cutoff values are:</p>
+
+        \[
+            V_c=m\pi, \qquad m=0,1,2,\ldots
+        \]
+
+        <p>Each higher-order mode appears only when \(V>V_c\).</p>
+
+        <h4>EXISTENCE OF AT LEAST ONE MODE</h4>
+
+        <p>For \(m=0\), the cutoff value is</p>
+
+        \[
+            V_c=0.
+        \]
+
+        <p>
+            Since any physical waveguide has \(V>0\) (finite thickness and index contrast), the fundamental mode has no cutoff and therefore always exists.  
+            Thus a dielectric slab waveguide supports at least one guided mode for any finite \(V\).
+        </p>
+
+        <h4>STRUCTURE OF A GUIDED MODE</h4>
+        <p>Inside the core \(\left(-\dfrac{d}{2} < x < \dfrac{d}{2}\right)\), an even TE mode is</p>
+
+        \[
+        E_y(x,z,t)=A\cos(\kappa x)\,e^{i(\omega t-\beta z)}.
+        \]
+
+        <p>The factor \(e^{i(\omega t-\beta z)}\) represents:</p>
+
+        <ul>
+            <li>Harmonic oscillation in time at angular frequency \(\omega\),</li>
+            <li>Forward propagation along \(+z\) with propagation constant \(\beta\).</li>
+        </ul>
+
+        <p>The phase velocity along \(z\) is</p>
+
+        \[
+        v_{p,z}=\frac{\omega}{\beta}.
+        \]
+
+        <p>The transverse factor \(\cos(\kappa x)\) represents a standing-wave distribution across the core.</p>
+
+        <h4>STANDING WAVE AS SUPERPOSITION</h4>
+
+        \[
+        A\cos(\kappa x)e^{i(\omega t-\beta z)}
+        =\frac{A}{2}\left[
+        e^{i(\omega t-\beta z+\kappa x)}
+        +
+        e^{i(\omega t-\beta z-\kappa x)}
+        \right].
+        \]
+
+        <p>This shows the field is a superposition of two plane-wave components with</p>
+
+        \[
+            k_x=\pm\kappa, \qquad k_z=\beta.
+        \]
+
+        <p>The transverse power flow cancels because the two components have equal magnitude and opposite \(k_x\). Net power transport is along \(+z\).</p>
+
+        <h4>DISPERSION RELATION IN THE CORE</h4>
+
+        <p>For a uniform core of index \(n_1\):</p>
+
+        \[
+            k_1=n_1 k_0,
+        \]
+
+        \[
+            \beta^2+\kappa^2=k_1^2.
+        \]
+
+        <p>This relation connects the longitudinal and transverse components of the wavevector inside the film.</p>
+        <hr>
+    </div>
+</body>
+</html>

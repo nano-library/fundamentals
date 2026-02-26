@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Physical Understanding of Modes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="guided-modes.html" rel="prev">\(\leftarrow\) Guided Modes</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="te-tm.html" rel="next">TE and TM Modes \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Physical Understanding of Modes</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>PHYSICAL UNDERSTANDING OF MODES</h4>
+        <p>Consider the electric-field pattern inside the film core \(\left(-\dfrac{d}{2} < x < \dfrac{d}{2}\right)\).</p>
+
+        <p>For a symmetric TE mode (even in \(x\)):</p>
+        \[
+            E_y(x)=A\cos(\kappa x).
+        \]
+
+        <p>So the complete (time-harmonic) field in the film is:</p>
+        \[
+            E_y(x,z,t)=A\cos(\kappa x)\,e^{i(\omega t-\beta z)}.
+        \]
+
+        <p>Using \(\cos(\kappa x)=\dfrac{1}{2}\left(e^{i\kappa x}+e^{-i\kappa x}\right)\), this is a superposition of two plane waves:</p>
+        \[
+            E_y=\frac{A}{2}e^{i(\omega t-\beta z+\kappa x)}+\frac{A}{2}e^{i(\omega t-\beta z-\kappa x)}.
+        \]
+
+        <p>A general plane wave has the phase factor:</p>
+        \[
+            e^{i(\omega t-k_x x-k_y y-k_z z)}.
+        \]
+        <p>which represents propagation along the direction of the wavevector \(\mathbf{k}\), whose components are \(k_x,k_y,k_z\).</p>
+
+        <p>Comparing terms, for the two constituent plane waves in the film core:</p>
+        \[
+            k_x=\pm \kappa,\qquad k_y=0,\qquad k_z=\beta.
+        \]
+
+        <p>The ray angle \(\theta\) inside the film (measured from the \(z\)-axis) satisfies:</p>
+        \[
+            \tan\theta=\frac{|k_x|}{k_z}=\frac{\kappa}{\beta}.
+        \]
+
+        <p>Also, in the film core \(|\mathbf{k}|=k_1=k_0 n_1\), and</p>
+        \[
+            k_1^2=k_x^2+k_z^2=\kappa^2+\beta^2 \quad\Rightarrow\quad \cos\theta=\frac{\beta}{k_0 n_1},\;\;\sin\theta=\frac{\kappa}{k_0 n_1}.
+        \]
+
+        <p>Hence:</p>
+        \[
+            \beta=k_0 n_1\cos\theta.
+        \]
+
+        <p><strong>Guided-mode condition</strong> (effective index between cladding and core):</p>
+        \[
+            n_2<\frac{\beta}{k_0}< n_1.
+        \]
+    </div>
+</body>
+</html>

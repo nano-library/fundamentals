@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Maxwell's Equations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false },
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+     <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="introduction.html" rel="prev">Introduction \(\leftarrow\)</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="electromagnetic-waves.html" rel="next">Electromagnetic Waves \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Maxwell's Equations</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h4>PRE-MAXWELL FIELD EQUATIONS</h4>
+        \[
+            \nabla\cdot\mathbf{E} = \frac{\rho}{\varepsilon_0}
+            \tag{1.1}
+        \]
+        \[
+            \nabla\cdot\mathbf{B} = 0
+            \tag{1.2}
+        \]
+        \[
+            \nabla\times\mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+            \tag{1.3}
+        \]
+        \[    
+            \nabla\times\mathbf{B} = \mu_0 \mathbf{J}
+            \tag{1.4}
+        \]
+
+        <h4>MAXWELL'S EQUATIONS</h4>
+        <p>All Electromagnetic phenomena can be said to follow from Maxwell's equations. These equations are based on experimental observations and are given by the following equations:</p>
+        \[
+            \nabla\cdot\mathbf{D} = \rho
+            \tag{1.5}
+        \]
+        \[
+            \nabla\cdot\mathbf{B} = 0
+            \tag{1.6}
+        \]
+        \[
+            \nabla\times\mathbf{E} = -\dfrac{\partial \mathbf{B}}{\partial t} = -\mu\dfrac{\partial \mathbf{H}}{\partial t}
+            \tag{1.7}
+        \]
+        \[
+            \nabla\times\mathbf{H} = \dfrac{\partial \mathbf{D}}{\partial t} + \mathbf{J}
+            \tag{1.8}
+        \]
+        <p>Where \(\rho\) represents the charge density and \(\mathbf{J}\) the current density, \(\mathbf{E}\), \(\mathbf{D}\), \(\mathbf{B}\) and \(\mathbf{H}\) represent the electric field, electric displacement, magnetic induction and magnetic field, respectively.</p>
+        <p>Equations (1.5)-(1.8) can be solved only if the 'constitutive relations' are known whiich relate \(\mathbf{D}\) to \(\mathbf{E}\), \(\mathbf{B}\) to \(\mathbf{H}\) and \(\mathbf{J}\) to \(\mathbf{E}\).</p>
+        <p>The 'constitutive relations' depend on the properties of the properties of the medium, field strengths, etc.</p>
+        <p>For a linear, isotropic and homogeneous medium the 'constitutive relations' are given by the following equations:</p>
+        \[
+            \mathbf{D} = \varepsilon \mathbf{E}
+            \tag{1.9}
+        \]
+        \[
+            \mathbf{B} = \mu \mathbf{H}
+            \tag{1.10}
+        \]
+        \[
+            \mathbf{J} = \sigma \mathbf{E}
+            \tag{1.11}
+        \]
+        <p>where \(\varepsilon\), \(\mu\) and \(\sigma\) denote respectively the dielectric permittivity, magnetic permeability and conductivity of the medium respectively.</p>
+        
+        <h4>MAXWELL'S EQUATIONS IN A CHARGE AND CURRENT FREE DIELECTRIC MEDIUM</h4>
+        <p>For a charge free dielectric, we may write</p>
+        \[
+            \rho = 0, \quad \text{and} \quad \mathbf{J} = 0
+            \tag{1.12}
+        \]
+        <p>Further, in most cases</p>
+        \[
+            \mu \approx \mu_0
+        \]
+        <p>where</p>
+        \[
+            \mu_0 = 4 \pi \times 10^{-7} \; Ns^2 . C^2
+            \tag{1.13}
+        \]
+        <p>represents the magnetic permeability of vaccum.</p>
+        <p>If we use the above relations, Maxwell's equations simplify to</p>
+        \[
+            \nabla\cdot\mathbf{E} = 0
+            \tag{1.14}
+        \]
+        \[
+            \nabla\cdot\mathbf{H} = 0
+            \tag{1.15}
+        \]
+        \[
+            \nabla\times\mathbf{E} = -\mu \frac{\partial \mathbf{H}}{\partial t}
+            \tag{1.16}
+        \]
+        \[
+            \nabla\times\mathbf{H} = \varepsilon \frac{\partial \mathbf{E}}{\partial t}
+            \tag{1.17}
+        \]
+
+        <h4>MAXWELL'S EQUATIONS IN A CONDUCTING MEDIUM</h4>
+        <p>With free charge density \(\rho_f\), Maxwell's equations take the form:</p>
+        \[
+            \nabla\cdot\mathbf{E} = \frac{\rho_f}{\varepsilon_0}
+            \tag{1.18}
+        \]
+        \[
+            \nabla\cdot\mathbf{B} = 0
+            \tag{1.19}
+        \]
+        \[
+            \nabla\times\mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+            \tag{1.20}
+        \]
+        \[    
+            \nabla\times \mathbf{B} = \mu_0 \mathbf{J} + \mu \varepsilon \frac{\partial \mathbf{E}}{\partial t}
+            \tag{1.21}
+        \]
+        <hr>
+    </div>
+</body>
+</html>

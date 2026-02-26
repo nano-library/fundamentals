@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Transverse Electric (TE) Modes for Symmetric Step-index Planar Waveguide</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="te-tm.html" rel="prev">\(\leftarrow\) TE and TM Modes</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="fundamental-mode.html" rel="next">Fundamental Mode \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Transverse Electric (TE) Modes for Symmetric Step-index Planar Waveguide</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <figure style="text-align:center;">
+          <img src="img/planar-optical-waveguide.png" alt="planar-optical-waveguide" width="300">
+          <figcaption><strong>Fig 8.1</strong> Planer optical waveguide.</figcaption>
+        </figure>
+        <p>A symmetric planar (slab) waveguide consists of a film (core) of thickness \(d\) and refractive index \(n_1\), bounded by cladding of refractive index \(n_2\), with \(n_1>n_2\).</p>
+        <figure style="text-align:center;">
+          <img src="img/refractive-index-profile.png" alt="step-index profile" width="200">
+          <figcaption><strong>Fig 8.2</strong> step-index profile.</figcaption>
+        </figure>
+        \[
+          n(x)=
+          \begin{cases}
+          n_1, & |x|<\dfrac{d}{2},\\[6pt]
+          n_2, & |x|>\dfrac{d}{2}.
+          \end{cases}
+        \]
+
+        <p>Propagation is along the \(z\)-direction with propagation constant \(\beta\). For time-harmonic fields, assume</p>
+        \[
+          E_y(x,z,t)=E_y(x)\,e^{i(\beta z-\omega t)}.
+        \]
+
+        <h4>TRANSVERSE ELECTRIC (TE) MODES</h4>
+        <p>For TE modes (with respect to the direction of propagation \(z\)):</p>
+
+        \[
+          E_z=0,\qquad E_y\neq 0.
+        \]
+
+        <p>The associated magnetic-field components follow from Maxwell’s equations:</p>
+
+        \[
+          H_x=-\frac{\beta}{\omega\mu_0}\,E_y, \qquad H_z=\frac{i}{\omega\mu_0}\,\frac{dE_y}{dx}.
+        \]
+
+        <p>Substitution into Maxwell's equations yields the scalar wave equation for \(E_y(x)\):</p>
+
+        \[
+          \frac{d^2E_y}{dx^2}+\left(k_0^2 n^2(x)-\beta^2\right)E_y=0, \qquad k_0=\frac{\omega}{c}.
+        \]
+
+        <h4>GUIDED MODE CONDITION</h4>
+        <p>For guided modes the field must be oscillatory in the core and evanescent in the cladding. Hence</p>
+
+        \[
+          k_0 n_2< \beta< k_0 n_1, \qquad\text{or}\qquad n_2< \frac{\beta}{k_0}< n_1.
+        \]
+
+        <h4>SOLUTIONS TO EACH REGION</h4>
+        <h4>Core Region \(\left(|x|<\dfrac{d}{2}\right)\)</h4>
+
+        \[
+          \frac{d^2E_y}{dx^2}+\kappa^2 E_y=0, \qquad \kappa^2=k_0^2 n_1^2-\beta^2.
+        \]
+
+        \[
+          E_y(x)=A\cos(\kappa x)+B\sin(\kappa x).
+        \]
+
+        <h4>CLADDING REGION \(\left(|x|>\dfrac{d}{2}\right)\)</h4>
+
+        \[
+          \frac{d^2E_y}{dx^2}-\gamma^2 E_y=0, \qquad \gamma^2=\beta^2-k_0^2 n_2^2.
+        \]
+
+        <p>Physical boundedness requires an exponential decay away from the film:</p>
+
+        \[
+        E_y(x)=
+        \begin{cases}
+        C\,e^{-\gamma(x-d/2)}, & x>\dfrac{d}{2},\\[6pt]
+        C\,e^{+\gamma(x+d/2)}, & x<-\dfrac{d}{2}.
+        \end{cases}
+        \]
+
+        <h4>SYMMETRY OF MODES</h4>
+        <p>Since \(n(x)=n(-x)\), modes can be classified by parity:</p>
+
+        <ul>
+          <li><strong>Even (symmetric):</strong> \(E_y(-x)=E_y(x)\) \(\Rightarrow\) core field is cosine-like.</li>
+          <li><strong>Odd (antisymmetric):</strong> \(E_y(-x)=-E_y(x)\) \(\Rightarrow\) core field is sine-like.</li>
+        </ul>
+
+        <p>Thus one may take:</p>
+
+        \[
+        \text{Even:}\quad E_y(x)=A\cos(\kappa x),
+        \qquad
+        \text{Odd:}\quad E_y(x)=B\sin(\kappa x),
+        \quad (|x| < d/2).
+        \]
+
+        <h4>BOUNDARY CONDITION (TE)</h4>
+        <p>At the interfaces \(x=\pm d/2\), tangential field components must be continuous. For TE modes this gives:</p>
+
+        <ul>
+          <li>\(E_y\) is continuous,</li>
+          <li>\(\dfrac{dE_y}{dx}\) is continuous.</li>
+        </ul>
+
+        <h4>EIGENVALUE EQUATIONS (Dispersion) EQUATIONS</h4>
+        <p>Applying the boundary conditions yields the TE mode eigenvalue equations:</p>
+
+        <h4>Even (Symmetric) TE Modes</h4>
+
+        \[
+          \kappa \tan\left(\frac{\kappa d}{2}\right)=\gamma.
+        \]
+
+        <h4>Odd (Antisymmetric) TE Modes</h4>
+
+        \[
+          -\kappa \cot\left(\frac{\kappa d}{2}\right)=\gamma.
+        \]
+
+        <p>Only discrete values of \(\beta\) satisfy these transcendental equations; each allowed \(\beta\) corresponds to one guided TE mode.</p>
+
+      
+        <h4>NORMALIZED FREQUENCY PARAMETER</h4>
+
+        <p>The normalized frequency (or \(V\)-parameter) is defined by</p>
+
+        \[
+          V=k_0 d\sqrt{n_1^2-n_2^2}.
+        \]
+
+        <p>where, \(k_0 = \frac{2\pi}{\lambda}\).</p>
+
+        <p>\(V\) governs the number of guided modes supported by the slab.</p>
+    </div>
+</body>
+</html>

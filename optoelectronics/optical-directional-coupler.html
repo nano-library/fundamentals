@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Optical Directional Coupler</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="fundamental-mode.html" rel="prev">\(\leftarrow\) Fundamental Mode</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="" rel="next"> \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Optical Directional Coupler</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <h3>EVANESCENT FIELD</h3>
+
+        <p>An <strong>evanescent field</strong> is a non-propagating electromagnetic field that decays exponentially with distance away from an interface.</p>
+
+        <h4>Coupling Factors</h4>
+        <ul>
+        <li>Separation between waveguides</li>
+        <li>Propagation constants</li>
+        <li>Operating wavelength</li>
+        </ul>
+
+        <p>Consider two independent waveguides supporting modes \(a(z)\) and \(b(z)\).</p>
+
+        <p>For waveguide 1:</p>
+        \[
+        E_y(x,z)\propto e^{-i\beta_1 z}
+        \]
+
+        \[
+        \frac{da}{dz}=-i\beta_1 a
+        \tag{1}
+        \]
+
+        <p>For waveguide 2:</p>
+        \[
+        \frac{db}{dz}=-i\beta_2 b
+        \tag{2}
+        \]
+
+        
+
+        <h4>COUPLED MODE EQUATIONS</h4>
+
+        <p>When the waveguides are brought close, evanescent fields overlap and coupling occurs:</p>
+
+        \[
+        \frac{da}{dz}=-i\beta_1 a - i\kappa_{12} b
+        \tag{3}
+        \]
+
+        \[
+        \frac{db}{dz}=-i\beta_2 b - i\kappa_{21} a
+        \tag{4}
+        \]
+
+        <p>\(\kappa_{12},\kappa_{21}\) are coupling coefficients.  
+        For identical waveguides: \(\kappa_{12}=\kappa_{21}=\kappa\).</p>
+
+        
+
+        <h4>Eigenmode Solution</h4>
+
+        Assume solutions of the form:
+        \[
+        a(z)=a_0 e^{-i\beta z}, \qquad b(z)=b_0 e^{-i\beta z}
+        \tag{5,6}
+        \]
+
+        Substitution into (3) and (4) gives:
+
+        \[
+        a_0(\beta-\beta_1)-\kappa_{12} b_0=0
+        \tag{7}
+        \]
+
+        \[
+        b_0(\beta-\beta_2)-\kappa_{21} a_0=0
+        \tag{8}
+        \]
+
+        For non-trivial solutions:
+
+        \[
+        \beta^2-\beta(\beta_1+\beta_2)+(\beta_1\beta_2-\kappa^2)=0
+        \tag{9}
+        \]
+
+        where
+
+        \[
+        \kappa=\sqrt{\kappa_{12}\kappa_{21}}.
+        \]
+
+        Thus the propagation constants of the symmetric and antisymmetric supermodes are:
+
+        \[
+        \beta_{s,a}=\frac{\beta_1+\beta_2}{2}
+        \pm
+        \sqrt{\frac{(\beta_1-\beta_2)^2}{4}+\kappa^2}
+        \tag{10}
+        \]
+
+        
+
+        <h4>Identical Waveguides</h4>
+
+        If \(\beta_1=\beta_2=\beta_0\):
+
+        \[
+        \beta_s=\beta_0+\kappa
+        \tag{13}
+        \]
+
+        \[
+        \beta_a=\beta_0-\kappa
+        \tag{14}
+        \]
+
+        
+
+        <h4>Power Exchange</h4>
+
+        For excitation in waveguide 1 at \(z=0\):
+
+        \[
+        |a(z)|^2=
+        1-\frac{\kappa^2}{\frac{\Delta\beta^2}{4}+\kappa^2}
+        \sin^2\!\left(
+        \sqrt{\frac{\Delta\beta^2}{4}+\kappa^2}\; z
+        \right)
+        \tag{18}
+        \]
+
+        \[
+        |b(z)|^2=
+        \frac{\kappa^2}{\frac{\Delta\beta^2}{4}+\kappa^2}
+        \sin^2\!\left(
+        \sqrt{\frac{\Delta\beta^2}{4}+\kappa^2}\; z
+        \right)
+        \tag{19}
+        \]
+
+        where
+
+        \[
+        \Delta\beta=\beta_1-\beta_2.
+        \]
+
+        Power conservation:
+
+        \[
+        |a(z)|^2+|b(z)|^2=1.
+        \]
+
+        
+
+        <h4>Modulation Length</h4>
+
+        \[
+        h=\frac{2\pi}{2\sqrt{\frac{\Delta\beta^2}{4}+\kappa^2}}
+        \]
+
+        
+
+        <h4>Coupling Length</h4>
+
+        Minimum length for maximum power transfer:
+
+        \[
+        L_c=\frac{h}{2}
+        =
+        \frac{\pi}{2\sqrt{\frac{\Delta\beta^2}{4}+\kappa^2}}
+        \]
+
+        For identical waveguides (\(\Delta\beta=0\)):
+
+        \[
+        L_c=\frac{\pi}{2\kappa}
+        \]
+
+
+    </div>  
+</body>
+</html>

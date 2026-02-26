@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Guided Modes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+          <a class="nav-btn prev" href="wave-guide.html" rel="prev">\(\leftarrow\) Wave Guide</a>
+
+          <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+          <a class="nav-btn next" href="physical-understanding-of-modes.html" rel="next">Physical Understanding of Modes \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Guided Modes</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>Today, single mode fibers are extensively used in optical communication systems. In single mode fibers, ray optics is not applicable at all and one has to solve Maxwell's equations to determine the modes of waveguides.</p>
+        <p>Thus, the first thing to do would be to understand the concept of modes. In order to understand the concept of modes, it is probably best to consider the simplest planar optical waveguide that consists of a thin dielectric film sandwiched between material of slighly lower refractive indices and is characterized by the following refractive index variation.</p>
+        \[
+          n(x)=
+          \begin{cases}
+          n_1, & |x| < \dfrac{d}{2} \\[6pt]
+          n_2, & |x| > \dfrac{d}{2}
+          \end{cases}
+          \tag{5.1}
+        \]
+        <p>Equation (5.1) describes what is usually referred to as a <em>step-index profile</em>.</p>
+        <figure style="text-align:center;">
+          <img src="img/planar-dielectric-waveguide.png" alt="Step index profile" width="300">
+          <figcaption><strong>Fig 5.1</strong> A planar dielectric waveguide of thickness \(d\) (along \(x\) direction) but infinitely extended along the \(y\) direction, Light propagates along \(z\) direction.</figcaption>
+        </figure>
+        <p>To start with, we will first consider a more general case of the refractive index depending only on the \(x\) coordinate:</p>
+        \[
+          n^2 = n^2(x)
+        \]
+        
+        <p>When the refractive index variation depends only on the \(x\) coordinate, we can always chose the \(z\)-axis along the direction of propagation of the wave and we may, <em>without any loss of generality</em>, write the solutions of Maxwell's equations in the form:</p>
+        \[
+        \mathcal{E} = \vec{E}(x,y)\, e^{i(\omega t - \beta z)}
+        \]
+
+        \[
+        \mathcal{H} = \vec{H}(x,y)\, e^{i(\omega t - \beta z)}
+        \]
+        <p>The above equations define the modes of the system. Thus,</p>
+        <i>Modes represent transverse field distribution that suffer only a phase change as they propagate through the waveguide along \(z\).</i>
+
+
+        <h4>GEOMETRIC OPTICS AND GUIDED MODES</h4>
+
+        <p><strong>Two complementary pictures:</strong></p>
+        <ul>
+          <li><strong>Full-wave view:</strong> Solve Maxwell's equations with the given refractive-index profile. The allowed solutions are <em>guided modes</em>.</li>
+          <li><strong>Ray view:</strong> In suitable limits (wavelength small compared to structure size), the same physics can be interpreted as rays reflecting and refracting inside the guide.</li>
+        </ul>
+
+        <p>One description is exact and field-based. The other is approximate and geometric.</p>
+
+        <h4>GUIDED MODE</h4>
+
+        <p>A guided mode is a field pattern that:</p>
+        <ul>
+          <li>Propagates along the guide (say the z-direction),</li>
+          <li>Remains confined in the transverse direction (x-direction),</li>
+          <li>Satisfies Maxwell's equations and boundary conditions.</li>
+        </ul>
+
+        <h4>CONNECTION TO RAY OPTICS</h4>
+
+        <p>When the wavelength is much smaller than the guide thickness:</p>
+
+        <ul>
+          <li>Modes correspond approximately to rays bouncing back and forth between interfaces.</li>
+          <li>The phase condition for constructive interference becomes the “ray quantization condition.”</li>
+        </ul>
+    </div>
+</body>

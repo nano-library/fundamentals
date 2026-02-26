@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Polarization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="electromagnetic-waves.html" rel="prev">\(\leftarrow\) Electromagnetic Waves</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="wave-guide.html" rel="next">Wave Guides \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Polarization</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+      <h4>PLANE POLARIZED WAVES</h4>  
+      <p>A linearly prolarized plane wave is the simplest electromagnetic wave, and if we assume the plane wave to be propagating in the \(+z\)-direction, the corresponding electric field can be written in the form</p>
+      \[
+        \mathbf{E} = \mathbf{\hat{x}}E_0 \cos{(\omega t - kz + \theta)}
+        \tag{3.1}
+      \]
+      <p>where the electric field vector is assumed to oscillate in the \(x\)-direction.</p>
+      <p>Equation (3.1) describes an x-polarized wave. It is also known as a <em>linearly polarized wave</em> because the electric vector is oscillating along a specific axis.</p>
+      <p>In Equation (3.1), \(omega = 2 \pi v\) is the angular frequency and \(k\) is the propagation constant.</p>
+      <p>For propagation in free space</p>
+      \[
+        k = \frac{\omega}{c}
+      \]
+      <p>where \(c\) represents the velocity of light in free space.</p>
+      <p>When propagating in a medium characterized by refractive index \(n\), we have</p>
+      \[
+        k = \frac{\omega}{v} \quad \text{where} v = \frac{c}{n}
+      \]
+      <p>represents the velocity of the electromagnetic wave in that medium.</p>
+      <figure style="text-align:center;">
+        <img src="img/plane-polarized-wave-x-polarized-wave.png" alt="Step index profile" width="300">
+        <figcaption><strong>Fig 3.1</strong> A \(x\)-direction plane polarized wave propagating along the \(z\)-direction.</figcaption>
+      </figure>
+      <p>A linearly polarized wave is also known as a <em>plane polarized wave</em> because the electric field is always confined to a particular plane.</p>
+      <p>For the x-polarized wave propagating along \(z\)-direction, the electric field is confined to the \(x-z\) plane.</p>
+
+      
+      <h4>THE WIRED GRID POLARIZER AND THE POLARIOD</h4>
+      <figure style="text-align:center;">
+        <img src="img/production-plane-polarized-waves.png" alt="Step index profile" width="300">
+        <figcaption><strong>Fig 3.2</strong> Production of plane polarized light from an unpolarized light source using a polarizer.</figcaption>
+      </figure>
+      <p>
+        Consider an unpolarized electromagnetic wave incident on a wire-grid polarizer. 
+        An unpolarized wave is characterized by an electric field \(\mathbf{E}\) that vibrates randomly in all directions transverse to the direction of propagation (taken as the \(z\)-direction). 
+        The component of the electric field parallel to the wires (taken along \(\hat{y}\)) drives currents in the conducting wires and is therefore absorbed due to Joule heating. 
+        Assuming that the separation between the wires, which are very thin, is of the order of the wavelength, i.e.\(\sim \lambda\), the perpendicular component of the electric field (along \(\hat{x}\)) is not significantly impeded and hence passes through the grid. 
+        As a result, the transmitted electromagnetic wave becomes linearly polarized with its electric field along the \(\hat{x}\) direction. 
+        At optical frequencies, since \(\lambda\) is very small (sub-micrometer range), fabricating a wire-grid polarizer with such fine spacing is extremely difficult. 
+        Instead, polarization can be achieved using long-chain polymer molecules containing atoms such as iodine, which provide high electrical conductivity along the length of the molecular chains. 
+        The component of the vibrating electric field parallel to the molecular chains (along \(\hat{y}\)) is absorbed due to Joule heating, while the perpendicular component is transmitted. 
+        Such a polarization device is called a <em>polaroid sheet</em>.
+      </p>
+      <figure style="text-align:center;">
+        <img src="img/wire-grid-polarizer.png" alt="Step index profile" width="300">
+        <figcaption><strong>Fig 3.3</strong> Wire grid polarizer.</figcaption>
+      </figure>
+
+
+
+      <h4>TWO POLARIODS AND MALUS'S LAW</h4>
+      <figure style="text-align:center;">
+        <img src="img/malus-law.png" alt="Step index profile" width="300">
+        <figcaption><strong>Fig 3.4</strong> An unpolarized light beam gets \(x\)-polarized after passing through the polaroid \(P_1\), the pass axis of the second polaroid \(P_2\) makes an angle \(\theta\) with the \(x\) axis. The intensity of the emerging beam will vary as \(\cos^2(\theta)\).</figcaption>
+      </figure>
+
+      <p>First polaroid makes light linearly polarized. Second polaroid (analyzer) tests how much of that polarization matches its pass axis.</p>
+
+      <p><strong>Malus's law:</strong></p>
+      \[
+        I = I_0 \cos^2(\theta)
+      \]
+
+      <ul>
+        <li>\(\theta\): angle between the polarization direction and analyzer pass axis.</li>
+        <li>\(\theta = 0^\circ\), maximum transmission (I = I<sub>0</sub>).</li>
+        <li>\(\theta = 90^\circ\) → ideally zero transmission (dark).</li>
+      </ul>
+
+      <h4>POLARIZATION OF ELECTROMAGNETIC WAVE</h4>
+      <p>Consider the time variation of the superposition of two plane waves at an arbitrary plane \(z=0\), perpendicular to the \(z\)-axis. The electric field components are</p>
+      \[
+        \vec{E}_x = \hat{x}\, a \cos (kz - \omega t)
+      \]
+      \[
+        \vec{E}_y = \hat{y}\, b \cos (kz - \omega t + \theta)
+      \]
+      <p>where \(a\) and \(b\) are the amplitudes and \(\theta\) is the phase difference between the two components. Each wave is linearly polarized and propagates along the \(z\)-direction.</p>
+      <p>The resultant electric field is</p>
+      
+      \[  
+      \vec{E} = \vec{E}_x + \vec{E}_y .
+      \]
+      <p>At the plane \(z=0\), the field components reduces to</p>
+      \[
+        E_x = a \cos(\omega t)
+      \]
+      \[
+        E_y = b \cos(\omega t - \theta)
+      \]
+
+      <p>The polarization type depends on the phase difference \(\theta\) and amplitudes \(a\) and \(b\).</p>
+
+      <h4>POLARIZATION STATES</h4>
+      <p>If</p> 
+      \[
+          E = \hat{x} E_0 x + \hat{y} E_0 y
+      \]
+
+      <ul>
+        <li>Same phase, Linear polarization</li>
+        <li>\(90^\circ\) phase difference and equal magnitude, Circular polarization</li>
+        <li>General case, Elliptical polarization</li>
+      </ul>
+      <p>Polarization is geometry written in time.</p>
+      <hr>
+    </div>
+</body>
+</html>

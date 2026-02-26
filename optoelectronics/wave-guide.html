@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Wave Guide</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+   
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="polarization.html" rel="prev">\(\leftarrow\) Polarization</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="guided-modes.html" rel="next">Guided Modes \(\rightarrow\)</a>
+        </nav>
+    </div>
+
+    <div id="title">
+        <h1>Wave Guide</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+      <p>An optical waveguide is a structure that guides electromagnetic waves by restricting the transmission of energy primarily to one direction.</p>
+
+      <p><strong>What “guiding” really means:</strong></p>
+      <ul>
+        <li>The field is <em>confined</em> in the transverse directions (say x and y).</li>
+        <li>The energy flow is mainly along one axis (say z).</li>
+      </ul>
+
+      <p>Waveguiding is achieved by spatial confinement of the electromagnetic field using either</p>
+      <ul>
+        <li><strong>Total Internal Reflection (TIR):</strong> confinement by repeated internal reflection at an interface, because the wave cannot refract out.</li>
+        <li><strong>Photonic Band Gap (PBG):</strong> confinement because the cladding is engineered to <em>forbid</em> propagation for certain frequencies (a dielectric “crystal wall”).</li>
+      </ul>
+
+      <h4>TOTAL INTERNAL REFLECTION (TIR) GUIDANCE</h4>
+
+      <p>If the core has higher refractive index than cladding, the wave inside the core hits the boundary and cannot escape when the incidence angle is large enough.</p>
+
+      <p><strong>Conditions for TIR guiding:</strong></p>
+      <ul>
+        <li><strong>Index condition:</strong> \(\eta_{\text{core}} > \eta_{cladding}\).</li>
+        <li><strong>Index profile:</strong> step-index or graded-index (you need a meaningful “core” region).</li>
+        <li><strong>Angle condition:</strong> incidence angle at the core-cladding boundary must exceed the critical angle.</li>
+      </ul>
+
+      <p><strong>Critical angle:</strong></p>
+      \[
+        \theta_c = sin^{-1}{(\frac{n_2}{n_1})} 
+      \]
+      <p>TIR required</p>
+      \[
+        \theta > \theta_c
+      \]
+
+      <h3>PHOTONIC BAND GAP (PBG) GUIDANCE</h3>
+
+      <p>Here guiding does <em>not</em> need \(\eta_{\text{core}} > \eta_{cladding}\).</p>
+
+      <ul>
+        <li>The cladding is a <strong>periodic dielectric structure</strong>.</li>
+        <li>That periodicity creates a <strong>photonic band gap</strong>: frequency ranges that cannot propagate in the cladding.</li>
+      </ul>
+
+      <h4>OPTICAL FIBERS</h4>
+      <p>A fiber is a cylindrical dielectric waveguide with:</p>
+      <ul>
+        <li>a central <strong>core</strong> (higher index for TIR fibers),</li>
+        <li>surrounded by <strong>cladding</strong> (lower index),</li>
+        <li>so light zig-zags (or more accurately, forms guided modes) along the axis.</li>
+      </ul>
+
+      <h3>PLANAR OPTICAL WAVEGUIDES</h3>
+      <p>The simplest optical waveguides are planar waveguides. A planar waveguide consists of a thin dielectric film (core) sandwiched between two materials having lower refractive indices (cladding).</p>
+      <p>Planar waveguides form the basic building blocks of integrated optics and are widely used for analyzing wave propagation in guided structures.</p>
+
+      <figure style="text-align:center;">
+        <img src="img/planar-optical-waveguide.png" alt="Step index profile" width="300">
+        <figcaption><strong>Fig 4.1</strong> Planer optical waveguide.</figcaption>
+      </figure>
+
+
+      <hr>
+    </div>
+</body>

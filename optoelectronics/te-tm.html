@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Transverse Electric (TE) and Magnetic (TM) Modes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.MathJax = {
+            options: { enableMenu: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+    <div id="navigation">
+        <nav class="concept-nav" aria-label="Concept navigation">
+            <a class="nav-btn prev" href="physical-understanding-of-modes.html" rel="prev">\(\leftarrow\) Physical Understanding of Modes</a>
+
+            <a class="nav-btn home" href="list-of-contents.html">Contents</a>
+
+            <a class="nav-btn next" href="transverse-electric-modes-for-symmetric-step-index-planar-waveguide.html" rel="next">TE Mode Symmetric Step-Index \(\rightarrow\)</a>
+        </nav>
+    </div>
+    <div id="title">
+        <h1>Transverse Electric (TE) and Magnetic (TM) Modes</h1>
+        <hr>
+    </div>
+    <div id="chapter">
+        <p>The guided modes of a planar waveguide are classified according to the presence or absence of longitudinal field components:</p>
+        
+        <ul>
+            <li>
+                <strong>TE Modes (Transverse Electric):</strong><br>
+                \[
+                    E_z = 0
+                \]
+                The electric field lies entirely in the transverse plane.
+            </li>
+
+            <li>
+                <strong>TM Modes (Transverse Magnetic):</strong><br>
+                \[
+                    H_z = 0
+                \]
+                The magnetic field lies entirely in the transverse plane.
+            </li>
+        </ul>
+
+        <p>This separation works because:</p>
+        <ul>
+            <li>The refractive index varies only with x.</li>
+            <li>The structure is invariant along z.</li>
+            <li>The medium is isotropic.</li>
+        </ul>
+
+        <p>Under these conditions, Maxwell's equations mathematically decouple into two independent scalar wave equations, one for TE and one for TM.</p>
+        <p>Instead of solving six coupled vector equations, we reduce the problem to:</p>
+        <ul>
+        <li>One scalar equation for TE modes</li>
+        <li>One scalar equation for TM modes</li>
+        </ul>
+
+        <p>That is the backbone of planar waveguide theory.</p>
+        <p>A specific electromagnetic field distribution that satisfies Maxwell's equations and the boundary conditions of the waveguide, and propagates along the guide with a definite propagation constant.</p>    
+        
+        <h4>Tranverse Electric Modes</h4>
+        \[
+        i\beta E_y = - i \omega \mu_0 H_x
+        \]
+        \[
+        \frac{\partial E_y}{\partial x} = - i \omega \mu_0 H_z
+        \]
+        \[
+        -i \beta H_x- \frac{\partial H_z}{\partial x} = i \omega \varepsilon_0n^2(x)E_y
+        \]
+
+        <h4>Transverse Magnetic Modes</h4>
+        \[
+        i \beta H_y = i \omega \varepsilon_0 n^2(x)E_x
+        \]
+        \[
+        \frac{\partial H_y}{\partial x} = i \omega \varepsilon_0 n^2(x) E_z
+        \]
+        \[
+        - i \beta E_x - \frac{\partial E_z}{\partial x} = - i \omega \mu_0 H_y
+        \]
+    </div>
+</body>
+</html>
