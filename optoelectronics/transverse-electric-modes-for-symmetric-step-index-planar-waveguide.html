@@ -27,6 +27,10 @@
         <hr>
     </div>
     <div id="chapter">
+      <h3>EVANESCENT FIELD</h3>
+
+        <p>An <strong>evanescent field</strong> is a non-propagating electromagnetic field that decays exponentially with distance away from an interface.</p>
+
         <figure style="text-align:center;">
           <img src="img/planar-optical-waveguide.png" alt="planar-optical-waveguide" width="300">
           <figcaption><strong>Fig 8.1</strong> Planer optical waveguide.</figcaption>
@@ -156,6 +160,56 @@
         <p>where, \(k_0 = \frac{2\pi}{\lambda}\).</p>
 
         <p>\(V\) governs the number of guided modes supported by the slab.</p>
+
+        <figure style="text-align:center;">
+          <img src="img/modal-pattern-for-the-first-few-modes.png" alt="modal-pattern-for-the-first-few-modes" width="450">
+          <figcaption><strong>Fig 8.3</strong> Model Pattern of first few modes</figcaption>
+        </figure>
+
+        <h4>SYMMETRIC AND ANTISYMMETRIC MODES</h4>
+        <p>As V increases, solutions appear alternately as symmetric and antisymmetric field shapes.</p>
+        <p>If</p>
+        \[
+          2m\pi < V < (2m+1)\pi, 
+        \]
+        <p>then there are \((m+1)\) symmetric modes and \(m\) antisymmetric modes.</p>
+
+        <p>If</p>
+        \[
+          (2m+1)\pi < V < (2m+2)\pi, 
+        \]
+        <p>
+        then there are \((m+1)\) symmetric and \((m+1)\) antisymmetric modes,
+        with \(m=0,1,2,\ldots\).
+        So the <strong>total number of modes</strong> is essentially the integer just above \(V/\pi\).
+        </p>
+
+
+        <h4>Large-V (many-mode) approximation</h4>
+        <p>
+        When \(V \gg 1\), the intersections that define modes cluster near
+        \(\xi = \pi/2, \pi, 3\pi/2,\ldots\), and the propagation constants for the first few modes are well
+        approximated by
+        </p>
+
+        \[
+        \xi = \xi_m
+        = \left(k_0^2 n_1^2 - \beta_m^2\right)^{1/2}\frac{d}{2}
+        \approx \left(m+1\right)\frac{\pi}{2},
+        \qquad V \gg 1, \tag{7.66}
+        \]
+
+        <p>
+        where even \(m=0,2,4,\ldots\) correspond to <strong>symmetric</strong> modes and
+        odd \(m=1,3,5,\ldots\) correspond to <strong>antisymmetric</strong> modes.
+        </p>
+
+        <h4>Zeros (nodes) in the transverse field</h4>
+        <p>The fundamental (zero-order) mode has no nodes inside the core: its transverse profile doesn't cross zero. The next mode has one node, the next has two, and so on:</p>
+
+        <p>the \(m\)th mode has \(m\) zeros (nodes) in the corresponding field distribution.</p>
+
+        <hr>
     </div>
 </body>
 </html>

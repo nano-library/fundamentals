@@ -111,37 +111,17 @@
         \]
         <p>which is the speed of propagation of the electromagnetic wave.</p>
 
-        <hr>
-
         <h4>WAVE EQUATION IN A CONDUCTING MEDIUM</h4>
-<h3>Wave Equation in a Conductor (Why Waves Get Tired)</h3>
+        <p>In a dielectric, the wave equation is:</p>
+        \[
+            \nabla^2 E = \mu \varepsilon \dfrac{\partial^2 E}{\partial t^2}
+        \]
 
-<p>In a dielectric, the wave equation is “clean”:</p>
-<p>
-∇²E = με ∂²E/∂t²
-</p>
-
-<p>In a conductor, σ adds a friction-like term:</p>
-<p>
-∇²E = με ∂²E/∂t² + μσ ∂E/∂t
-</p>
-
-<p><strong>Feynman translation:</strong></p>
-<ul>
-  <li>με term: inertia + restoring behavior (supports oscillation and propagation)</li>
-  <li>μσ term: damping (turns field energy into Joule heating)</li>
-</ul>
-
-<p>So the wave doesn’t just “travel.” It also fades.</p>
-
-<p><strong>Why assume monochromatic form?</strong> Because linear constant-coefficient equations treat each frequency independently.</p>
-<p>
-E(z,t) = E<sub>s</sub>(z) e<sup>iωt</sup>
-</p>
-
-<p>This converts time derivatives into algebra (∂/∂t → iω), making the spatial equation manageable.</p>
-
-
+        <p>In a conductor,</p>
+        \[
+            \nabla^2 E = \mu \varepsilon \dfrac{\partial^2 E}{\partial t^2} + \mu \sigma \dfrac{\partial E}{\partial t}
+        \]
+        
         <h4>MONOCHROMATIC (SINGLE FREQUENCY) SOLUTION</h4>
         <p>Assume a time-harmonic form:</p>
         \[
